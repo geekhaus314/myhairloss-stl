@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 120" width="600" height="120" role="img" aria-labelledby="archTitle">
+  <title id="archTitle">St. Louis Arch silhouette</title>
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0%" stop-color="#628ac6" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#9ec5ff" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <!-- simple stylized arch -->
+  <g transform="translate(0,8)">
+    <path d="M40 100 C 120 -20 480 -20 560 100 L 520 100 C 460 36 140 36 80 100 Z" fill="url(#g)"/>
+    <!-- cutout center to make arch silhouette -->
+    <path d="M120 100 C 180 40 420 40 480 100 L440 100 C 400 56 200 56 160 100 Z" fill="#fff"/>
+  </g>
+</svg>
