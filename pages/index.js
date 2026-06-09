@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Header from '../components/Header'
 
 export default function Home() {
   return (
@@ -9,15 +10,7 @@ export default function Home() {
         <meta name="description" content="Hair replacement & restoration services — consultations, custom solutions, and maintenance." />
       </Head>
 
-      <header style={{padding:'24px',borderBottom:'1px solid #eee'}}>
-        <h1 style={{margin:0}}>Brian Ivie Hair — a DBA of Saint Louis LLC</h1>
-        <nav style={{marginTop:8}}>
-          <Link href="/">Home</Link> {' | '}
-          <Link href="/services">Services</Link> {' | '}
-          <Link href="/about">About</Link> {' | '}
-          <Link href="/contact">Contact</Link>
-        </nav>
-      </header>
+      <Header />
 
       <main style={{padding: '32px'}}>
         <section>
