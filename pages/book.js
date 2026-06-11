@@ -13,7 +13,7 @@ export default function Book() {
   }, [type])
 
   return (
-    <div className="bg-[#050505] min-h-screen text-[#e0e0e0] selection:bg-gold selection:text-black">
+    <div className="bg-[#f5f5f0] min-h-screen text-[#1a1a1a] selection:bg-gold selection:text-[#f5f5f0]">
       <Head>
         <title>Book Your Session | Brian Ivie Hair</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
@@ -38,16 +38,16 @@ export default function Book() {
         </p>
 
         {/* Booking Toggle */}
-        <div className="flex bg-white/5 p-1 rounded-xl mb-8 border border-white/10">
+        <div className="flex bg-[#3c2a21] p-1 rounded-xl mb-8 border border-white/10">
           <button 
             onClick={() => setBookingType('consultation')}
-            className={`flex-1 py-3 rounded-lg text-xs uppercase font-bold tracking-widest transition ${bookingType === 'consultation' ? 'bg-gold text-black' : 'opacity-40'}`}
+            className={`flex-1 py-3 rounded-lg text-xs uppercase font-bold tracking-widest transition ${bookingType === 'consultation' ? 'bg-gold text-[#f5f5f0]' : 'opacity-40'}`}
           >
             Consultation
           </button>
           <button 
             onClick={() => setBookingType('appointment')}
-            className={`flex-1 py-3 rounded-lg text-xs uppercase font-bold tracking-widest transition ${bookingType === 'appointment' ? 'bg-gold text-black' : 'opacity-40'}`}
+            className={`flex-1 py-3 rounded-lg text-xs uppercase font-bold tracking-widest transition ${bookingType === 'appointment' ? 'bg-gold text-[#f5f5f0]' : 'opacity-40'}`}
           >
             Hair Appointment
           </button>
@@ -57,7 +57,7 @@ export default function Book() {
         <div className="space-y-6">
           {bookingType === 'consultation' ? (
             <div className="animate-in fade-in slide-in-from-bottom-4">
-              <div className="bg-white/5 border border-white/10 p-6 rounded-2xl mb-6">
+              <div className="bg-[#3c2a21] border border-white/10 p-6 rounded-2xl mb-6">
                 <h3 className="text-xl font-bold mb-2">Restoration Consultation</h3>
                 <p className="text-xs opacity-60 mb-4">30 Minutes • No Obligation • Private Session</p>
                 <p className="text-sm leading-relaxed mb-6 italic">
@@ -77,7 +77,7 @@ export default function Book() {
             </div>
           ) : (
             <div className="animate-in fade-in slide-in-from-bottom-4">
-              <div className="bg-white/5 border border-white/10 p-6 rounded-2xl mb-6">
+              <div className="bg-[#3c2a21] border border-white/10 p-6 rounded-2xl mb-6">
                 <h3 className="text-xl font-bold mb-2">Precision Cut & Style</h3>
                 <p className="text-xs opacity-60 mb-4">45-60 Minutes • All Hair Types • Custom Finish</p>
                 <p className="text-sm leading-relaxed mb-6 italic">

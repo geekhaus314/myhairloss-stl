@@ -6,38 +6,51 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="bg-[#050505] min-h-screen text-[#e0e0e0] selection:bg-gold selection:text-black font-sans">
+    <div className="bg-[#f5f5f0] min-h-screen text-[#1a1a1a] selection:bg-[#9a6137] selection:text-white font-sans">
       <Head>
         <title>Brian Ivie Hair | St. Louis Hair Restoration & Custom Units</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
       </Head>
 
-      {/* Editorial Navigation */}
-      <header className="fixed top-0 w-full z-50 mix-blend-difference px-6 py-8 md:px-12 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-black uppercase italic tracking-tighter">
-          Brian Ivie <span className="text-gold">Hair</span>
+      {/* Fixed Navigation Overhaul */}
+      <header className="fixed top-0 w-full z-50 bg-[#f5f5f0]/90 backdrop-blur-lg border-b border-[#e8e8e0] px-6 py-4 md:px-12 flex justify-between items-center">
+        <Link href="/" className="text-xl md:text-2xl font-black uppercase italic tracking-tighter text-[#3c2a21]">
+          Brian Ivie <span className="text-[#9a6137]">Hair</span>
         </Link>
         
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex items-center gap-8">
+          {['Services', 'About', 'Physicians', 'Contact'].map((item) => (
+            <Link key={item} href={`/${item.toLowerCase()}`} className="text-sm font-bold uppercase tracking-widest text-[#3c2a21] hover:text-[#9a6137] transition">
+              {item}
+            </Link>
+          ))}
+          <Link href="/book" className="bg-[#3c2a21] text-[#f5f5f0] px-6 py-2.5 rounded-lg text-sm font-bold uppercase tracking-widest hover:bg-[#9a6137] transition">
+            Book Now
+          </Link>
+        </nav>
+
+        {/* Mobile Toggle */}
         <button 
           onClick={() => setMenuOpen(!menuOpen)}
-          className="group flex flex-col gap-1.5 focus:outline-none"
+          className="md:hidden flex flex-col gap-1.5 focus:outline-none z-50"
         >
-          <div className={`h-0.5 w-8 bg-white transition-all ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-          <div className={`h-0.5 w-8 bg-white transition-all ${menuOpen ? 'opacity-0' : ''}`} />
-          <div className={`h-0.5 w-8 bg-white transition-all ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+          <div className={`h-0.5 w-6 bg-[#3c2a21] transition-all ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+          <div className={`h-0.5 w-6 bg-[#3c2a21] transition-all ${menuOpen ? 'opacity-0' : ''}`} />
+          <div className={`h-0.5 w-6 bg-[#3c2a21] transition-all ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
         </button>
       </header>
 
-      {/* Fullscreen Menu */}
+      {/* Mobile Menu Overlay - Clean & Mocha */}
       {menuOpen && (
-        <div className="fixed inset-0 z-40 bg-gold flex flex-col items-center justify-center p-6 animate-in fade-in duration-300">
+        <div className="fixed inset-0 z-40 bg-[#3c2a21] flex flex-col items-center justify-center p-6 animate-in fade-in duration-300">
           <nav className="flex flex-col gap-8 text-center">
             {['Home', 'Services', 'About', 'Physicians', 'Contact'].map((item) => (
               <Link 
                 key={item}
                 href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
                 onClick={() => setMenuOpen(false)}
-                className="text-5xl md:text-7xl font-black uppercase italic text-black hover:tracking-widest transition-all duration-500"
+                className="text-4xl font-black uppercase italic text-[#f5f5f0] hover:text-[#9a6137] transition"
               >
                 {item}
               </Link>
@@ -45,7 +58,7 @@ export default function Home() {
             <Link 
               href="/book" 
               onClick={() => setMenuOpen(false)}
-              className="mt-8 text-xl font-bold uppercase tracking-widest text-black border-2 border-black px-12 py-4 hover:bg-black hover:text-gold transition"
+              className="mt-8 text-lg font-bold uppercase tracking-widest text-[#3c2a21] bg-[#9a6137] px-12 py-4 rounded-xl"
             >
               Book Now
             </Link>
@@ -53,62 +66,60 @@ export default function Home() {
         </div>
       )}
 
-      {/* Hero Section: Gritty & Bold */}
-      <section className="relative h-screen flex flex-col justify-end p-6 md:p-20 overflow-hidden">
+      {/* Hero Section: Inviting Mocha Caramel */}
+      <section className="relative h-[90vh] flex flex-col justify-center pt-24 px-6 md:px-20 overflow-hidden bg-[#3c2a21]">
         <div className="absolute inset-0 z-0">
           <img 
             src="/images/hero-bg.jpg" 
-            className="w-full h-full object-cover grayscale opacity-40 scale-105 animate-pulse-slow" 
+            className="w-full h-full object-cover opacity-30 grayscale mix-blend-overlay" 
             alt="Hero" 
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#3c2a21] via-transparent to-transparent" />
         </div>
         
-        <div className="relative z-10 max-w-4xl">
-          <p className="text-gold uppercase tracking-[0.4em] text-xs font-black mb-4">St. Louis, MO • Established Expertise</p>
-          <h1 className="text-6xl md:text-[10rem] font-black uppercase italic leading-[0.8] tracking-tighter mb-8">
+        <div className="relative z-10 max-w-4xl mx-auto text-center md:text-left">
+          <p className="text-[#9a6137] uppercase tracking-[0.4em] text-xs font-black mb-4">St. Louis • Salon Lofts on Olive</p>
+          <h1 className="text-5xl md:text-[8rem] font-black uppercase italic leading-[0.9] tracking-tighter mb-8 text-[#f5f5f0]">
             Restore <br />
-            <span className="text-gold">Your Look.</span>
+            <span className="text-[#9a6137]">Your Look.</span>
           </h1>
-          <div className="flex flex-col md:flex-row gap-6 items-start md:items-center">
-            <Link href="/book" className="group bg-gold text-black px-12 py-6 text-xl font-black uppercase italic tracking-tighter hover:px-16 transition-all">
+          <div className="flex flex-col md:flex-row gap-6 items-center md:items-center justify-center md:justify-start">
+            <Link href="/book" className="w-full md:w-auto bg-[#9a6137] text-[#f5f5f0] px-12 py-5 text-lg font-black uppercase italic tracking-tighter rounded-xl hover:bg-[#b0744a] transition-all">
               Book a Session
             </Link>
-            <p className="text-sm md:text-lg max-w-md opacity-60 font-medium leading-tight">
-              Custom hair systems, precision fades, and medical partnerships. No generic solutions—just perfected fit and natural results.
+            <p className="text-sm md:text-lg max-w-sm text-[#f5f5f0]/70 font-medium leading-tight">
+              Custom hair systems and precision cuts. Perfected fit, natural results, and expert care.
             </p>
           </div>
         </div>
       </section>
 
-      {/* The "Work" Section */}
-      <section className="py-32 px-6 bg-[#080808]">
+      {/* Craft Section: Clean & Inviting */}
+      <section className="py-24 px-6 bg-[#f5f5f0]">
         <div className="container mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
-            <h2 className="text-5xl md:text-8xl font-black uppercase italic tracking-tighter leading-none">
-              The <br /><span className="text-gold">Craft.</span>
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-7xl font-black uppercase italic tracking-tighter text-[#3c2a21]">
+              The <span className="text-[#9a6137]">Craft.</span>
             </h2>
-            <p className="max-w-md text-sm md:text-base opacity-50 italic">
-              "I don't just cut hair—I restore confidence. Every unit is custom molded and perfected for the individual. It's about the fit, the color, and the soul of the style." — Brian Ivie
-            </p>
+            <div className="w-20 h-1.5 bg-[#9a6137] mx-auto mt-4" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { title: 'Custom Units', type: 'Hair Restoration', img: '/images/custom-unit-hero.jpg' },
+              { title: 'Custom Units', type: 'Restoration', img: '/images/custom-unit-hero.jpg' },
               { title: 'Precision Cuts', type: 'Barbering', img: '/images/service-haircut.jpg' },
-              { title: 'Wig Fitting', type: 'Medical Grade', img: '/images/wig-fitting.jpg' },
-              { title: 'Physician Loop', type: 'Clinical Partnership', img: '/images/service-physician.jpg' }
+              { title: 'Wig Fitting', type: 'Medical', img: '/images/wig-fitting.jpg' },
+              { title: 'Physician Loop', type: 'Clinical', img: '/images/service-physician.jpg' }
             ].map((work, i) => (
-              <div key={i} className="group relative aspect-[4/5] overflow-hidden bg-white/5">
+              <div key={i} className="group relative aspect-[4/5] overflow-hidden rounded-2xl bg-[#3c2a21]">
                 <img 
                   src={work.img} 
-                  className="w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:scale-110 group-hover:opacity-100 transition-all duration-700" 
+                  className="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-all duration-700" 
                   alt={work.title} 
                 />
-                <div className="absolute bottom-0 left-0 p-8 w-full bg-gradient-to-t from-black to-transparent">
-                  <p className="text-gold text-[10px] uppercase tracking-widest font-black mb-1">{work.type}</p>
-                  <h3 className="text-3xl font-black uppercase italic tracking-tighter">{work.title}</h3>
+                <div className="absolute bottom-0 left-0 p-6 w-full bg-gradient-to-t from-[#3c2a21] to-transparent">
+                  <p className="text-[#9a6137] text-[10px] uppercase tracking-widest font-black mb-1">{work.type}</p>
+                  <h3 className="text-xl font-black uppercase italic tracking-tighter text-[#f5f5f0]">{work.title}</h3>
                 </div>
               </div>
             ))}
@@ -116,61 +127,43 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Clinical Section: Physician Partnership */}
-      <section className="py-32 px-6 border-y border-white/5">
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+      {/* Clinical Section: Mocha Theme */}
+      <section className="py-24 px-6 bg-[#e8e8e0]">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div className="order-2 md:order-1">
-            <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter mb-8">
-              Medical <br /><span className="text-gold">Integration.</span>
+            <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter mb-8 text-[#3c2a21]">
+              Medical <br /><span className="text-[#9a6137]">Integration.</span>
             </h2>
-            <p className="text-lg opacity-70 mb-8 leading-relaxed">
-              We bridge the gap between clinical treatment and aesthetic restoration. Partnering with St. Louis' top physicians to provide immediate results while medical treatments take effect.
+            <p className="text-lg text-[#3c2a21]/80 mb-8 leading-relaxed">
+              We bridge the gap between clinical treatment and aesthetic restoration. Partnering with St. Louis' top physicians for comprehensive care.
             </p>
-            <div className="space-y-4 mb-10">
-              {['Minoxidil/Rogaine Support', 'Finasteride Synergy', 'Microneedling Coordination', 'Ketoconazole Integration'].map((item) => (
-                <div key={item} className="flex items-center gap-4">
-                  <div className="w-2 h-2 bg-gold" />
-                  <span className="uppercase text-xs font-bold tracking-widest">{item}</span>
-                </div>
-              ))}
-            </div>
-            <Link href="/physicians" className="text-gold text-sm font-black uppercase tracking-widest border-b-2 border-gold/30 hover:border-gold transition pb-2">
-              Physician Partnership Info →
+            <Link href="/physicians" className="inline-block bg-[#3c2a21] text-[#f5f5f0] px-8 py-4 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-[#9a6137] transition">
+              Partnership Info
             </Link>
           </div>
-          <div className="order-1 md:order-2 bg-white/5 p-4 rounded-3xl">
-            <img src="/images/service-physician.jpg" className="w-full rounded-2xl grayscale hover:grayscale-0 transition duration-500" alt="Physician Partnership" />
+          <div className="order-1 md:order-2">
+            <img src="/images/service-physician.jpg" className="w-full rounded-3xl shadow-2xl border-8 border-white" alt="Physician Partnership" />
           </div>
         </div>
       </section>
 
-      {/* Location / Contact */}
-      <section className="py-32 px-6">
+      {/* Footer: Clean & Mocha */}
+      <footer className="py-20 px-6 bg-[#3c2a21] text-[#f5f5f0]">
         <div className="container mx-auto text-center">
-          <p className="text-gold uppercase tracking-[0.4em] text-[10px] font-black mb-6">Find the Studio</p>
-          <h2 className="text-4xl md:text-7xl font-black uppercase italic tracking-tighter mb-12">
-            Salon Lofts <br />on Olive Blvd
+          <h2 className="text-2xl font-black uppercase italic tracking-tighter mb-4">
+            Brian Ivie <span className="text-[#9a6137]">Hair</span>
           </h2>
-          <div className="flex flex-col md:flex-row justify-center gap-12 text-sm uppercase tracking-widest font-bold opacity-60">
-            <div>
-              <p className="text-gold mb-2">Location</p>
-              <p>St. Louis, MO</p>
-            </div>
-            <div>
-              <p className="text-gold mb-2">Connect</p>
-              <p>info@myhairloss.com</p>
-            </div>
-            <div>
-              <p className="text-gold mb-2">Hours</p>
-              <p>By Appointment Only</p>
-            </div>
+          <p className="text-sm uppercase tracking-widest opacity-60 mb-8">Salon Lofts on Olive Blvd | St. Louis, MO</p>
+          <div className="flex flex-wrap justify-center gap-8 mb-12">
+            {['Services', 'About', 'Physicians', 'Contact'].map((item) => (
+              <Link key={item} href={`/${item.toLowerCase()}`} className="text-xs font-bold uppercase tracking-widest hover:text-[#9a6137] transition">
+                {item}
+              </Link>
+            ))}
           </div>
+          <p className="text-[10px] opacity-30 uppercase tracking-[0.2em]">© {new Date().getFullYear()} Brian Ivie Hair LLC. All rights reserved.</p>
         </div>
-      </section>
-
-      {/* Grainy Texture Overlay */}
-      <div className="fixed inset-0 pointer-events-none opacity-[0.03] contrast-150 brightness-150" 
-           style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }} />
+      </footer>
     </div>
   )
 }
