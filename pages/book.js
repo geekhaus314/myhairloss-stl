@@ -13,7 +13,7 @@ export default function Book() {
   }, [type])
 
   return (
-    <div className="bg-[#f5f5f0] min-h-screen text-[#1a1a1a] selection:bg-gold selection:text-[#f5f5f0]">
+    <div className="bg-[#fdfdfb] min-h-screen text-[#2d2d2d] selection:bg-gold selection:text-[#f5f5f0]">
       <Head>
         <title>Book Your Session | Brian Ivie Hair</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
@@ -30,7 +30,7 @@ export default function Book() {
       </header>
 
       <main className="container max-w-lg py-12 px-6">
-        <h1 className="text-4xl md:text-5xl font-black uppercase italic mb-2 tracking-tighter">
+        <h1 className="text-4xl md:text-5xl font-extrabold uppercase italic mb-2 tracking-tighter">
           Secure Your <span className="text-gold">Slot</span>
         </h1>
         <p className="text-sm opacity-60 mb-10 font-medium">
@@ -69,7 +69,7 @@ export default function Book() {
                 </div>
                 <a 
                   href="https://squareup.com/appointments/book/placeholder-consultation" 
-                  className="btn btn-primary w-full py-4 rounded-xl uppercase font-black tracking-widest italic"
+                  className="btn btn-primary w-full py-4 rounded-xl uppercase font-extrabold tracking-widest italic"
                 >
                   Pick a Time
                 </a>
@@ -89,7 +89,7 @@ export default function Book() {
                 </div>
                 <a 
                   href="https://squareup.com/appointments/book/placeholder-appointment" 
-                  className="btn btn-primary w-full py-4 rounded-xl uppercase font-black tracking-widest italic"
+                  className="btn btn-primary w-full py-4 rounded-xl uppercase font-extrabold tracking-widest italic"
                 >
                   Book Appointment
                 </a>
