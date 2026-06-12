@@ -1,120 +1,119 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
+import { useState } from 'react'
 
 export default function Book() {
-  const router = useRouter()
-  const { type } = router.query
-  const [bookingType, setBookingType] = useState(type || 'consultation')
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  useEffect(() => {
-    if (type) setBookingType(type)
-  }, [type])
+  const bookingOptions = [
+    {
+      title: 'Restoration Consultation',
+      duration: '30-45 Minutes',
+      price: 'Private Session',
+      desc: 'Ideal for new clients. We discuss hair replacement, laser therapy, and transplant options.',
+      type: 'New Client'
+    },
+    {
+      title: 'Hair System Maintenance',
+      duration: '60-90 Minutes',
+      price: 'Standard Rate',
+      desc: 'Regular cleaning, re-bonding, and styling for existing hair system wearers.',
+      type: 'Returning Client'
+    },
+    {
+      title: 'Cut & Style Only',
+      duration: '45 Minutes',
+      price: 'Standard Rate',
+      desc: 'Precision haircut and styling for ANY hair system, regardless of where it was purchased.',
+      type: 'Service'
+    },
+    {
+      title: 'Repair & Ventilation',
+      duration: 'Hourly Rate',
+      price: '$50/Hour',
+      desc: 'Expert repair work, filling in bald spots, and system ventilation.',
+      type: 'Specialized'
+    }
+  ];
 
   return (
-    <div className="bg-[#fdfdfb] min-h-screen text-[#2d2d2d] selection:bg-gold selection:text-[#f5f5f0]">
+    <div className="bg-[#fdfdfb]">
       <Head>
-        <title>Book Your Session | Brian Ivie Hair</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+        <title>Book Session | Brian Ivie Hair and Extensions</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       </Head>
 
-      {/* Minimal Header */}
-      <header className="p-6 flex justify-between items-center border-b border-white/5">
-        <Link href="/" className="text-lg font-bold tracking-tighter uppercase italic">
-          Brian Ivie <span className="text-gold">Hair</span>
+      <div className="bg-[#1a1a1a] text-[#d4af37] py-3 text-center">
+        <Link href="/" className="text-lg md:text-2xl font-black tracking-[0.3em] uppercase text-[#d4af37] hover:text-white transition-colors">MYHAIRLOSS.COM</Link>
+      </div>
+
+      <header className="glass-nav px-6 py-6 flex justify-between items-center">
+        <Link href="/" className="flex flex-col">
+          <span className="text-sm font-serif italic text-[#d4af37]">Executive Hair Restoration</span>
+          <h1 className="text-xl md:text-2xl font-bold tracking-tight text-[#1a1a1a] leading-none">
+            BRIAN IVIE <span className="font-light">HAIR & EXTENSIONS</span>
+          </h1>
         </Link>
-        <Link href="/" className="text-xs uppercase tracking-widest opacity-50 hover:opacity-100 transition">
-          Close
-        </Link>
+        <nav className="hidden lg:flex items-center gap-8">
+          <Link href="/" className="nav-link">Home</Link>
+          <Link href="/services" className="nav-link">Services</Link>
+          <Link href="/laser-therapy" className="nav-link">Laser Therapy</Link>
+        </nav>
+        <button onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden flex flex-col gap-1.5">
+          <div className="h-0.5 w-6 bg-[#1a1a1a]" />
+          <div className="h-0.5 w-6 bg-[#1a1a1a]" />
+          <div className="h-0.5 w-6 bg-[#1a1a1a]" />
+        </button>
       </header>
 
-      <main className="container max-w-lg py-12 px-6">
-        <h1 className="text-4xl md:text-5xl font-extrabold uppercase italic mb-2 tracking-tighter">
-          Secure Your <span className="text-gold">Slot</span>
-        </h1>
-        <p className="text-sm opacity-60 mb-10 font-medium">
-          Professional hair restoration & precision cuts at Salon Lofts on Olive Blvd.
-        </p>
-
-        {/* Booking Toggle */}
-        <div className="flex bg-[#3c2a21] p-1 rounded-xl mb-8 border border-white/10">
-          <button 
-            onClick={() => setBookingType('consultation')}
-            className={`flex-1 py-3 rounded-lg text-xs uppercase font-bold tracking-widest transition ${bookingType === 'consultation' ? 'bg-gold text-[#f5f5f0]' : 'opacity-40'}`}
-          >
-            Consultation
-          </button>
-          <button 
-            onClick={() => setBookingType('appointment')}
-            className={`flex-1 py-3 rounded-lg text-xs uppercase font-bold tracking-widest transition ${bookingType === 'appointment' ? 'bg-gold text-[#f5f5f0]' : 'opacity-40'}`}
-          >
-            Hair Appointment
-          </button>
+      {menuOpen && (
+        <div className="fixed inset-0 z-[100] bg-[#1a1a1a] flex flex-col items-center justify-center p-6">
+          <button onClick={() => setMenuOpen(false)} className="absolute top-8 right-8 text-[#d4af37] text-4xl">&times;</button>
+          <Link href="/" onClick={() => setMenuOpen(false)} className="text-2xl font-serif text-white mb-8">Home</Link>
+          <Link href="/services" onClick={() => setMenuOpen(false)} className="text-2xl font-serif text-white mb-8">Services</Link>
+          <Link href="/laser-therapy" onClick={() => setMenuOpen(false)} className="text-2xl font-serif text-white mb-8">Laser Therapy</Link>
         </div>
+      )}
 
-        {/* Booking Card */}
-        <div className="space-y-6">
-          {bookingType === 'consultation' ? (
-            <div className="animate-in fade-in slide-in-from-bottom-4">
-              <div className="bg-[#3c2a21] border border-white/10 p-6 rounded-2xl mb-6">
-                <h3 className="text-xl font-bold mb-2">Restoration Consultation</h3>
-                <p className="text-xs opacity-60 mb-4">30 Minutes • No Obligation • Private Session</p>
-                <p className="text-sm leading-relaxed mb-6 italic">
-                  "Let's talk about your hair. No sales pitch, just a real look at your options—custom units, medical treatments, or a mix of both. We'll find the perfect fit for your look."
-                </p>
-                <div className="flex items-center gap-2 text-gold text-xs font-bold uppercase tracking-widest mb-6">
-                  <span className="w-2 h-2 bg-gold rounded-full animate-pulse" />
-                  Available This Week
-                </div>
-                <a 
-                  href="https://squareup.com/appointments/book/placeholder-consultation" 
-                  className="btn btn-primary w-full py-4 rounded-xl uppercase font-extrabold tracking-widest italic"
-                >
-                  Pick a Time
-                </a>
-              </div>
-            </div>
-          ) : (
-            <div className="animate-in fade-in slide-in-from-bottom-4">
-              <div className="bg-[#3c2a21] border border-white/10 p-6 rounded-2xl mb-6">
-                <h3 className="text-xl font-bold mb-2">Precision Cut & Style</h3>
-                <p className="text-xs opacity-60 mb-4">45-60 Minutes • All Hair Types • Custom Finish</p>
-                <p className="text-sm leading-relaxed mb-6 italic">
-                  "Regular cuts, fades, color, or system maintenance. I don't do 'generic'—every cut is tailored to your face shape and hair texture. Let's get it right."
-                </p>
-                <div className="flex items-center gap-2 text-gold text-xs font-bold uppercase tracking-widest mb-6">
-                  <span className="w-2 h-2 bg-gold rounded-full animate-pulse" />
-                  Next Openings: Friday
-                </div>
-                <a 
-                  href="https://squareup.com/appointments/book/placeholder-appointment" 
-                  className="btn btn-primary w-full py-4 rounded-xl uppercase font-extrabold tracking-widest italic"
-                >
-                  Book Appointment
-                </a>
-              </div>
-            </div>
-          )}
+      <main className="section-padding">
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-16">
+            <h2 className="text-[#d4af37] text-sm uppercase tracking-[0.4em] mb-4">Secure Your Appointment</h2>
+            <h1 className="text-5xl md:text-6xl font-bold mb-8">Book a Session</h1>
+            <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+              Please select the service you require. For new clients, we recommend starting with a Restoration Consultation.
+            </p>
+          </div>
 
-          {/* Alternative Contact */}
-          <div className="text-center py-8">
-            <p className="text-[10px] uppercase tracking-[0.2em] opacity-30 mb-4">Need something custom?</p>
-            <div className="flex flex-col gap-3">
-              <a href="tel:+13145551234" className="text-sm font-bold hover:text-gold transition underline decoration-gold/30">
-                Call/Text: (314) 555-1234
-              </a>
-              <Link href="/contact" className="text-xs opacity-50 hover:opacity-100 transition">
-                Send a Message Instead
-              </Link>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {bookingOptions.map((opt, i) => (
+              <div key={i} className="bg-white p-10 border border-gray-100 card-shadow hover:border-[#d4af37] transition-all group">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[#d4af37] mb-4 block">{opt.type}</span>
+                <h3 className="text-2xl mb-4 group-hover:text-[#d4af37] transition-colors">{opt.title}</h3>
+                <div className="flex justify-between items-center mb-6 text-sm text-gray-400 font-semibold uppercase tracking-widest">
+                  <span>{opt.duration}</span>
+                  <span className="text-[#1a1a1a]">{opt.price}</span>
+                </div>
+                <p className="text-sm text-gray-500 mb-8 leading-relaxed">{opt.desc}</p>
+                <button className="btn-primary w-full">Request Appointment</button>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-16 p-12 bg-[#1a1a1a] text-white text-center">
+            <h3 className="text-[#d4af37] mb-4">Direct Booking</h3>
+            <p className="text-white/60 mb-8">Prefer to talk to a real person? Call or text us directly to coordinate your visit.</p>
+            <a href="tel:+15551234567" className="text-3xl font-bold hover:text-[#d4af37] transition-colors">(555) 123-4567</a>
           </div>
         </div>
       </main>
 
-      {/* Grainy Texture Overlay */}
-      <div className="fixed inset-0 pointer-events-none opacity-[0.03] contrast-150 brightness-150" 
-           style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }} />
+      <footer className="bg-[#1a1a1a] text-white py-20 px-6">
+        <div className="container mx-auto text-center">
+          <h2 className="text-2xl font-bold mb-8">BRIAN IVIE <span className="font-light text-[#d4af37]">HAIR & EXTENSIONS</span></h2>
+          <p className="text-[10px] text-white/20 uppercase tracking-widest">© {new Date().getFullYear()} Brian Ivie Hair and Extensions. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
   )
 }

@@ -1,217 +1,140 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { useState } from 'react'
 
 export default function Services() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const detailedServices = [
+    {
+      id: 'replacement',
+      title: 'Hair Replacement',
+      subtitle: 'Custom Molded & Perfected Fit',
+      desc: 'Our hair systems are not off-the-shelf. Each unit is custom molded and color-matched to your specific needs. We specialize in precision application and styling to ensure a result that is indistinguishable from natural hair.',
+      features: ['Custom Molding', 'Color Matching', 'Precision Cutting', 'Glue-on & Tape-on Units']
+    },
+    {
+      id: 'laser',
+      title: 'Laser Hair Therapy',
+      subtitle: 'Clinical-grade LLLT',
+      desc: 'Stimulate growth and revitalize follicles with our clinical laser protocols. Ideal for early-stage thinning or as essential post-transplant care to maximize density and hair health.',
+      features: ['Photobiomodulation', 'Increased Blood Flow', 'Follicle Revitalization', 'Post-Op Care']
+    },
+    {
+      id: 'extensions',
+      title: 'Hair Extensions',
+      subtitle: 'Premium Volume & Length',
+      desc: 'Expertly applied extensions using the highest quality hair. Whether you need length, volume, or a pop of color, we provide a seamless blend that moves and feels like your own.',
+      features: ['Seamless Blending', 'Natural Movement', 'Custom Color Matching', 'Professional Removal']
+    },
+    {
+      id: 'transplant',
+      title: 'Transplant Consultations',
+      subtitle: 'Professional Coordination',
+      desc: 'We are not medical doctors, but we partner with the best physicians in STL. We coordinate your transplant journey and provide the necessary post-op care to ensure your investment thrives.',
+      features: ['Physician Referrals', 'Pre-Op Planning', 'Post-Op Laser Support', 'Recovery Monitoring']
+    }
+  ];
+
   return (
-    <div style={{ background: '#0a0a0a', color: '#f5f5f5' }}>
+    <div className="bg-[#fdfdfb]">
       <Head>
-        <title>Services | Brian Ivie Hair LLC</title>
-        <meta name="description" content="Custom hair systems, professional haircuts, color treatments, extensions, and medical-grade wig fitting." />
+        <title>Services | Brian Ivie Hair and Extensions</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       </Head>
 
-      {/* Navigation */}
-      <header style={{
-        background: 'linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(15, 15, 15, 0.95) 100%)',
-        padding: '1.5rem 0',
-        borderBottom: '1px solid #333',
-        position: 'sticky',
-        top: 0,
-        zIndex: 100
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <h1 style={{ fontSize: '1.75rem', margin: 0, fontFamily: "'Playfair Display', serif" }}>
-            <span style={{ color: '#d4af37' }}>Brian Ivie</span> Hair LLC
+      <div className="bg-[#1a1a1a] text-[#d4af37] py-3 text-center">
+        <Link href="/" className="text-lg md:text-2xl font-black tracking-[0.3em] uppercase text-[#d4af37] hover:text-white transition-colors">MYHAIRLOSS.COM</Link>
+      </div>
+
+      <header className="glass-nav px-6 py-6 flex justify-between items-center">
+        <Link href="/" className="flex flex-col">
+          <span className="text-sm font-serif italic text-[#d4af37]">Executive Hair Restoration</span>
+          <h1 className="text-xl md:text-2xl font-bold tracking-tight text-[#1a1a1a] leading-none">
+            BRIAN IVIE <span className="font-light">HAIR & EXTENSIONS</span>
           </h1>
-          <nav style={{ display: 'flex', gap: '2rem' }}>
-            <Link href="/" style={{ color: '#d1d5db' }}>Home</Link>
-            <Link href="/services" style={{ color: '#d4af37', fontWeight: 600 }}>Services</Link>
-            <Link href="/about" style={{ color: '#d1d5db' }}>About</Link>
-            <Link href="/physicians" style={{ color: '#d1d5db' }}>Physician Partners</Link>
-            <Link href="/contact" style={{ color: '#d1d5db' }}>Contact</Link>
-          </nav>
-        </div>
+        </Link>
+        
+        <nav className="hidden lg:flex items-center gap-8">
+          <Link href="/" className="nav-link">Home</Link>
+          <Link href="/laser-therapy" className="nav-link">Laser Therapy</Link>
+          <Link href="/book" className="btn-primary py-3 px-6">Book Now</Link>
+        </nav>
+
+        <button onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden flex flex-col gap-1.5">
+          <div className="h-0.5 w-6 bg-[#1a1a1a]" />
+          <div className="h-0.5 w-6 bg-[#1a1a1a]" />
+          <div className="h-0.5 w-6 bg-[#1a1a1a]" />
+        </button>
       </header>
 
-      {/* Hero */}
-      <section style={{
-        padding: '4rem 0',
-        background: 'linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%)',
-        textAlign: 'center',
-        borderBottom: '1px solid #333'
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <h1 style={{ fontSize: '3rem', marginBottom: '1rem', fontFamily: "'Playfair Display', serif" }}>
-            Our Services
-          </h1>
-          <p style={{ fontSize: '1.1rem', color: '#d1d5db', maxWidth: '600px', margin: '0 auto' }}>
-            Comprehensive hair restoration and styling solutions tailored to your unique needs.
-          </p>
+      {menuOpen && (
+        <div className="fixed inset-0 z-[100] bg-[#1a1a1a] flex flex-col items-center justify-center p-6">
+          <button onClick={() => setMenuOpen(false)} className="absolute top-8 right-8 text-[#d4af37] text-4xl">&times;</button>
+          <Link href="/" onClick={() => setMenuOpen(false)} className="text-2xl font-serif text-white mb-8">Home</Link>
+          <Link href="/laser-therapy" onClick={() => setMenuOpen(false)} className="text-2xl font-serif text-white mb-8">Laser Therapy</Link>
+          <Link href="/book" onClick={() => setMenuOpen(false)} className="btn-primary bg-[#d4af37] text-[#1a1a1a] w-full max-w-xs py-5">Book Now</Link>
         </div>
-      </section>
+      )}
 
-      {/* Services */}
-      <section style={{ padding: '5rem 0' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          {[
-            {
-              title: 'Custom Hair Systems & Toupees',
-              desc: 'Our flagship service. Each custom hair system is individually molded and perfected for your exact specifications. We work with premium materials to create natural-looking, undetectable results.',
-              details: [
-                'Individually custom-molded for perfect fit',
-                'Color-matched to your exact specifications',
-                'Natural hairline and seamless blending',
-                'Comfortable all-day wear',
-                'Non-surgical, immediate results',
-                'Lifetime maintenance and support'
-              ],
-              img: '/images/custom-unit-hero.jpg'
-            },
-            {
-              title: 'Professional Haircuts & Styling',
-              desc: 'Expert cuts of any kind. From precision fades to complex shapes, we deliver sharp, clean lines and professional styling for all hair types.',
-              details: [
-                'Precision fades and line work',
-                'Custom shapes and designs',
-                'All hair types and textures',
-                'Professional styling advice',
-                'Maintenance recommendations',
-                'Walk-ins and appointments welcome'
-              ],
-              img: '/images/service-haircut.jpg'
-            },
-            {
-              title: 'Color Treatment & Extensions',
-              desc: 'Custom hair color services and premium extensions. Whether you want a bold new look or added volume and length, we deliver professional results.',
-              details: [
-                'Custom color formulation',
-                'Premium hair extensions',
-                'Seamless blending',
-                'Color correction services',
-                'Maintenance and care guidance',
-                'Natural-looking results'
-              ],
-              img: '/images/service-color.jpg'
-            },
-            {
-              title: 'Medical-Grade Wig Fitting',
-              desc: 'Specialized wig consultation and fitting for alopecia, post-surgery, and chemotherapy patients. We understand the medical and emotional aspects of hair loss.',
-              details: [
-                'Medical-grade wig selection',
-                'Expert fitting and adjustment',
-                'Comfort and security focus',
-                'Natural appearance',
-                'Insurance documentation support',
-                'Compassionate, confidential service'
-              ],
-              img: '/images/service-extensions.jpg'
-            }
-          ].map((service, idx) => (
-            <div key={idx} style={{ marginBottom: '4rem', paddingBottom: '4rem', borderBottom: idx < 3 ? '1px solid #333' : 'none' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
-                <div style={{ order: idx % 2 === 0 ? 0 : 1 }}>
-                  <h2 style={{ marginBottom: '1rem', fontSize: '2rem', fontFamily: "'Playfair Display', serif" }}>
-                    {service.title}
-                  </h2>
-                  <p style={{ marginBottom: '1.5rem', color: '#d1d5db', lineHeight: 1.8 }}>
-                    {service.desc}
-                  </p>
-                  <ul style={{ listStyle: 'none', padding: 0 }}>
-                    {service.details.map((detail, i) => (
-                      <li key={i} style={{ marginBottom: '0.75rem', color: '#d1d5db', display: 'flex', alignItems: 'center' }}>
-                        <span style={{ color: '#d4af37', marginRight: '0.75rem', fontSize: '1.2rem' }}>✓</span>
-                        {detail}
-                      </li>
-                    ))}
-                  </ul>
+      <main>
+        <section className="bg-[#1a1a1a] text-white py-24 px-6 text-center">
+          <div className="container mx-auto">
+            <h2 className="text-[#d4af37] text-sm uppercase tracking-[0.4em] mb-4">Mastery & Precision</h2>
+            <h1 className="text-5xl md:text-7xl font-bold mb-8">Our Services</h1>
+            <p className="text-white/60 text-lg max-w-2xl mx-auto">
+              Comprehensive restoration solutions tailored for the modern professional. From custom systems to clinical technology.
+            </p>
+          </div>
+        </section>
+
+        <section className="section-padding">
+          <div className="container mx-auto">
+            <div className="space-y-32">
+              {detailedServices.map((s, i) => (
+                <div key={i} id={s.id} className={`flex flex-col ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-16 items-center`}>
+                  <div className="md:w-1/2">
+                    <div className="aspect-square bg-gray-100 relative overflow-hidden flex items-center justify-center">
+                      <div className="absolute inset-0 bg-[#1a1a1a]/5"></div>
+                      <div className="text-[#d4af37] font-serif italic text-2xl opacity-20 uppercase tracking-widest">
+                        {s.title}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="md:w-1/2">
+                    <h3 className="text-[#d4af37] text-sm uppercase tracking-[0.3em] mb-4">{s.subtitle}</h3>
+                    <h2 className="text-4xl md:text-5xl mb-8 leading-tight">{s.title}</h2>
+                    <p className="text-lg text-gray-600 mb-8 leading-relaxed">{s.desc}</p>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+                      {s.features.map((f, j) => (
+                        <li key={j} className="flex items-center gap-3 text-sm font-semibold">
+                          <span className="h-1 w-4 bg-[#d4af37]"></span> {f}
+                        </li>
+                      ))}
+                    </ul>
+                    <Link href="/book" className="btn-primary">Book Consultation</Link>
+                  </div>
                 </div>
-                <img src={service.img} alt={service.title} style={{
-                  borderRadius: '0.75rem',
-                  width: '100%',
-                  height: 'auto',
-                  order: idx % 2 === 0 ? 1 : 0
-                }} />
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section style={{
-        padding: '4rem 0',
-        background: 'linear-gradient(135deg, #d4af37 0%, #e5c158 100%)',
-        textAlign: 'center'
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <h2 style={{ color: '#0a0a0a', marginBottom: '1rem', fontSize: '2.5rem', fontFamily: "'Playfair Display', serif" }}>
-            Ready to Get Started?
-          </h2>
-          <p style={{ color: '#0a0a0a', marginBottom: '2rem', fontSize: '1.1rem' }}>
-            Schedule your consultation today.
-          </p>
-          <Link href="/contact">
-            <button style={{
-              padding: '1rem 2.5rem',
-              background: '#0a0a0a',
-              color: '#d4af37',
-              border: 'none',
-              borderRadius: '0.5rem',
-              fontSize: '1.1rem',
-              fontWeight: 600,
-              cursor: 'pointer'
-            }}>
-              Book Consultation
-            </button>
-          </Link>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer style={{
-        background: 'linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(15, 15, 15, 0.95) 100%)',
-        borderTop: '1px solid #333',
-        padding: '3rem 0',
-        marginTop: '5rem'
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-            gap: '2rem',
-            marginBottom: '2rem'
-          }}>
-            <div>
-              <h3 style={{ color: '#d4af37', marginBottom: '1rem', fontFamily: "'Playfair Display', serif" }}>
-                Brian Ivie Hair LLC
-              </h3>
-              <p style={{ color: '#d1d5db', lineHeight: 1.8 }}>
-                Premium hair restoration and custom solutions in Saint Louis.
-              </p>
-            </div>
-            <div>
-              <h4 style={{ color: '#d4af37', marginBottom: '1rem' }}>Quick Links</h4>
-              <ul style={{ listStyle: 'none', padding: 0 }}>
-                <li style={{ marginBottom: '0.5rem' }}><Link href="/services" style={{ color: '#d1d5db' }}>Services</Link></li>
-                <li style={{ marginBottom: '0.5rem' }}><Link href="/about" style={{ color: '#d1d5db' }}>About</Link></li>
-                <li style={{ marginBottom: '0.5rem' }}><Link href="/physicians" style={{ color: '#d1d5db' }}>Physician Partners</Link></li>
-                <li><Link href="/contact" style={{ color: '#d1d5db' }}>Contact</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 style={{ color: '#d4af37', marginBottom: '1rem' }}>Contact</h4>
-              <p style={{ color: '#d1d5db', marginBottom: '0.5rem' }}>📍 Salon Lofts on Olive Blvd, Saint Louis, MO</p>
-              <p style={{ color: '#d1d5db', marginBottom: '0.5rem' }}>📧 <a href="mailto:info@myhairloss.com" style={{ color: '#d4af37' }}>info@myhairloss.com</a></p>
-              <p style={{ color: '#d1d5db' }}>📞 <a href="tel:+15551234567" style={{ color: '#d4af37' }}>(555) 123-4567</a></p>
+              ))}
             </div>
           </div>
-          <div style={{
-            borderTop: '1px solid #333',
-            paddingTop: '2rem',
-            textAlign: 'center',
-            color: '#999'
-          }}>
-            <p>© {new Date().getFullYear()} Brian Ivie Hair LLC. All rights reserved.</p>
+        </section>
+
+        <section className="bg-gray-50 py-20">
+          <div className="container mx-auto text-center">
+            <h2 className="text-3xl mb-8">Need a Custom Repair?</h2>
+            <p className="text-gray-500 mb-10 max-w-xl mx-auto">
+              We offer expert hair ventilation and system repairs at $50/hour. Restore your system to its original glory.
+            </p>
+            <Link href="/book" className="btn-outline">Inquire About Repairs</Link>
           </div>
+        </section>
+      </main>
+
+      <footer className="bg-[#1a1a1a] text-white py-20 px-6">
+        <div className="container mx-auto text-center">
+          <h2 className="text-2xl font-bold mb-8">BRIAN IVIE <span className="font-light text-[#d4af37]">HAIR & EXTENSIONS</span></h2>
+          <p className="text-[10px] text-white/20 uppercase tracking-widest">© {new Date().getFullYear()} Brian Ivie Hair and Extensions. All rights reserved.</p>
         </div>
       </footer>
     </div>
