@@ -39,7 +39,7 @@ export default function Book() {
   return (
     <div className="bg-[#fdfdfb]">
       <Head>
-        <title>Book Session | Brian Ivie Hair and Extensions</title>
+        <title>Book Session | Brian Ivie Hair and Extensions LLC</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       </Head>
 
@@ -111,7 +111,7 @@ export default function Book() {
       <footer className="bg-[#1a1a1a] text-white py-20 px-6">
         <div className="container mx-auto text-center">
           <h2 className="text-2xl font-bold mb-8">BRIAN IVIE <span className="font-light text-[#d4af37]">HAIR & EXTENSIONS</span></h2>
-          <p className="text-[10px] text-white/20 uppercase tracking-widest">© {new Date().getFullYear()} Brian Ivie Hair and Extensions. All rights reserved.</p>
+          <p className="text-[10px] text-white/20 uppercase tracking-widest">© {new Date().getFullYear()} Brian Ivie Hair and Extensions LLC. All rights reserved.</p>
         </div>
       </footer>
     </div>
