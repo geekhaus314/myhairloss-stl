@@ -166,7 +166,7 @@ export default function Home() {
                     </div>
                     <div>
                       <p className="text-xs font-bold text-[#0a0a0a] mb-2 uppercase tracking-widest">Creve Coeur Studio</p>
-                      <p className="text-xl font-serif text-gray-800">12511 Olive Blvd, Suite 22<br/>St. Louis, MO 63141</p>
+                      <p className="text-xl font-serif text-gray-800">12511 Olive Blvd, Suite 25<br/>St. Louis, MO 63141</p>
                     </div>
                   </div>
                 </div>
@@ -323,7 +323,7 @@ export default function Home() {
             <h4 className="text-[#c5a059] text-xs uppercase tracking-[0.4em] mb-10 font-bold">Creve Coeur Studio</h4>
             <p className="text-white/60 text-xl font-light leading-loose">
               Salon Lofts Heritage Place<br/>
-              12511 Olive Blvd, Suite 22<br/>
+              12511 Olive Blvd, Suite 25<br/>
               St. Louis, MO 63141<br/>
               <a href="tel:3145834843" className="text-white mt-10 block font-bold text-3xl hover:text-[#c5a059] transition-colors">(314) 583-IVIE</a>
             </p>
