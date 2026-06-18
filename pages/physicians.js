@@ -278,7 +278,7 @@ export default function Physicians() {
               <h4 style={{ color: '#d4af37', marginBottom: '1rem' }}>Contact</h4>
               <p style={{ color: '#d1d5db', marginBottom: '0.5rem' }}>📍 Salon Lofts Heritage Place, 12511 Olive Blvd, Creve Coeur, MO 63141, Saint Louis, MO</p>
               <p style={{ color: '#d1d5db', marginBottom: '0.5rem' }}>📧 <a href="mailto:info@myhairloss.com" style={{ color: '#d4af37' }}>info@myhairloss.com</a></p>
-              <p style={{ color: '#d1d5db' }}>📞 <a href="tel:+15551234567" style={{ color: '#d4af37' }}>(555) 123-4567</a></p>
+              <p style={{ color: '#d1d5db' }}>📞 <a href="tel:3145834843" style={{ color: '#d4af37' }}>(314) 583-4843</a></p>
             </div>
           </div>
           <div style={{

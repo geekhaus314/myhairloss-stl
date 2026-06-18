@@ -4,6 +4,16 @@ import { useState } from 'react'
 
 export default function Book() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    service: 'Restoration Consultation',
+    preferred_date: '',
+    message: ''
+  });
+  const [status, setStatus] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const bookingOptions = [
     {
@@ -35,6 +45,42 @@ export default function Book() {
       type: 'Specialized'
     }
   ];
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatus(null);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, type: 'booking' })
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          service: 'Restoration Consultation',
+          preferred_date: '',
+          message: ''
+        });
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="bg-[#fdfdfb]">
@@ -85,25 +131,91 @@ export default function Book() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
             {bookingOptions.map((opt, i) => (
-              <div key={i} className="bg-white p-10 border border-gray-100 card-shadow hover:border-[#d4af37] transition-all group">
+              <button
+                key={i}
+                onClick={() => setFormData({ ...formData, service: opt.title })}
+                className={`bg-white p-10 border text-left card-shadow transition-all group ${
+                  formData.service === opt.title
+                    ? 'border-[#d4af37] ring-1 ring-[#d4af37]'
+                    : 'border-gray-100 hover:border-[#d4af37]'
+                }`}
+              >
                 <span className="text-[10px] font-bold uppercase tracking-widest text-[#d4af37] mb-4 block">{opt.type}</span>
                 <h3 className="text-2xl mb-4 group-hover:text-[#d4af37] transition-colors">{opt.title}</h3>
                 <div className="flex justify-between items-center mb-6 text-sm text-gray-400 font-semibold uppercase tracking-widest">
                   <span>{opt.duration}</span>
                   <span className="text-[#1a1a1a]">{opt.price}</span>
                 </div>
-                <p className="text-sm text-gray-500 mb-8 leading-relaxed">{opt.desc}</p>
-                <button className="btn-primary w-full">Request Appointment</button>
-              </div>
+                <p className="text-sm text-gray-500 leading-relaxed">{opt.desc}</p>
+              </button>
             ))}
           </div>
 
+          <div className="max-w-2xl mx-auto">
+            <h2 className="text-3xl mb-10 text-center">Request Appointment</h2>
+
+            {status === 'success' ? (
+              <div className="bg-white p-12 border border-gray-100 card-shadow text-center">
+                <div className="w-16 h-16 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">✓</div>
+                <h3 className="text-2xl font-bold mb-4">Request Received</h3>
+                <p className="text-gray-500 mb-8">Brian will reach out within 24 hours to confirm your appointment.</p>
+                <button onClick={() => setStatus(null)} className="btn-outline">Submit Another Request</button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="bg-white p-10 md:p-16 border border-gray-100 card-shadow space-y-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-3">
+                    <label className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Full Name</label>
+                    <input type="text" name="name" value={formData.name} onChange={handleChange} required className="w-full bg-transparent border-b border-gray-200 py-4 focus:border-[#d4af37] outline-none transition-colors font-light" placeholder="John Doe" />
+                  </div>
+                  <div className="space-y-3">
+                    <label className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Email</label>
+                    <input type="email" name="email" value={formData.email} onChange={handleChange} required className="w-full bg-transparent border-b border-gray-200 py-4 focus:border-[#d4af37] outline-none transition-colors font-light" placeholder="john@example.com" />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-3">
+                    <label className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Phone</label>
+                    <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full bg-transparent border-b border-gray-200 py-4 focus:border-[#d4af37] outline-none transition-colors font-light" placeholder="(314) 583-4843" />
+                  </div>
+                  <div className="space-y-3">
+                    <label className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Service</label>
+                    <select name="service" value={formData.service} onChange={handleChange} className="w-full bg-transparent border-b border-gray-200 py-4 focus:border-[#d4af37] outline-none transition-colors font-light">
+                      {bookingOptions.map((opt, i) => (
+                        <option key={i} value={opt.title}>{opt.title}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <label className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Preferred Date</label>
+                  <input type="date" name="preferred_date" value={formData.preferred_date} onChange={handleChange} className="w-full bg-transparent border-b border-gray-200 py-4 focus:border-[#d4af37] outline-none transition-colors font-light" />
+                </div>
+
+                <div className="space-y-3">
+                  <label className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Additional Details</label>
+                  <textarea name="message" value={formData.message} onChange={handleChange} rows={4} className="w-full bg-transparent border-b border-gray-200 py-4 focus:border-[#d4af37] outline-none transition-colors font-light resize-none" placeholder="Tell us about your goals..." />
+                </div>
+
+                <button type="submit" disabled={loading} className="btn-primary w-full">
+                  {loading ? 'Sending Request...' : 'Submit Booking Request'}
+                </button>
+
+                {status === 'error' && (
+                  <p className="text-red-500 text-xs text-center font-bold uppercase tracking-widest">Failed to send. Please call (314) 583-4843.</p>
+                )}
+              </form>
+            )}
+          </div>
+
           <div className="mt-16 p-12 bg-[#1a1a1a] text-white text-center">
-            <h3 className="text-[#d4af37] mb-4">Direct Booking</h3>
-            <p className="text-white/60 mb-8">Prefer to talk to a real person? Call or text us directly to coordinate your visit.</p>
-            <a href="tel:+15551234567" className="text-3xl font-bold hover:text-[#d4af37] transition-colors">(555) 123-4567</a>
+            <h3 className="text-[#d4af37] mb-4">Need Immediate Assistance?</h3>
+            <p className="text-white/60 mb-8">Call or text us directly to coordinate your visit.</p>
+            <a href="tel:3145834843" className="text-3xl font-bold hover:text-[#d4af37] transition-colors">(314) 583-4843</a>
           </div>
         </div>
       </main>

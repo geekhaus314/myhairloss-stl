@@ -3,15 +3,6 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Phone, Mail, MapPin, Send, CheckCircle } from 'lucide-react'
-import { createClient, OAuthStrategy } from '@wix/sdk'
-import { contacts } from '@wix/crm'
-
-const wixClient = createClient({
-  modules: { contacts },
-  auth: OAuthStrategy({
-    clientId: '9f3dcb3d-678b-4860-83e8-114fef865090'
-  })
-});
 
 export default function Contact() {
   const [status, setStatus] = useState(null);
@@ -24,20 +15,19 @@ export default function Contact() {
     const data = Object.fromEntries(formData);
 
     try {
-      // Create contact in Wix CRM
-      await wixClient.contacts.createContact({
-        info: {
-          name: { first: data.name },
-          emails: [{ email: data.email }],
-          phones: [{ phone: data.phone }],
-          notes: `Inquiry from MYHAIRLOSS.COM: ${data.message}`
-        }
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
       });
-      
-      setStatus('success');
-      e.target.reset();
-    } catch (error) {
-      console.error('Wix CRM Error:', error);
+
+      if (response.ok) {
+        setStatus('success');
+        e.target.reset();
+      } else {
+        setStatus('error');
+      }
+    } catch {
       setStatus('error');
     } finally {
       setLoading(false);
@@ -90,7 +80,20 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-[10px] uppercase tracking-widest font-bold text-gray-400 mb-2">Direct Line</p>
-                    <a href="tel:3145834843" className="text-3xl font-serif hover:text-[#c5a059] transition-colors">(314) 583-IVIE</a>
+                    <a href="tel:3145834843" className="text-3xl font-serif hover:text-[#c5a059] transition-colors">(314) 583-4843</a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-8">
+                  <div className="w-12 h-12 bg-[#0a0a0a] text-[#c5a059] flex items-center justify-center shrink-0">
+                    <Mail className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] uppercase tracking-widest font-bold text-gray-400 mb-2">Email</p>
+                    <p className="text-xl font-serif leading-relaxed">
+                      <a href="mailto:info@myhairloss.com" className="hover:text-[#c5a059] transition-colors">info@myhairloss.com</a><br/>
+                      <a href="mailto:booking@myhairloss.com" className="hover:text-[#c5a059] transition-colors">booking@myhairloss.com</a>
+                    </p>
                   </div>
                 </div>
 
@@ -126,6 +129,7 @@ export default function Contact() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-10">
+                  <input type="hidden" name="type" value="contact" />
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="space-y-4">
                       <label className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Full Name</label>
@@ -133,7 +137,7 @@ export default function Contact() {
                     </div>
                     <div className="space-y-4">
                       <label className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Phone Number</label>
-                      <input type="tel" name="phone" required className="w-full bg-transparent border-b border-gray-200 py-4 focus:border-[#c5a059] outline-none transition-colors font-light" placeholder="(314) 000-0000" />
+                      <input type="tel" name="phone" required className="w-full bg-transparent border-b border-gray-200 py-4 focus:border-[#c5a059] outline-none transition-colors font-light" placeholder="(314) 583-4843" />
                     </div>
                   </div>
                   <div className="space-y-4">
@@ -154,7 +158,7 @@ export default function Contact() {
                   </button>
                   
                   {status === 'error' && (
-                    <p className="text-red-500 text-xs text-center font-bold uppercase tracking-widest">Error sending inquiry. Please call directly.</p>
+                    <p className="text-red-500 text-xs text-center font-bold uppercase tracking-widest">Error sending inquiry. Please call (314) 583-4843.</p>
                   )}
                 </form>
               )}
