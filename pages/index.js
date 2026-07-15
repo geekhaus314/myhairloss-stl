@@ -57,7 +57,7 @@ export default function Home() {
   return (
     <div className="bg-[#fdfdfb]">
       <Head>
-        <title>MYHAIRLOSS.COM | Brian Ivie Hair and Extensions LLC LLC</title>
+        <title>MYHAIRLOSS.COM | Brian Ivie Hair and Extensions</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       </Head>
 
@@ -74,7 +74,7 @@ export default function Home() {
         <Link href="/" className="flex flex-col group">
           <span className="text-xs font-serif italic text-[#c5a059] tracking-widest uppercase">Executive Hair Restoration</span>
           <h1 className="text-xl md:text-3xl font-bold tracking-tighter text-[#1a1a1a] leading-none">
-            BRIAN IVIE <span className="font-light text-[#c5a059]">HAIR & EXTENSIONS LLC</span>
+            BRIAN IVIE <span className="font-light text-[#c5a059]">HAIR & EXTENSIONS</span>
           </h1>
         </Link>
         
@@ -309,7 +309,7 @@ export default function Home() {
       <footer className="bg-[#0a0a0a] text-white py-32 px-6">
         <div className="container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-24">
           <div className="lg:col-span-2">
-            <h2 className="text-4xl font-bold mb-10 tracking-tighter uppercase">BRIAN IVIE <span className="font-light text-[#c5a059]">HAIR & EXTENSIONS LLC</span></h2>
+            <h2 className="text-4xl font-bold mb-10 tracking-tighter uppercase">BRIAN IVIE <span className="font-light text-[#c5a059]">HAIR & EXTENSIONS</span></h2>
             <p className="text-white/40 max-w-xl text-xl font-light leading-relaxed mb-12">
               Executive hair restoration and extension services in St. Louis. Providing custom solutions and clinical technology for professional results.
             </p>
@@ -330,7 +330,7 @@ export default function Home() {
           </div>
         </div>
         <div className="container mx-auto mt-32 pt-12 border-t border-white/5 text-center">
-          <p className="text-[10px] text-white/20 uppercase tracking-[0.4em] font-bold">© {new Date().getFullYear()} Brian Ivie Hair and Extensions LLC LLC. All rights reserved.</p>
+          <p className="text-[10px] text-white/20 uppercase tracking-[0.4em] font-bold">© {new Date().getFullYear()} Brian Ivie Hair and Extensions. All rights reserved.</p>
         </div>
       </footer>
     </div>

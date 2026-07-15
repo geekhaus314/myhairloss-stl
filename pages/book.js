@@ -85,7 +85,7 @@ export default function Book() {
   return (
     <div className="bg-[#fdfdfb]">
       <Head>
-        <title>Book Session | Brian Ivie Hair and Extensions LLC</title>
+        <title>Book Session | Brian Ivie Hair and Extensions</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       </Head>
 
@@ -179,7 +179,7 @@ export default function Book() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="space-y-3">
                     <label className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Phone</label>
-                    <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full bg-transparent border-b border-gray-200 py-4 focus:border-[#d4af37] outline-none transition-colors font-light" placeholder="(314) 583-4843" />
+                    <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full bg-transparent border-b border-gray-200 py-4 focus:border-[#d4af37] outline-none transition-colors font-light" placeholder="(314) 583-IVIE" />
                   </div>
                   <div className="space-y-3">
                     <label className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Service</label>
@@ -206,7 +206,7 @@ export default function Book() {
                 </button>
 
                 {status === 'error' && (
-                  <p className="text-red-500 text-xs text-center font-bold uppercase tracking-widest">Failed to send. Please call (314) 583-4843.</p>
+                  <p className="text-red-500 text-xs text-center font-bold uppercase tracking-widest">Failed to send. Please call (314) 583-IVIE.</p>
                 )}
               </form>
             )}
@@ -215,7 +215,7 @@ export default function Book() {
           <div className="mt-16 p-12 bg-[#1a1a1a] text-white text-center">
             <h3 className="text-[#d4af37] mb-4">Need Immediate Assistance?</h3>
             <p className="text-white/60 mb-8">Call or text us directly to coordinate your visit.</p>
-            <a href="tel:3145834843" className="text-3xl font-bold hover:text-[#d4af37] transition-colors">(314) 583-4843</a>
+            <a href="tel:3145834843" className="text-3xl font-bold hover:text-[#d4af37] transition-colors">(314) 583-IVIE</a>
           </div>
         </div>
       </main>
@@ -223,7 +223,7 @@ export default function Book() {
       <footer className="bg-[#1a1a1a] text-white py-20 px-6">
         <div className="container mx-auto text-center">
           <h2 className="text-2xl font-bold mb-8">BRIAN IVIE <span className="font-light text-[#d4af37]">HAIR & EXTENSIONS</span></h2>
-          <p className="text-[10px] text-white/20 uppercase tracking-widest">© {new Date().getFullYear()} Brian Ivie Hair and Extensions LLC. All rights reserved.</p>
+          <p className="text-[10px] text-white/20 uppercase tracking-widest">© {new Date().getFullYear()} Brian Ivie Hair and Extensions. All rights reserved.</p>
         </div>
       </footer>
     </div>

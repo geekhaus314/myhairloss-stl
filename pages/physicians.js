@@ -5,7 +5,7 @@ export default function Physicians() {
   return (
     <div style={{ background: '#0a0a0a', color: '#f5f5f5' }}>
       <Head>
-        <title>Physician Partners | Brian Ivie Hair LLC</title>
+        <title>Physician Partners | Brian Ivie Hair</title>
         <meta name="description" content="Partnership opportunities for St. Louis physicians. Comprehensive hair loss solutions combining medical treatment with aesthetic restoration." />
       </Head>
 
@@ -20,7 +20,7 @@ export default function Physicians() {
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <h1 style={{ fontSize: '1.75rem', margin: 0, fontFamily: "'Playfair Display', serif" }}>
-            <span style={{ color: '#d4af37' }}>Brian Ivie</span> Hair LLC
+            <span style={{ color: '#d4af37' }}>Brian Ivie</span> Hair
           </h1>
           <nav style={{ display: 'flex', gap: '2rem' }}>
             <Link href="/" style={{ color: '#d1d5db' }}>Home</Link>
@@ -86,7 +86,7 @@ export default function Physicians() {
           }}>
             <div>
               <p style={{ marginBottom: '1rem', color: '#d1d5db', lineHeight: 1.8, fontSize: '1.05rem' }}>
-                <strong style={{ color: '#d4af37' }}>Brian Ivie Hair LLC</strong> bridges this gap by offering custom hair systems, professional styling, and medical-grade wig fitting. By partnering with us, you can refer patients to a trusted specialist who complements—not competes with—your medical treatment.
+                <strong style={{ color: '#d4af37' }}>Brian Ivie Hair</strong> bridges this gap by offering custom hair systems, professional styling, and medical-grade wig fitting. By partnering with us, you can refer patients to a trusted specialist who complements—not competes with—your medical treatment.
               </p>
               <p style={{ marginBottom: '1rem', color: '#d1d5db', lineHeight: 1.8, fontSize: '1.05rem' }}>
                 Your patients receive immediate confidence restoration while medical treatments work. They stay engaged, satisfied, and loyal. And they return to you with better outcomes.
@@ -136,7 +136,7 @@ export default function Physicians() {
             {[
               {
                 title: 'Basic Referral',
-                desc: 'Refer patients to Brian Ivie Hair LLC. We provide exceptional service; patients return to you with improved outcomes.',
+                desc: 'Refer patients to Brian Ivie Hair. We provide exceptional service; patients return to you with improved outcomes.',
                 features: ['No formal agreement', 'Mutual benefit through patient satisfaction', 'Direct referral link']
               },
               {
@@ -180,7 +180,7 @@ export default function Physicians() {
       <section style={{ padding: '5rem 0', background: 'linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%)' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
           <h2 style={{ marginBottom: '3rem', fontSize: '2.5rem', fontFamily: "'Playfair Display', serif", textAlign: 'center' }}>
-            Why Partner with Brian Ivie Hair LLC
+            Why Partner with Brian Ivie Hair
           </h2>
           <div style={{
             display: 'grid',
@@ -224,7 +224,7 @@ export default function Physicians() {
             Ready to Expand Your Treatment Offerings?
           </h2>
           <p style={{ color: '#0a0a0a', marginBottom: '2rem', fontSize: '1.1rem' }}>
-            Let's discuss how a partnership with Brian Ivie Hair LLC can benefit your practice and patients.
+            Let's discuss how a partnership with Brian Ivie Hair can benefit your practice and patients.
           </p>
           <Link href="/contact">
             <button style={{
@@ -259,7 +259,7 @@ export default function Physicians() {
           }}>
             <div>
               <h3 style={{ color: '#d4af37', marginBottom: '1rem', fontFamily: "'Playfair Display', serif" }}>
-                Brian Ivie Hair LLC
+                Brian Ivie Hair
               </h3>
               <p style={{ color: '#d1d5db', lineHeight: 1.8 }}>
                 Premium hair restoration and custom solutions in Saint Louis.
@@ -278,7 +278,7 @@ export default function Physicians() {
               <h4 style={{ color: '#d4af37', marginBottom: '1rem' }}>Contact</h4>
               <p style={{ color: '#d1d5db', marginBottom: '0.5rem' }}>📍 Salon Lofts Heritage Place, 12511 Olive Blvd, Creve Coeur, MO 63141, Saint Louis, MO</p>
               <p style={{ color: '#d1d5db', marginBottom: '0.5rem' }}>📧 <a href="mailto:info@myhairloss.com" style={{ color: '#d4af37' }}>info@myhairloss.com</a></p>
-              <p style={{ color: '#d1d5db' }}>📞 <a href="tel:3145834843" style={{ color: '#d4af37' }}>(314) 583-4843</a></p>
+              <p style={{ color: '#d1d5db' }}>📞 <a href="tel:3145834843" style={{ color: '#d4af37' }}>(314) 583-IVIE</a></p>
             </div>
           </div>
           <div style={{
@@ -287,7 +287,7 @@ export default function Physicians() {
             textAlign: 'center',
             color: '#999'
           }}>
-            <p>© {new Date().getFullYear()} Brian Ivie Hair LLC. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Brian Ivie Hair. All rights reserved.</p>
           </div>
         </div>
       </footer>

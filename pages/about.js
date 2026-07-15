@@ -5,8 +5,8 @@ export default function About() {
   return (
     <div style={{ background: '#0a0a0a', color: '#f5f5f5' }}>
       <Head>
-        <title>About | Brian Ivie Hair LLC</title>
-        <meta name="description" content="Learn about Brian Ivie Hair LLC, our expertise, and our commitment to premium hair restoration services." />
+        <title>About | Brian Ivie Hair</title>
+        <meta name="description" content="Learn about Brian Ivie Hair, our expertise, and our commitment to premium hair restoration services." />
       </Head>
 
       {/* Navigation */}
@@ -20,7 +20,7 @@ export default function About() {
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <h1 style={{ fontSize: '1.75rem', margin: 0, fontFamily: "'Playfair Display', serif" }}>
-            <span style={{ color: '#d4af37' }}>Brian Ivie</span> Hair LLC
+            <span style={{ color: '#d4af37' }}>Brian Ivie</span> Hair
           </h1>
           <nav style={{ display: 'flex', gap: '2rem' }}>
             <Link href="/" style={{ color: '#d1d5db' }}>Home</Link>
@@ -71,7 +71,7 @@ export default function About() {
           padding: '2rem'
         }}>
           <h1 style={{ fontSize: '3.5rem', marginBottom: '1rem', fontFamily: "'Playfair Display', serif" }}>
-            About Brian Ivie Hair LLC
+            About Brian Ivie Hair
           </h1>
           <p style={{ fontSize: '1.25rem', color: '#d1d5db' }}>
             Premium hair restoration with 15+ years of expertise
@@ -91,7 +91,7 @@ export default function About() {
                 Brian Ivie has spent over 15 years perfecting the art and science of hair restoration. Starting with Ivies Hair Replacement and later House of Ivie, Brian developed a reputation for delivering exceptional, natural-looking results that transform lives.
               </p>
               <p style={{ marginBottom: '1rem', color: '#d1d5db', lineHeight: 1.8, fontSize: '1.05rem' }}>
-                Now operating as Brian Ivie Hair LLC, Brian combines his deep expertise with a personalized approach. Every client receives individualized attention, custom solutions, and ongoing support. The philosophy is simple: hair restoration should be seamless, natural, and confidence-restoring.
+                Now operating as Brian Ivie Hair, Brian combines his deep expertise with a personalized approach. Every client receives individualized attention, custom solutions, and ongoing support. The philosophy is simple: hair restoration should be seamless, natural, and confidence-restoring.
               </p>
               <p style={{ marginBottom: '1rem', color: '#d1d5db', lineHeight: 1.8, fontSize: '1.05rem' }}>
                 Whether you're seeking custom hair systems, professional styling, or medical-grade wig fitting, Brian's commitment to excellence ensures you get results that exceed expectations.
@@ -228,7 +228,7 @@ export default function About() {
             Experience the Difference
           </h2>
           <p style={{ color: '#0a0a0a', marginBottom: '2rem', fontSize: '1.1rem' }}>
-            Schedule your consultation with Brian Ivie Hair LLC today.
+            Schedule your consultation with Brian Ivie Hair today.
           </p>
           <Link href="/contact">
             <button style={{
@@ -263,7 +263,7 @@ export default function About() {
           }}>
             <div>
               <h3 style={{ color: '#d4af37', marginBottom: '1rem', fontFamily: "'Playfair Display', serif" }}>
-                Brian Ivie Hair LLC
+                Brian Ivie Hair
               </h3>
               <p style={{ color: '#d1d5db', lineHeight: 1.8 }}>
                 Premium hair restoration and custom solutions in Saint Louis.
@@ -282,7 +282,7 @@ export default function About() {
               <h4 style={{ color: '#d4af37', marginBottom: '1rem' }}>Contact</h4>
               <p style={{ color: '#d1d5db', marginBottom: '0.5rem' }}>📍 Salon Lofts Heritage Place, 12511 Olive Blvd, Creve Coeur, MO 63141, Saint Louis, MO</p>
               <p style={{ color: '#d1d5db', marginBottom: '0.5rem' }}>📧 <a href="mailto:info@myhairloss.com" style={{ color: '#d4af37' }}>info@myhairloss.com</a></p>
-              <p style={{ color: '#d1d5db' }}>📞 <a href="tel:3145834843" style={{ color: '#d4af37' }}>(314) 583-4843</a></p>
+              <p style={{ color: '#d1d5db' }}>📞 <a href="tel:3145834843" style={{ color: '#d4af37' }}>(314) 583-IVIE</a></p>
             </div>
           </div>
           <div style={{
@@ -291,7 +291,7 @@ export default function About() {
             textAlign: 'center',
             color: '#999'
           }}>
-            <p>© {new Date().getFullYear()} Brian Ivie Hair LLC. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Brian Ivie Hair. All rights reserved.</p>
           </div>
         </div>
       </footer>

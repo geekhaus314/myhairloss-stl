@@ -37,7 +37,7 @@ export default function Contact() {
   return (
     <div className="bg-[#fdfdfb] min-h-screen">
       <Head>
-        <title>Contact | Brian Ivie Hair and Extensions LLC</title>
+        <title>Contact | Brian Ivie Hair and Extensions</title>
       </Head>
 
       <motion.div 
@@ -52,7 +52,7 @@ export default function Contact() {
         <Link href="/" className="flex flex-col group">
           <span className="text-xs font-serif italic text-[#c5a059] tracking-widest uppercase">Executive Hair Restoration</span>
           <h1 className="text-xl md:text-3xl font-bold tracking-tighter text-[#1a1a1a] leading-none">
-            BRIAN IVIE <span className="font-light text-[#c5a059]">HAIR & EXTENSIONS LLC</span>
+            BRIAN IVIE <span className="font-light text-[#c5a059]">HAIR & EXTENSIONS</span>
           </h1>
         </Link>
         <nav className="hidden lg:flex items-center gap-10">
@@ -80,7 +80,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-[10px] uppercase tracking-widest font-bold text-gray-400 mb-2">Direct Line</p>
-                    <a href="tel:3145834843" className="text-3xl font-serif hover:text-[#c5a059] transition-colors">(314) 583-4843</a>
+                    <a href="tel:3145834843" className="text-3xl font-serif hover:text-[#c5a059] transition-colors">(314) 583-IVIE</a>
                   </div>
                 </div>
 
@@ -137,7 +137,7 @@ export default function Contact() {
                     </div>
                     <div className="space-y-4">
                       <label className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Phone Number</label>
-                      <input type="tel" name="phone" required className="w-full bg-transparent border-b border-gray-200 py-4 focus:border-[#c5a059] outline-none transition-colors font-light" placeholder="(314) 583-4843" />
+                      <input type="tel" name="phone" required className="w-full bg-transparent border-b border-gray-200 py-4 focus:border-[#c5a059] outline-none transition-colors font-light" placeholder="(314) 583-IVIE" />
                     </div>
                   </div>
                   <div className="space-y-4">
@@ -158,7 +158,7 @@ export default function Contact() {
                   </button>
                   
                   {status === 'error' && (
-                    <p className="text-red-500 text-xs text-center font-bold uppercase tracking-widest">Error sending inquiry. Please call (314) 583-4843.</p>
+                    <p className="text-red-500 text-xs text-center font-bold uppercase tracking-widest">Error sending inquiry. Please call (314) 583-IVIE.</p>
                   )}
                 </form>
               )}
@@ -168,7 +168,7 @@ export default function Contact() {
       </main>
 
       <footer className="bg-[#0a0a0a] text-white py-20 px-6 text-center">
-        <p className="text-[10px] text-white/20 uppercase tracking-[0.4em] font-bold">© {new Date().getFullYear()} Brian Ivie Hair and Extensions LLC. Confidential Restoration.</p>
+        <p className="text-[10px] text-white/20 uppercase tracking-[0.4em] font-bold">© {new Date().getFullYear()} Brian Ivie Hair and Extensions. Confidential Restoration.</p>
       </footer>
     </div>
   )
