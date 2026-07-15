@@ -2,10 +2,14 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ShieldCheck, Zap, Scissors, Users, ArrowRight, Menu, X, CreditCard } from 'lucide-react'
+import { ShieldCheck, Zap, Scissors, Users, ArrowRight, Menu, X, CreditCard, Plus } from 'lucide-react'
+import { products } from '../lib/products'
+import { formatPrice } from '../lib/products'
+import { useCart } from '../lib/cart-context'
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { addItem } = useCart();
 
   const services = [
     { 
