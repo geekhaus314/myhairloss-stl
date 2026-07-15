@@ -1,0 +1,27 @@
+# myhairloss.com robots policy
+User-agent: *
+Allow: /
+
+# Do not crawl internal/API endpoints or Next.js internals
+Disallow: /api/
+Disallow: /_next/
+Disallow: /404
+Disallow: /500
+
+# Block common AI training crawlers (optional; remove any you want to allow)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+Sitemap: https://myhairloss.com/sitemap.xml

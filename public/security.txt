@@ -1,0 +1,10 @@
+# Vulnerability Disclosure Program for myhairloss.com
+Contact: mailto:security@myhairloss.com
+Expires: 2027-01-01T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://myhairloss.com/.well-known/security.txt
+Policy: https://myhairloss.com/security-policy
+
+# We welcome good-faith security research. Please give us reasonable time
+# to remediate before any public disclosure. Do not access, modify, or
+# delete customer data, and do not degrade service availability.
