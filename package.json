@@ -22,10 +22,10 @@
     "rehype-stringify": "^10.0.1",
     "remark-gfm": "^4.0.0",
     "remark-parse": "^11.0.0",
-    "remark-rehype": "^11.0.0",
     "remark-rehype": "^11.1.2",
     "resend": "^6.14.0",
     "rss": "^1.2.2",
+    "stripe": "^22.3.2",
     "unified": "^11.0.4"
   },
   "devDependencies": {

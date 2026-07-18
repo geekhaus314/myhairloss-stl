@@ -23,11 +23,15 @@ export default async function handler(req, res) {
     : `New Inquiry from ${name}`
 
   const emailContent = `
-Name: ${name}
-Email: ${email}
-Phone: ${phone || 'Not provided'}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  New Inquiry — Brian Ivie Hair LLC
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Name:    ${name}
+Email:   ${email}
+Phone:   ${phone || 'Not provided'}
 Service: ${service || 'Not specified'}
-Type: ${type || 'contact'}
+Type:    ${type || 'contact'}
 
 Message:
 ${message}
@@ -36,7 +40,8 @@ ${message}
   try {
     await resend.emails.send({
       from: 'myhairloss.com <noreply@myhairloss.com>',
-      to: ['info@myhairloss.com', 'booking@myhairloss.com', 'feedback@myhairloss.com'],
+      to: ['info@myhairloss.com'],
+      replyTo: email,
       subject,
       text: emailContent,
     })

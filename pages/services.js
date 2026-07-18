@@ -58,6 +58,8 @@ export default function Services() {
         <nav className="hidden lg:flex items-center gap-8">
           <Link href="/" className="nav-link">Home</Link>
           <Link href="/laser-therapy" className="nav-link">Laser Therapy</Link>
+          <Link href="/shop" className="nav-link">Shop</Link>
+          <Link href="/blog" className="nav-link">Blog</Link>
           <Link href="/book" className="btn-primary py-3 px-6">Book Now</Link>
         </nav>
 
@@ -73,6 +75,8 @@ export default function Services() {
           <button onClick={() => setMenuOpen(false)} className="absolute top-8 right-8 text-[#d4af37] text-4xl">&times;</button>
           <Link href="/" onClick={() => setMenuOpen(false)} className="text-2xl font-serif text-white mb-8">Home</Link>
           <Link href="/laser-therapy" onClick={() => setMenuOpen(false)} className="text-2xl font-serif text-white mb-8">Laser Therapy</Link>
+          <Link href="/shop" onClick={() => setMenuOpen(false)} className="text-2xl font-serif text-white mb-8">Shop</Link>
+          <Link href="/blog" onClick={() => setMenuOpen(false)} className="text-2xl font-serif text-white mb-8">Blog</Link>
           <Link href="/book" onClick={() => setMenuOpen(false)} className="btn-primary bg-[#d4af37] text-[#1a1a1a] w-full max-w-xs py-5">Book Now</Link>
         </div>
       )}

@@ -3,120 +3,101 @@ import Link from 'next/link'
 
 export default function About() {
   return (
-    <div style={{ background: '#0a0a0a', color: '#f5f5f5' }}>
+    <div className="bg-[#0a0a0a] text-[#f5f5f5]">
       <Head>
         <title>About | Brian Ivie Hair LLC</title>
-        <meta name="description" content="Learn about Brian Ivie Hair LLC, our expertise, and our commitment to premium hair restoration services." />
+        <meta name="description" content="Learn about Brian Ivie, one of St. Louis's most experienced hair restoration specialists with over 15 years of expertise." />
       </Head>
 
       {/* Navigation */}
-      <header style={{
-        background: 'linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(15, 15, 15, 0.95) 100%)',
-        padding: '1.5rem 0',
-        borderBottom: '1px solid #333',
-        position: 'sticky',
-        top: 0,
-        zIndex: 100
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <h1 style={{ fontSize: '1.75rem', margin: 0, fontFamily: "'Playfair Display', serif" }}>
-            <span style={{ color: '#d4af37' }}>Brian Ivie</span> Hair LLC
+      <header className="bg-[#0a0a0a]/95 border-b border-[#333] py-6 sticky top-0 z-50 backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto px-8 flex justify-between items-center">
+          <h1 className="text-2xl font-serif m-0">
+            <span className="text-[#c5a059]">Brian Ivie</span> Hair LLC
           </h1>
-          <nav style={{ display: 'flex', gap: '2rem' }}>
-            <Link href="/" style={{ color: '#d1d5db' }}>Home</Link>
-            <Link href="/services" style={{ color: '#d1d5db' }}>Services</Link>
-            <Link href="/about" style={{ color: '#d4af37', fontWeight: 600 }}>About</Link>
-            <Link href="/physicians" style={{ color: '#d1d5db' }}>Physician Partners</Link>
-            <Link href="/contact" style={{ color: '#d1d5db' }}>Contact</Link>
+          <nav className="flex gap-8">
+            <Link href="/" className="text-gray-300 hover:text-white transition-colors">Home</Link>
+            <Link href="/services" className="text-gray-300 hover:text-white transition-colors">Services</Link>
+            <Link href="/about" className="text-[#c5a059] font-semibold">About</Link>
+            <Link href="/physicians" className="text-gray-300 hover:text-white transition-colors">Physician Partners</Link>
+            <Link href="/contact" className="text-gray-300 hover:text-white transition-colors">Contact</Link>
           </nav>
         </div>
       </header>
 
       {/* Hero */}
-      <section style={{
-        position: 'relative',
-        minHeight: '60vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        overflow: 'hidden'
-      }}>
+      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
         <img
           src="/images/about-brian.jpg"
           alt="Brian Ivie"
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            zIndex: 0
-          }}
+          className="absolute inset-0 w-full h-full object-cover z-0"
         />
-        <div style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          background: 'linear-gradient(135deg, rgba(10, 10, 10, 0.7) 0%, rgba(10, 10, 10, 0.5) 100%)',
-          zIndex: 1
-        }} />
-        <div style={{
-          position: 'relative',
-          zIndex: 2,
-          textAlign: 'center',
-          maxWidth: '800px',
-          padding: '2rem'
-        }}>
-          <h1 style={{ fontSize: '3.5rem', marginBottom: '1rem', fontFamily: "'Playfair Display', serif" }}>
-            About Brian Ivie Hair LLC
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a]/70 to-[#0a0a0a]/50 z-1" />
+        <div className="relative z-2 text-center max-w-3xl px-8">
+          <p className="text-[#c5a059] text-sm uppercase tracking-[0.5em] mb-6 font-bold">St. Louis Hair Restoration</p>
+          <h1 className="text-5xl md:text-7xl font-serif mb-6 leading-tight">
+            Hair Loss Expert<br />
+            <span className="text-[#c5a059]">15+ Years of Restoration Mastery</span>
           </h1>
-          <p style={{ fontSize: '1.25rem', color: '#d1d5db' }}>
-            Premium hair restoration with 15+ years of expertise
+          <p className="text-xl text-gray-300 font-light">
+            One of St. Louis&apos;s most experienced hair restoration specialists.
           </p>
         </div>
       </section>
 
       {/* Story */}
-      <section style={{ padding: '5rem 0' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <h2 style={{ marginBottom: '2rem', fontSize: '2.5rem', fontFamily: "'Playfair Display', serif" }}>
-            Our Story
-          </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-8">
+          <h2 className="mb-8 text-4xl font-serif">Our Story</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
-              <p style={{ marginBottom: '1rem', color: '#d1d5db', lineHeight: 1.8, fontSize: '1.05rem' }}>
+              <p className="mb-6 text-gray-300 leading-relaxed text-lg">
                 Brian Ivie has spent over 15 years perfecting the art and science of hair restoration. Starting with Ivies Hair Replacement and later House of Ivie, Brian developed a reputation for delivering exceptional, natural-looking results that transform lives.
               </p>
-              <p style={{ marginBottom: '1rem', color: '#d1d5db', lineHeight: 1.8, fontSize: '1.05rem' }}>
+              <p className="mb-6 text-gray-300 leading-relaxed text-lg">
                 Now operating as Brian Ivie Hair LLC, Brian combines his deep expertise with a personalized approach. Every client receives individualized attention, custom solutions, and ongoing support. The philosophy is simple: hair restoration should be seamless, natural, and confidence-restoring.
               </p>
-              <p style={{ marginBottom: '1rem', color: '#d1d5db', lineHeight: 1.8, fontSize: '1.05rem' }}>
-                Whether you're seeking custom hair systems, professional styling, or medical-grade wig fitting, Brian's commitment to excellence ensures you get results that exceed expectations.
+              <p className="mb-6 text-gray-300 leading-relaxed text-lg">
+                Whether you&apos;re seeking custom hair systems, professional styling, or medical-grade wig fitting, Brian&apos;s commitment to excellence ensures you get results that exceed expectations.
               </p>
             </div>
-            <img src="/images/about-brian.jpg" alt="Brian Ivie" style={{
-              borderRadius: '0.75rem',
-              width: '100%',
-              height: 'auto'
-            }} />
+            <img src="/images/about-brian.jpg" alt="Brian Ivie" className="rounded-lg w-full h-auto" />
+          </div>
+        </div>
+      </section>
+
+      {/* Our Approach */}
+      <section className="py-24 bg-gradient-to-br from-[#1a1a1a] to-[#0f0f0f]">
+        <div className="max-w-7xl mx-auto px-8">
+          <h2 className="mb-16 text-4xl font-serif text-center">Our Approach</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a] border border-[#333] rounded-lg p-8">
+              <h3 className="text-[#c5a059] font-serif text-xl mb-4">Case-by-Case Assessment</h3>
+              <p className="text-gray-300 leading-relaxed">
+                Every client&apos;s hair loss is unique. We assess your specific situation, discuss all available options, and create a personalized plan.
+              </p>
+            </div>
+            <div className="bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a] border border-[#333] rounded-lg p-8">
+              <h3 className="text-[#c5a059] font-serif text-xl mb-4">Medical Partnerships</h3>
+              <p className="text-gray-300 leading-relaxed">
+                We work directly with St. Louis medical professionals to connect you with treatments that are right for you — whether that&apos;s medication, transplant surgery, or non-surgical solutions.
+              </p>
+            </div>
+            <div className="bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a] border border-[#333] rounded-lg p-8">
+              <h3 className="text-[#c5a059] font-serif text-xl mb-4">Not a Medical Professional</h3>
+              <p className="text-gray-300 leading-relaxed">
+                Brian Ivie is a hair restoration specialist, not a medical doctor. He does not prescribe medication or perform medical procedures. His expertise lies in hair systems, styling, laser therapy, and coordinating your care with qualified physicians.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Expertise */}
-      <section style={{ padding: '5rem 0', background: 'linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%)' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <h2 style={{ marginBottom: '3rem', fontSize: '2.5rem', fontFamily: "'Playfair Display', serif", textAlign: 'center' }}>
-            Our Expertise
-          </h2>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '2rem'
-          }}>
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-8">
+          <h2 className="mb-12 text-4xl font-serif text-center">Our Expertise</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
                 title: 'Custom Molding & Fitting',
@@ -143,16 +124,11 @@ export default function About() {
                 desc: 'Coordinated care with St. Louis medical professionals for comprehensive hair loss treatment.'
               }
             ].map((item, idx) => (
-              <div key={idx} style={{
-                background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%)',
-                border: '1px solid #333',
-                borderRadius: '0.75rem',
-                padding: '2rem'
-              }}>
-                <h3 style={{ marginBottom: '1rem', fontSize: '1.25rem', fontFamily: "'Playfair Display', serif", color: '#d4af37' }}>
+              <div key={idx} className="bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a] border border-[#333] rounded-lg p-8">
+                <h3 className="text-[#c5a059] font-serif text-xl mb-4">
                   {item.title}
                 </h3>
-                <p style={{ color: '#d1d5db', lineHeight: 1.6 }}>
+                <p className="text-gray-300 leading-relaxed">
                   {item.desc}
                 </p>
               </div>
@@ -162,16 +138,10 @@ export default function About() {
       </section>
 
       {/* Values */}
-      <section style={{ padding: '5rem 0' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <h2 style={{ marginBottom: '3rem', fontSize: '2.5rem', fontFamily: "'Playfair Display', serif", textAlign: 'center' }}>
-            Our Values
-          </h2>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '2rem'
-          }}>
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-8">
+          <h2 className="mb-12 text-4xl font-serif text-center">Our Values</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
                 title: 'Excellence',
@@ -198,17 +168,11 @@ export default function About() {
                 desc: 'Transparent communication, honest pricing, and genuine care for your satisfaction.'
               }
             ].map((value, idx) => (
-              <div key={idx} style={{
-                textAlign: 'center',
-                padding: '2rem',
-                background: 'linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%)',
-                border: '1px solid #333',
-                borderRadius: '0.75rem'
-              }}>
-                <h3 style={{ marginBottom: '1rem', fontSize: '1.25rem', fontFamily: "'Playfair Display', serif", color: '#d4af37' }}>
+              <div key={idx} className="text-center p-8 bg-gradient-to-br from-[#1a1a1a] to-[#0f0f0f] border border-[#333] rounded-lg">
+                <h3 className="text-[#c5a059] font-serif text-xl mb-4">
                   {value.title}
                 </h3>
-                <p style={{ color: '#d1d5db', lineHeight: 1.6 }}>
+                <p className="text-gray-300 leading-relaxed">
                   {value.desc}
                 </p>
               </div>
@@ -217,30 +181,26 @@ export default function About() {
         </div>
       </section>
 
+      {/* Blog CTA */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-8 text-center">
+          <Link href="/blog" className="inline-block text-[#c5a059] text-sm uppercase tracking-[0.5em] font-bold border border-[#c5a059] px-10 py-4 rounded hover:bg-[#c5a059] hover:text-[#0a0a0a] transition-all">
+            Read Our Hair Loss Research →
+          </Link>
+        </div>
+      </section>
+
       {/* CTA */}
-      <section style={{
-        padding: '4rem 0',
-        background: 'linear-gradient(135deg, #d4af37 0%, #e5c158 100%)',
-        textAlign: 'center'
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <h2 style={{ color: '#0a0a0a', marginBottom: '1rem', fontSize: '2.5rem', fontFamily: "'Playfair Display', serif" }}>
+      <section className="py-16 bg-gradient-to-br from-[#c5a059] to-[#d4b46a] text-center">
+        <div className="max-w-7xl mx-auto px-8">
+          <h2 className="text-[#0a0a0a] mb-4 text-4xl font-serif">
             Experience the Difference
           </h2>
-          <p style={{ color: '#0a0a0a', marginBottom: '2rem', fontSize: '1.1rem' }}>
+          <p className="text-[#0a0a0a]/80 mb-8 text-lg">
             Schedule your consultation with Brian Ivie Hair LLC today.
           </p>
           <Link href="/contact">
-            <button style={{
-              padding: '1rem 2.5rem',
-              background: '#0a0a0a',
-              color: '#d4af37',
-              border: 'none',
-              borderRadius: '0.5rem',
-              fontSize: '1.1rem',
-              fontWeight: 600,
-              cursor: 'pointer'
-            }}>
+            <button className="bg-[#0a0a0a] text-[#c5a059] border-none rounded px-10 py-4 text-lg font-semibold cursor-pointer hover:bg-[#1a1a1a] transition-colors">
               Book Consultation
             </button>
           </Link>
@@ -248,49 +208,38 @@ export default function About() {
       </section>
 
       {/* Footer */}
-      <footer style={{
-        background: 'linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(15, 15, 15, 0.95) 100%)',
-        borderTop: '1px solid #333',
-        padding: '3rem 0',
-        marginTop: '5rem'
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-            gap: '2rem',
-            marginBottom: '2rem'
-          }}>
+      <footer className="bg-[#0a0a0a] border-t border-[#333] py-12 mt-20">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
             <div>
-              <h3 style={{ color: '#d4af37', marginBottom: '1rem', fontFamily: "'Playfair Display', serif" }}>
+              <h3 className="text-[#c5a059] font-serif mb-4">
                 Brian Ivie Hair LLC
               </h3>
-              <p style={{ color: '#d1d5db', lineHeight: 1.8 }}>
+              <p className="text-gray-300 leading-relaxed">
                 Premium hair restoration and custom solutions in Saint Louis.
               </p>
             </div>
             <div>
-              <h4 style={{ color: '#d4af37', marginBottom: '1rem' }}>Quick Links</h4>
-              <ul style={{ listStyle: 'none', padding: 0 }}>
-                <li style={{ marginBottom: '0.5rem' }}><Link href="/services" style={{ color: '#d1d5db' }}>Services</Link></li>
-                <li style={{ marginBottom: '0.5rem' }}><Link href="/about" style={{ color: '#d1d5db' }}>About</Link></li>
-                <li style={{ marginBottom: '0.5rem' }}><Link href="/physicians" style={{ color: '#d1d5db' }}>Physician Partners</Link></li>
-                <li><Link href="/contact" style={{ color: '#d1d5db' }}>Contact</Link></li>
+              <h4 className="text-[#c5a059] mb-4">Quick Links</h4>
+              <ul className="list-none p-0 m-0 space-y-2">
+                <li><Link href="/services" className="text-gray-300 hover:text-white transition-colors">Services</Link></li>
+                <li><Link href="/about" className="text-gray-300 hover:text-white transition-colors">About</Link></li>
+                <li><Link href="/physicians" className="text-gray-300 hover:text-white transition-colors">Physician Partners</Link></li>
+                <li><Link href="/contact" className="text-gray-300 hover:text-white transition-colors">Contact</Link></li>
               </ul>
             </div>
             <div>
-              <h4 style={{ color: '#d4af37', marginBottom: '1rem' }}>Contact</h4>
-              <p style={{ color: '#d1d5db', marginBottom: '0.5rem' }}>📍 Salon Lofts Heritage Place, 12511 Olive Blvd, Creve Coeur, MO 63141, Saint Louis, MO</p>
-              <p style={{ color: '#d1d5db', marginBottom: '0.5rem' }}>📧 <a href="mailto:info@myhairloss.com" style={{ color: '#d4af37' }}>info@myhairloss.com</a></p>
-              <p style={{ color: '#d1d5db' }}>📞 <a href="tel:3145834843" style={{ color: '#d4af37' }}>(314) 583-4843</a></p>
+              <h4 className="text-[#c5a059] mb-4">Contact</h4>
+              <p className="text-gray-300 mb-2">Salon Lofts Heritage Place, 12511 Olive Blvd, Creve Coeur, MO 63141</p>
+              <p className="text-gray-300 mb-2">
+                <a href="mailto:info@myhairloss.com" className="text-[#c5a059] hover:underline">info@myhairloss.com</a>
+              </p>
+              <p className="text-gray-300">
+                <a href="tel:3145834843" className="text-[#c5a059] hover:underline">(314) 583-4843</a>
+              </p>
             </div>
           </div>
-          <div style={{
-            borderTop: '1px solid #333',
-            paddingTop: '2rem',
-            textAlign: 'center',
-            color: '#999'
-          }}>
+          <div className="border-t border-[#333] pt-8 text-center text-gray-500">
             <p>© {new Date().getFullYear()} Brian Ivie Hair LLC. All rights reserved.</p>
           </div>
         </div>

@@ -81,7 +81,8 @@ export default function Home() {
         <nav className="hidden lg:flex items-center gap-10">
           <Link href="#services" className="nav-link">Services</Link>
           <Link href="/laser-therapy" className="nav-link">Laser Therapy</Link>
-          <Link href="#products" className="nav-link">Products</Link>
+          <Link href="/shop" className="nav-link">Shop</Link>
+          <Link href="/blog" className="nav-link">Blog</Link>
           <Link href="/book" className="btn-primary">Book Session</Link>
         </nav>
 
@@ -105,7 +106,8 @@ export default function Home() {
             <div className="flex flex-col gap-8">
               <Link href="#services" onClick={() => setMenuOpen(false)} className="text-4xl font-serif text-white hover:text-[#c5a059]">Services</Link>
               <Link href="/laser-therapy" onClick={() => setMenuOpen(false)} className="text-4xl font-serif text-white hover:text-[#c5a059]">Laser Therapy</Link>
-              <Link href="#products" onClick={() => setMenuOpen(false)} className="text-4xl font-serif text-white hover:text-[#c5a059]">Products</Link>
+              <Link href="/shop" onClick={() => setMenuOpen(false)} className="text-4xl font-serif text-white hover:text-[#c5a059]">Shop</Link>
+              <Link href="/blog" onClick={() => setMenuOpen(false)} className="text-4xl font-serif text-white hover:text-[#c5a059]">Blog</Link>
               <Link href="/book" onClick={() => setMenuOpen(false)} className="btn-primary mt-8 text-center">Book Now</Link>
             </div>
           </motion.div>
@@ -315,7 +317,8 @@ export default function Home() {
             </p>
             <div className="flex gap-10">
               <Link href="/book" className="text-xs font-bold uppercase tracking-[0.3em] text-[#c5a059] hover:text-white transition-colors">Book Session</Link>
-              <Link href="/laser-therapy" className="text-xs font-bold uppercase tracking-[0.3em] text-[#c5a059] hover:text-white transition-colors">Laser Protocol</Link>
+              <Link href="/shop" className="text-xs font-bold uppercase tracking-[0.3em] text-[#c5a059] hover:text-white transition-colors">Shop</Link>
+              <Link href="/blog" className="text-xs font-bold uppercase tracking-[0.3em] text-[#c5a059] hover:text-white transition-colors">Blog</Link>
               <Link href="/contact" className="text-xs font-bold uppercase tracking-[0.3em] text-[#c5a059] hover:text-white transition-colors">Contact</Link>
             </div>
           </div>
