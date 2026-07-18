@@ -6,6 +6,16 @@ Allow: /
 Disallow: /api/
 Disallow: /_next/
 
+# AdSense
+User-agent: Googlebot
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: Mediapartners-Google
+Allow: /
+
 Sitemap: ${SITE_URL}/sitemap.xml`
 
   res.setHeader('Content-Type', 'text/plain')

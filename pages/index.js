@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ShieldCheck, Zap, Scissors, Users, ArrowRight, Menu, X, CreditCard } from 'lucide-react'
+import { generateLocalBusinessSchema, SITE_URL, DEFAULT_OG_IMAGE } from '../lib/seo'
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -57,8 +58,33 @@ export default function Home() {
   return (
     <div className="bg-[#fdfdfb]">
       <Head>
-        <title>MYHAIRLOSS.COM | Brian Ivie Hair &amp; Extensions</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <title>Brian Ivie Hair &amp; Extensions | St. Louis Hair Restoration Specialist</title>
+        <meta name="description" content="Premier hair restoration in St. Louis. Custom hair systems, laser therapy, extensions, and transplant consultations by Brian Ivie — 15+ years of expertise." />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        <link rel="canonical" href={SITE_URL} />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Brian Ivie Hair & Extensions | St. Louis Hair Restoration" />
+        <meta property="og:description" content="Premier hair restoration in St. Louis. Custom hair systems, laser therapy, extensions, and transplant consultations." />
+        <meta property="og:url" content={SITE_URL} />
+        <meta property="og:site_name" content="Brian Ivie Hair & Extensions" />
+        <meta property="og:image" content={DEFAULT_OG_IMAGE} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:locale" content="en_US" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Brian Ivie Hair & Extensions | St. Louis Hair Restoration" />
+        <meta name="twitter:description" content="Premier hair restoration in St. Louis. Custom hair systems, laser therapy, extensions, and transplant consultations." />
+        <meta name="twitter:image" content={DEFAULT_OG_IMAGE} />
+
+        {/* Local Business Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(generateLocalBusinessSchema()) }}
+        />
       </Head>
 
       {/* Top Branding Emphasis */}

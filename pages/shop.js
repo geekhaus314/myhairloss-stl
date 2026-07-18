@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
+import { SITE_URL, DEFAULT_OG_IMAGE } from '../lib/seo'
 
 const services = [
   {
@@ -213,11 +214,18 @@ export default function Shop() {
   return (
     <>
       <Head>
-        <title>Shop | MYHAIRLOSS.COM - Brian Ivie Hair Restoration Specialist</title>
-        <meta
-          name="description"
-          content="Professional hair care products and services from Brian Ivie, St. Louis hair restoration specialist. Custom hair systems, maintenance, and premium products."
-        />
+        <title>Shop Hair Restoration Products &amp; Services | Brian Ivie Hair &amp; Extensions</title>
+        <meta name="description" content="Professional hair care products, custom hair systems, maintenance services, and laser therapy from Brian Ivie — St. Louis hair restoration specialist." />
+        <link rel="canonical" href={`${SITE_URL}/shop`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Shop | Brian Ivie Hair & Extensions" />
+        <meta property="og:description" content="Professional hair care products, custom systems, and services from St. Louis's premier hair restoration specialist." />
+        <meta property="og:url" content={`${SITE_URL}/shop`} />
+        <meta property="og:image" content={DEFAULT_OG_IMAGE} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Shop | Brian Ivie Hair & Extensions" />
+        <meta name="twitter:description" content="Professional hair care products, custom systems, and services." />
+        <meta name="twitter:image" content={DEFAULT_OG_IMAGE} />
       </Head>
 
       <AnimatePresence>

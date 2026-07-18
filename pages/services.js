@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { useState } from 'react'
+import { SITE_URL, DEFAULT_OG_IMAGE } from '../lib/seo'
 
 export default function Services() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -39,8 +40,18 @@ export default function Services() {
   return (
     <div className="bg-[#fdfdfb]">
       <Head>
-        <title>Services | Brian Ivie Hair &amp; Extensions</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <title>Hair Restoration Services | Brian Ivie Hair &amp; Extensions — St. Louis</title>
+        <meta name="description" content="Custom hair systems, laser therapy, extensions, and transplant consultations. St. Louis's premier hair restoration services by Brian Ivie." />
+        <link rel="canonical" href={`${SITE_URL}/services`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Hair Restoration Services | Brian Ivie Hair & Extensions" />
+        <meta property="og:description" content="Custom hair systems, laser therapy, extensions, and transplant consultations in St. Louis." />
+        <meta property="og:url" content={`${SITE_URL}/services`} />
+        <meta property="og:image" content={DEFAULT_OG_IMAGE} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Hair Restoration Services | Brian Ivie Hair & Extensions" />
+        <meta name="twitter:description" content="Custom hair systems, laser therapy, extensions, and transplant consultations in St. Louis." />
+        <meta name="twitter:image" content={DEFAULT_OG_IMAGE} />
       </Head>
 
       <div className="bg-[#1a1a1a] text-[#d4af37] py-3 text-center">

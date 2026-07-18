@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { useState } from 'react'
+import { SITE_URL, DEFAULT_OG_IMAGE } from '../lib/seo'
 
 export default function LaserTherapy() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -8,8 +9,18 @@ export default function LaserTherapy() {
   return (
     <div className="bg-[#fdfdfb]">
       <Head>
-        <title>Laser Hair Therapy | Brian Ivie Hair &amp; Extensions</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <title>Laser Hair Therapy | Brian Ivie Hair &amp; Extensions — St. Louis</title>
+        <meta name="description" content="Clinical-grade low-level laser therapy (LLLT) for hair growth stimulation and follicle revitalization. Essential post-transplant care in St. Louis." />
+        <link rel="canonical" href={`${SITE_URL}/laser-therapy`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Laser Hair Therapy | Brian Ivie Hair & Extensions" />
+        <meta property="og:description" content="Clinical-grade LLLT for hair growth stimulation and follicle revitalization in St. Louis." />
+        <meta property="og:url" content={`${SITE_URL}/laser-therapy`} />
+        <meta property="og:image" content={DEFAULT_OG_IMAGE} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Laser Hair Therapy | Brian Ivie Hair & Extensions" />
+        <meta name="twitter:description" content="Clinical-grade LLLT for hair growth stimulation and follicle revitalization." />
+        <meta name="twitter:image" content={DEFAULT_OG_IMAGE} />
       </Head>
 
       <div className="bg-[#1a1a1a] text-[#d4af37] py-3 text-center">

@@ -1,12 +1,23 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { SITE_URL, DEFAULT_OG_IMAGE } from '../lib/seo'
 
 export default function About() {
   return (
     <div className="bg-[#0a0a0a] text-[#f5f5f5]">
       <Head>
-        <title>About | Brian Ivie Hair & Extensions</title>
-        <meta name="description" content="Learn about Brian Ivie, one of St. Louis's most experienced hair restoration specialists with over 15 years of expertise." />
+        <title>About Brian Ivie | St. Louis Hair Restoration Specialist</title>
+        <meta name="description" content="Meet Brian Ivie — 15+ years of hair restoration expertise in St. Louis. Custom hair systems, laser therapy, extensions, and physician partnerships." />
+        <link rel="canonical" href={`${SITE_URL}/about`} />
+        <meta property="og:type" content="profile" />
+        <meta property="og:title" content="About Brian Ivie | Hair Restoration Specialist" />
+        <meta property="og:description" content="15+ years of hair restoration expertise in St. Louis. Custom hair systems, laser therapy, and compassionate care." />
+        <meta property="og:url" content={`${SITE_URL}/about`} />
+        <meta property="og:image" content={DEFAULT_OG_IMAGE} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About Brian Ivie | Hair Restoration Specialist" />
+        <meta name="twitter:description" content="15+ years of hair restoration expertise in St. Louis." />
+        <meta name="twitter:image" content={DEFAULT_OG_IMAGE} />
       </Head>
 
       {/* Navigation */}

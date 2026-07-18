@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Phone, Mail, MapPin, Send, CheckCircle } from 'lucide-react'
+import { SITE_URL, DEFAULT_OG_IMAGE } from '../lib/seo'
 
 export default function Contact() {
   const [status, setStatus] = useState(null);
@@ -65,7 +66,18 @@ export default function Contact() {
   return (
     <div className="bg-[#fdfdfb] min-h-screen">
       <Head>
-        <title>Contact | Brian Ivie Hair &amp; Extensions</title>
+        <title>Contact Brian Ivie Hair &amp; Extensions | St. Louis Hair Restoration</title>
+        <meta name="description" content="Schedule a free consultation with Brian Ivie in St. Louis. Hair loss assessment, treatment planning, and personalized solutions." />
+        <link rel="canonical" href={`${SITE_URL}/contact`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Contact Brian Ivie Hair & Extensions" />
+        <meta property="og:description" content="Schedule a free consultation. Hair loss assessment and personalized solutions in St. Louis." />
+        <meta property="og:url" content={`${SITE_URL}/contact`} />
+        <meta property="og:image" content={DEFAULT_OG_IMAGE} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Contact Brian Ivie Hair & Extensions" />
+        <meta name="twitter:description" content="Schedule a free consultation. Hair loss assessment and personalized solutions in St. Louis." />
+        <meta name="twitter:image" content={DEFAULT_OG_IMAGE} />
       </Head>
 
       <motion.div 

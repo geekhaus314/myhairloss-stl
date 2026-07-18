@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Video, MapPin, Phone, Mail, CheckCircle, Clock, Calendar } from 'lucide-react'
+import { SITE_URL, DEFAULT_OG_IMAGE } from '../lib/seo'
 
 const consultationTypes = [
   {
@@ -100,9 +101,18 @@ export default function Book() {
   return (
     <div className="bg-[#fdfdfb] min-h-screen">
       <Head>
-        <title>Book a Consultation | MYHAIRLOSS.COM</title>
+        <title>Book a Consultation | Brian Ivie Hair &amp; Extensions — St. Louis</title>
         <meta name="description" content="Book an in-person or virtual consultation with Brian Ivie. Hair loss assessment, treatment planning, and personalized solutions in St. Louis." />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <link rel="canonical" href={`${SITE_URL}/book`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Book a Consultation | Brian Ivie Hair & Extensions" />
+        <meta property="og:description" content="Book an in-person or virtual consultation. Hair loss assessment and personalized solutions." />
+        <meta property="og:url" content={`${SITE_URL}/book`} />
+        <meta property="og:image" content={DEFAULT_OG_IMAGE} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Book a Consultation | Brian Ivie Hair & Extensions" />
+        <meta name="twitter:description" content="Book an in-person or virtual consultation. Hair loss assessment and personalized solutions." />
+        <meta name="twitter:image" content={DEFAULT_OG_IMAGE} />
       </Head>
 
       {/* Top Bar */}

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import BlogNav from '../../components/blog/BlogNav'
 import PostCard from '../../components/blog/PostCard'
 import { getAllPosts, getAllCategories, getAllTags } from '../../lib/posts'
-import { generateWebsiteSchema, SITE_URL, SITE_NAME, SITE_DESCRIPTION } from '../../lib/seo'
+import { generateWebsiteSchema, SITE_URL, SITE_NAME, SITE_DESCRIPTION, DEFAULT_OG_IMAGE } from '../../lib/seo'
 
 export async function getStaticProps() {
   const posts = getAllPosts()
@@ -34,11 +34,17 @@ export default function BlogIndex({ posts, categories, tags }) {
   return (
     <div className="bg-[#fdfdfb] min-h-screen">
       <Head>
-        <title>Blog | Hair Loss Research & Treatment Guides | MYHAIRLOSS.COM</title>
-        <meta name="description" content="Evidence-based hair loss education, treatment guides, and research by Brian Ivie. Covers DHT, finasteride, minoxidil, hair transplants, and more." />
-        <meta property="og:title" content="Blog | MYHAIRLOSS.COM" />
+        <title>Hair Loss Blog | Research &amp; Treatment Guides | Brian Ivie Hair &amp; Extensions</title>
+        <meta name="description" content="Evidence-based hair loss education, treatment guides, and clinical research by Brian Ivie. Covers DHT, finasteride, minoxidil, PRP, hair transplants, and more." />
+        <meta property="og:title" content="Hair Loss Blog | Brian Ivie Hair & Extensions" />
         <meta property="og:description" content={SITE_DESCRIPTION} />
+        <meta property="og:type" content="website" />
         <meta property="og:url" content={`${SITE_URL}/blog`} />
+        <meta property="og:image" content={DEFAULT_OG_IMAGE} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Hair Loss Blog | Brian Ivie Hair & Extensions" />
+        <meta name="twitter:description" content="Evidence-based hair loss education and treatment guides." />
+        <meta name="twitter:image" content={DEFAULT_OG_IMAGE} />
         <link rel="canonical" href={`${SITE_URL}/blog`} />
         <script
           type="application/ld+json"

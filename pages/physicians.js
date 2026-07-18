@@ -1,12 +1,23 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { SITE_URL, DEFAULT_OG_IMAGE } from '../lib/seo'
 
 export default function Physicians() {
   return (
     <div style={{ background: '#0a0a0a', color: '#f5f5f5' }}>
       <Head>
-        <title>Physician Partners | Brian Ivie Hair &amp; Extensions</title>
-        <meta name="description" content="Partnership opportunities for St. Louis physicians. Comprehensive hair loss solutions combining medical treatment with aesthetic restoration." />
+        <title>Physician Partnership Program | Brian Ivie Hair &amp; Extensions — St. Louis</title>
+        <meta name="description" content="Partner with Brian Ivie Hair & Extensions for comprehensive hair loss care. Physician referral program for St. Louis dermatologists and medical professionals." />
+        <link rel="canonical" href={`${SITE_URL}/physicians`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Physician Partnership Program | Brian Ivie Hair & Extensions" />
+        <meta property="og:description" content="Partner for comprehensive hair loss care. Physician referral program for St. Louis medical professionals." />
+        <meta property="og:url" content={`${SITE_URL}/physicians`} />
+        <meta property="og:image" content={DEFAULT_OG_IMAGE} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Physician Partnership Program | Brian Ivie Hair & Extensions" />
+        <meta name="twitter:description" content="Partner for comprehensive hair loss care. Referral program for St. Louis physicians." />
+        <meta name="twitter:image" content={DEFAULT_OG_IMAGE} />
       </Head>
 
       {/* Navigation */}

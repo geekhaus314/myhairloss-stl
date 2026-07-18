@@ -17,6 +17,7 @@ import {
   generateArticleSchema,
   generateBreadcrumbSchema,
   SITE_URL,
+  DEFAULT_OG_IMAGE,
 } from '../../lib/seo'
 
 export async function getStaticPaths() {
@@ -88,18 +89,25 @@ export default function BlogPost({ post, htmlContent, headings, relatedPosts }) 
   return (
     <div className="bg-[#fdfdfb] min-h-screen">
       <Head>
-        <title>{post.title} | MYHAIRLOSS.COM</title>
+        <title>{post.title} | Brian Ivie Hair &amp; Extensions</title>
         <meta name="description" content={post.description} />
+        <link rel="canonical" href={fullUrl} />
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.description} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={fullUrl} />
+        <meta property="og:image" content={DEFAULT_OG_IMAGE} />
+        <meta property="og:site_name" content="Brian Ivie Hair & Extensions" />
         <meta property="article:published_time" content={post.date} />
+        <meta property="article:modified_time" content={post.dateModified || post.date} />
         <meta property="article:author" content="Brian Ivie" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={post.description} />
+        <meta name="twitter:image" content={DEFAULT_OG_IMAGE} />
         {post.tags && post.tags.map(tag => (
           <meta key={tag} property="article:tag" content={tag} />
         ))}
-        <link rel="canonical" href={fullUrl} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -109,7 +117,11 @@ export default function BlogPost({ post, htmlContent, headings, relatedPosts }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(generateBreadcrumbSchema(post)),
+            __html: JSON.stringify(generateBreadcrumbSchema([
+              { name: 'Home', url: SITE_URL },
+              { name: 'Blog', url: `${SITE_URL}/blog` },
+              { name: post.title, url: fullUrl },
+            ])),
           }}
         />
       </Head>
