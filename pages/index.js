@@ -57,7 +57,7 @@ export default function Home() {
   return (
     <div className="bg-[#fdfdfb]">
       <Head>
-        <title>MYHAIRLOSS.COM | Brian Ivie Hair and Extensions LLC LLC</title>
+        <title>MYHAIRLOSS.COM | Brian Ivie Hair &amp; Extensions</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       </Head>
 
@@ -74,7 +74,7 @@ export default function Home() {
         <Link href="/" className="flex flex-col group">
           <span className="text-xs font-serif italic text-[#c5a059] tracking-widest uppercase">Executive Hair Restoration</span>
           <h1 className="text-xl md:text-3xl font-bold tracking-tighter text-[#1a1a1a] leading-none">
-            BRIAN IVIE <span className="font-light text-[#c5a059]">HAIR & EXTENSIONS LLC</span>
+            BRIAN IVIE <span className="font-light text-[#c5a059]">HAIR &amp; EXTENSIONS</span>
           </h1>
         </Link>
         
@@ -159,7 +159,7 @@ export default function Home() {
                 <h2 className="text-[#c5a059] text-sm uppercase tracking-[0.4em] mb-6 font-bold">Total Discretion</h2>
                 <h2 className="text-5xl md:text-7xl mb-8 leading-[1.1] font-bold tracking-tighter">Private & <br/><span className="italic font-serif font-light text-[#c5a059]">Confidential.</span></h2>
                 <p className="text-xl text-gray-500 mb-10 leading-relaxed font-light">
-                  Located within **Salon Lofts Heritage Place**, Brian operates out of a private, closed-off station. We understand that discretion is paramount—our studio is a sanctuary for those who value privacy while receiving elite-level care.
+                  Brian operates out of his own private salon at **3674 Ashby Rd, St. Ann, MO 63074**. We understand that discretion is paramount—our studio is a sanctuary for those who value privacy while receiving elite-level care.
                 </p>
                 <div className="bg-[#fdfdfb] p-10 border border-gray-100 card-shadow">
                   <div className="flex items-start gap-6">
@@ -167,8 +167,8 @@ export default function Home() {
                       <ShieldCheck className="w-8 h-8" />
                     </div>
                     <div>
-                      <p className="text-xs font-bold text-[#0a0a0a] mb-2 uppercase tracking-widest">Creve Coeur Studio</p>
-                      <p className="text-xl font-serif text-gray-800">12511 Olive Blvd, Suite 25<br/>St. Louis, MO 63141</p>
+                      <p className="text-xs font-bold text-[#0a0a0a] mb-2 uppercase tracking-widest">St. Ann Studio</p>
+                      <p className="text-xl font-serif text-gray-800">3674 Ashby Rd<br/>St. Ann, MO 63074</p>
                     </div>
                   </div>
                 </div>
@@ -311,7 +311,7 @@ export default function Home() {
       <footer className="bg-[#0a0a0a] text-white py-32 px-6">
         <div className="container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-24">
           <div className="lg:col-span-2">
-            <h2 className="text-4xl font-bold mb-10 tracking-tighter uppercase">BRIAN IVIE <span className="font-light text-[#c5a059]">HAIR & EXTENSIONS LLC</span></h2>
+            <h2 className="text-4xl font-bold mb-10 tracking-tighter uppercase">BRIAN IVIE <span className="font-light text-[#c5a059]">HAIR &amp; EXTENSIONS</span></h2>
             <p className="text-white/40 max-w-xl text-xl font-light leading-relaxed mb-12">
               Executive hair restoration and extension services in St. Louis. Providing custom solutions and clinical technology for professional results.
             </p>
@@ -323,17 +323,16 @@ export default function Home() {
             </div>
           </div>
           <div>
-            <h4 className="text-[#c5a059] text-xs uppercase tracking-[0.4em] mb-10 font-bold">Creve Coeur Studio</h4>
+            <h4 className="text-[#c5a059] text-xs uppercase tracking-[0.4em] mb-10 font-bold">St. Ann Studio</h4>
             <p className="text-white/60 text-xl font-light leading-loose">
-              Salon Lofts Heritage Place<br/>
-              12511 Olive Blvd, Suite 25<br/>
-              St. Louis, MO 63141<br/>
+              3674 Ashby Rd<br/>
+              St. Ann, MO 63074<br/>
               <a href="tel:3145834843" className="text-white mt-10 block font-bold text-3xl hover:text-[#c5a059] transition-colors">(314) 583-IVIE</a>
             </p>
           </div>
         </div>
         <div className="container mx-auto mt-32 pt-12 border-t border-white/5 text-center">
-          <p className="text-[10px] text-white/20 uppercase tracking-[0.4em] font-bold">© {new Date().getFullYear()} Brian Ivie Hair and Extensions LLC LLC. All rights reserved.</p>
+          <p className="text-[10px] text-white/20 uppercase tracking-[0.4em] font-bold">© {new Date().getFullYear()} Personal Image Solutions. All rights reserved.</p>
         </div>
       </footer>
     </div>

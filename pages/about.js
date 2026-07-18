@@ -5,7 +5,7 @@ export default function About() {
   return (
     <div className="bg-[#0a0a0a] text-[#f5f5f5]">
       <Head>
-        <title>About | Brian Ivie Hair LLC</title>
+        <title>About | Brian Ivie Hair & Extensions</title>
         <meta name="description" content="Learn about Brian Ivie, one of St. Louis's most experienced hair restoration specialists with over 15 years of expertise." />
       </Head>
 
@@ -13,7 +13,7 @@ export default function About() {
       <header className="bg-[#0a0a0a]/95 border-b border-[#333] py-6 sticky top-0 z-50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-8 flex justify-between items-center">
           <h1 className="text-2xl font-serif m-0">
-            <span className="text-[#c5a059]">Brian Ivie</span> Hair LLC
+            <span className="text-[#c5a059]">Brian Ivie</span> Hair &amp; Extensions
           </h1>
           <nav className="flex gap-8">
             <Link href="/" className="text-gray-300 hover:text-white transition-colors">Home</Link>
@@ -55,7 +55,7 @@ export default function About() {
                 Brian Ivie has spent over 15 years perfecting the art and science of hair restoration. Starting with Ivies Hair Replacement and later House of Ivie, Brian developed a reputation for delivering exceptional, natural-looking results that transform lives.
               </p>
               <p className="mb-6 text-gray-300 leading-relaxed text-lg">
-                Now operating as Brian Ivie Hair LLC, Brian combines his deep expertise with a personalized approach. Every client receives individualized attention, custom solutions, and ongoing support. The philosophy is simple: hair restoration should be seamless, natural, and confidence-restoring.
+                Now operating as Brian Ivie Hair &amp; Extensions, Brian combines his deep expertise with a personalized approach. Every client receives individualized attention, custom solutions, and ongoing support. The philosophy is simple: hair restoration should be seamless, natural, and confidence-restoring.
               </p>
               <p className="mb-6 text-gray-300 leading-relaxed text-lg">
                 Whether you&apos;re seeking custom hair systems, professional styling, or medical-grade wig fitting, Brian&apos;s commitment to excellence ensures you get results that exceed expectations.
@@ -197,7 +197,7 @@ export default function About() {
             Experience the Difference
           </h2>
           <p className="text-[#0a0a0a]/80 mb-8 text-lg">
-            Schedule your consultation with Brian Ivie Hair LLC today.
+            Schedule your consultation with Brian Ivie Hair &amp; Extensions today.
           </p>
           <Link href="/contact">
             <button className="bg-[#0a0a0a] text-[#c5a059] border-none rounded px-10 py-4 text-lg font-semibold cursor-pointer hover:bg-[#1a1a1a] transition-colors">
@@ -213,7 +213,7 @@ export default function About() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
             <div>
               <h3 className="text-[#c5a059] font-serif mb-4">
-                Brian Ivie Hair LLC
+                Brian Ivie Hair &amp; Extensions
               </h3>
               <p className="text-gray-300 leading-relaxed">
                 Premium hair restoration and custom solutions in Saint Louis.
@@ -230,7 +230,7 @@ export default function About() {
             </div>
             <div>
               <h4 className="text-[#c5a059] mb-4">Contact</h4>
-              <p className="text-gray-300 mb-2">Salon Lofts Heritage Place, 12511 Olive Blvd, Creve Coeur, MO 63141</p>
+              <p className="text-gray-300 mb-2">3674 Ashby Rd, St. Ann, MO 63074</p>
               <p className="text-gray-300 mb-2">
                 <a href="mailto:info@myhairloss.com" className="text-[#c5a059] hover:underline">info@myhairloss.com</a>
               </p>
@@ -240,7 +240,7 @@ export default function About() {
             </div>
           </div>
           <div className="border-t border-[#333] pt-8 text-center text-gray-500">
-            <p>© {new Date().getFullYear()} Brian Ivie Hair LLC. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Personal Image Solutions. All rights reserved.</p>
           </div>
         </div>
       </footer>

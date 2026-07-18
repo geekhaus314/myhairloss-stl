@@ -65,7 +65,7 @@ export default function Contact() {
   return (
     <div className="bg-[#fdfdfb] min-h-screen">
       <Head>
-        <title>Contact | Brian Ivie Hair and Extensions LLC</title>
+        <title>Contact | Brian Ivie Hair &amp; Extensions</title>
       </Head>
 
       <motion.div 
@@ -80,7 +80,7 @@ export default function Contact() {
         <Link href="/" className="flex flex-col group">
           <span className="text-xs font-serif italic text-[#c5a059] tracking-widest uppercase">Executive Hair Restoration</span>
           <h1 className="text-xl md:text-3xl font-bold tracking-tighter text-[#1a1a1a] leading-none">
-            BRIAN IVIE <span className="font-light text-[#c5a059]">HAIR & EXTENSIONS LLC</span>
+            BRIAN IVIE <span className="font-light text-[#c5a059]">HAIR &amp; EXTENSIONS</span>
           </h1>
         </Link>
         <nav className="hidden lg:flex items-center gap-10">
@@ -131,9 +131,8 @@ export default function Contact() {
                   <div>
                     <p className="text-[10px] uppercase tracking-widest font-bold text-gray-400 mb-2">Private Studio</p>
                     <p className="text-2xl font-serif leading-relaxed">
-                      Salon Lofts Heritage Place<br/>
-                      12511 Olive Blvd, Suite 25<br/>
-                      Creve Coeur, MO 63141
+                      3674 Ashby Rd<br/>
+                      St. Ann, MO 63074
                     </p>
                   </div>
                 </div>
@@ -288,7 +287,7 @@ export default function Contact() {
       </main>
 
       <footer className="bg-[#0a0a0a] text-white py-20 px-6 text-center">
-        <p className="text-[10px] text-white/20 uppercase tracking-[0.4em] font-bold">© {new Date().getFullYear()} Brian Ivie Hair and Extensions LLC. Confidential Restoration.</p>
+        <p className="text-[10px] text-white/20 uppercase tracking-[0.4em] font-bold">© {new Date().getFullYear()} Personal Image Solutions. Confidential Restoration.</p>
       </footer>
     </div>
   )

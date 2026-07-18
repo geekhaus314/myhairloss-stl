@@ -44,7 +44,7 @@ export default async function handler(req, res) {
 
   const emailContent = `
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  New Inquiry — Brian Ivie Hair LLC
+  New Inquiry — Brian Ivie Hair &amp; Extensions
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Name:    ${cleanName}
