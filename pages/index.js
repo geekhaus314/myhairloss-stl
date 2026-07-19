@@ -114,6 +114,7 @@ export default function Home() {
           <Link href="#services" className="nav-link">Services</Link>
           <Link href="/laser-therapy" className="nav-link">Laser Therapy</Link>
           <Link href="/shop" className="nav-link">Shop</Link>
+          <Link href="/about" className="nav-link">About</Link>
           <Link href="/blog" className="nav-link">Blog</Link>
           <Link href="/book" className="btn-primary">Book Session</Link>
         </nav>
@@ -139,6 +140,7 @@ export default function Home() {
               <Link href="#services" onClick={() => setMenuOpen(false)} className="text-4xl font-serif text-white hover:text-[#c5a059]">Services</Link>
               <Link href="/laser-therapy" onClick={() => setMenuOpen(false)} className="text-4xl font-serif text-white hover:text-[#c5a059]">Laser Therapy</Link>
               <Link href="/shop" onClick={() => setMenuOpen(false)} className="text-4xl font-serif text-white hover:text-[#c5a059]">Shop</Link>
+              <Link href="/about" onClick={() => setMenuOpen(false)} className="text-4xl font-serif text-white hover:text-[#c5a059]">About</Link>
               <Link href="/blog" onClick={() => setMenuOpen(false)} className="text-4xl font-serif text-white hover:text-[#c5a059]">Blog</Link>
               <Link href="/book" onClick={() => setMenuOpen(false)} className="btn-primary mt-8 text-center">Book Now</Link>
             </div>
