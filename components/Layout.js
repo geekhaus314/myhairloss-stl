@@ -103,7 +103,8 @@ export default function Layout({ children, dark = false }) {
             <p className="text-white/60 text-xl font-light leading-loose">
               3674 Ashby Rd<br />
               St. Ann, MO 63074<br />
-              <a href="tel:3145834843" className="text-white mt-10 block font-bold text-3xl hover:text-[#c5a059] transition-colors">(314) 583-IVIE</a>
+              <a href="mailto:info@myhairloss.com" className="text-[#c5a059] hover:text-white transition-colors">info@myhairloss.com</a><br />
+              <a href="tel:3145834843" className="text-white mt-6 block font-bold text-3xl hover:text-[#c5a059] transition-colors">(314) 583-IVIE</a>
             </p>
           </div>
         </div>

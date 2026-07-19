@@ -63,7 +63,7 @@ ${cleanMessage}
 
     await resend.emails.send({
       from: 'myhairloss.com <noreply@myhairloss.com>',
-      to: ['info@myhairloss.com'],
+      to: ['contact@myhairloss.com'],
       replyTo: email,
       subject,
       text: emailContent,

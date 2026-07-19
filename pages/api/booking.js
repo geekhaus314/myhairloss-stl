@@ -78,7 +78,7 @@ We look forward to seeing you.
 
 Brian Ivie Hair & Extensions
 3674 Ashby Rd, St. Ann, MO 63074
-(314) 583-4843 | info@myhairloss.com
+(314) 583-4843 | booking@myhairloss.com
   `
 
   try {
@@ -88,7 +88,7 @@ Brian Ivie Hair & Extensions
     // Send notification to studio
     await resend.emails.send({
       from: 'MYHAIRLOSS.COM <noreply@myhairloss.com>',
-      to: ['info@myhairloss.com'],
+      to: ['booking@myhairloss.com'],
       replyTo: email,
       subject: `Booking: ${cleanService} — ${cleanName} (${cleanDate} @ ${cleanTime})`,
       text: adminContent,

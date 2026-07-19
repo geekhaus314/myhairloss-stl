@@ -328,8 +328,8 @@ export default function Book() {
                   <a href="tel:3145834843" className="flex items-center gap-2 text-white/80 hover:text-[#c5a059] transition-colors">
                     <Phone className="w-4 h-4" /> (314) 583-4843
                   </a>
-                  <a href="mailto:info@myhairloss.com" className="flex items-center gap-2 text-white/80 hover:text-[#c5a059] transition-colors">
-                    <Mail className="w-4 h-4" /> info@myhairloss.com
+                  <a href="mailto:booking@myhairloss.com" className="flex items-center gap-2 text-white/80 hover:text-[#c5a059] transition-colors">
+                    <Mail className="w-4 h-4" /> booking@myhairloss.com
                   </a>
                 </div>
               </motion.div>

@@ -109,7 +109,7 @@ export default function Contact() {
                   <div>
                     <p className="text-[10px] uppercase tracking-widest font-bold text-gray-400 mb-2">Email</p>
                     <p className="text-xl font-serif leading-relaxed">
-                      <a href="mailto:info@myhairloss.com" className="hover:text-[#c5a059] transition-colors">info@myhairloss.com</a>
+                      <a href="mailto:contact@myhairloss.com" className="hover:text-[#c5a059] transition-colors">contact@myhairloss.com</a>
                     </p>
                   </div>
                 </div>
