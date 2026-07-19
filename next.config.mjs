@@ -9,9 +9,14 @@ const nextConfig = {
     return {
       beforeFiles: [
         {
-          source: '/',
+          source: '/api/:path*',
           has: [{ type: 'host', value: 'admin.myhairloss.com' }],
-          destination: '/admin',
+          destination: '/api/:path*',
+        },
+        {
+          source: '/:path*',
+          has: [{ type: 'host', value: 'admin.myhairloss.com' }],
+          destination: '/admin/:path*',
         },
       ],
       afterFiles: [],
