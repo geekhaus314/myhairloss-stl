@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { SITE_URL, DEFAULT_OG_IMAGE } from '../lib/seo'
+import Layout from '../components/Layout'
 
 const services = [
   {
@@ -212,7 +213,7 @@ export default function Shop() {
   }
 
   return (
-    <>
+    <Layout dark={true}>
       <Head>
         <title>Shop Hair Restoration Products &amp; Services | Brian Ivie Hair &amp; Extensions</title>
         <meta name="description" content="Professional hair care products, custom hair systems, maintenance services, and laser therapy from Brian Ivie — St. Louis hair restoration specialist." />
@@ -574,6 +575,6 @@ export default function Shop() {
           </div>
         </section>
       </main>
-    </>
+    </Layout>
   )
 }

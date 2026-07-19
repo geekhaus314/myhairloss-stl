@@ -1,10 +1,11 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { SITE_URL, DEFAULT_OG_IMAGE } from '../lib/seo'
+import Layout from '../components/Layout'
 
 export default function Physicians() {
   return (
-    <div style={{ background: '#0a0a0a', color: '#f5f5f5' }}>
+    <Layout dark={true}>
       <Head>
         <title>Physician Partnership Program | Brian Ivie Hair &amp; Extensions — St. Louis</title>
         <meta name="description" content="Partner with Brian Ivie Hair & Extensions for comprehensive hair loss care. Physician referral program for St. Louis dermatologists and medical professionals." />
@@ -19,29 +20,6 @@ export default function Physicians() {
         <meta name="twitter:description" content="Partner for comprehensive hair loss care. Referral program for St. Louis physicians." />
         <meta name="twitter:image" content={DEFAULT_OG_IMAGE} />
       </Head>
-
-      {/* Navigation */}
-      <header style={{
-        background: 'linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(15, 15, 15, 0.95) 100%)',
-        padding: '1.5rem 0',
-        borderBottom: '1px solid #333',
-        position: 'sticky',
-        top: 0,
-        zIndex: 100
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <h1 style={{ fontSize: '1.75rem', margin: 0, fontFamily: "'Playfair Display', serif" }}>
-            <span style={{ color: '#d4af37' }}>Brian Ivie</span> Hair &amp; Extensions
-          </h1>
-          <nav style={{ display: 'flex', gap: '2rem' }}>
-            <Link href="/" style={{ color: '#d1d5db' }}>Home</Link>
-            <Link href="/services" style={{ color: '#d1d5db' }}>Services</Link>
-            <Link href="/about" style={{ color: '#d1d5db' }}>About</Link>
-            <Link href="/physicians" style={{ color: '#d4af37', fontWeight: 600 }}>Physician Partners</Link>
-            <Link href="/contact" style={{ color: '#d1d5db' }}>Contact</Link>
-          </nav>
-        </div>
-      </header>
 
       {/* Hero */}
       <section style={{
@@ -255,53 +233,6 @@ export default function Physicians() {
       </section>
 
       {/* Footer */}
-      <footer style={{
-        background: 'linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(15, 15, 15, 0.95) 100%)',
-        borderTop: '1px solid #333',
-        padding: '3rem 0',
-        marginTop: '5rem'
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-            gap: '2rem',
-            marginBottom: '2rem'
-          }}>
-            <div>
-              <h3 style={{ color: '#d4af37', marginBottom: '1rem', fontFamily: "'Playfair Display', serif" }}>
-                Brian Ivie Hair &amp; Extensions
-              </h3>
-              <p style={{ color: '#d1d5db', lineHeight: 1.8 }}>
-                Premium hair restoration and custom solutions in Saint Louis.
-              </p>
-            </div>
-            <div>
-              <h4 style={{ color: '#d4af37', marginBottom: '1rem' }}>Quick Links</h4>
-              <ul style={{ listStyle: 'none', padding: 0 }}>
-                <li style={{ marginBottom: '0.5rem' }}><Link href="/services" style={{ color: '#d1d5db' }}>Services</Link></li>
-                <li style={{ marginBottom: '0.5rem' }}><Link href="/about" style={{ color: '#d1d5db' }}>About</Link></li>
-                <li style={{ marginBottom: '0.5rem' }}><Link href="/physicians" style={{ color: '#d1d5db' }}>Physician Partners</Link></li>
-                <li><Link href="/contact" style={{ color: '#d1d5db' }}>Contact</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 style={{ color: '#d4af37', marginBottom: '1rem' }}>Contact</h4>
-              <p style={{ color: '#d1d5db', marginBottom: '0.5rem' }}>📍 3674 Ashby Rd, St. Ann, MO 63074</p>
-              <p style={{ color: '#d1d5db', marginBottom: '0.5rem' }}>📧 <a href="mailto:info@myhairloss.com" style={{ color: '#d4af37' }}>info@myhairloss.com</a></p>
-              <p style={{ color: '#d1d5db' }}>📞 <a href="tel:3145834843" style={{ color: '#d4af37' }}>(314) 583-4843</a></p>
-            </div>
-          </div>
-          <div style={{
-            borderTop: '1px solid #333',
-            paddingTop: '2rem',
-            textAlign: 'center',
-            color: '#999'
-          }}>
-            <p>© {new Date().getFullYear()} Personal Image Solutions. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
-    </div>
+    </Layout>
   )
 }

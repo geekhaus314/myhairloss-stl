@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Video, MapPin, Phone, Mail, CheckCircle, Clock, Calendar } from 'lucide-react'
 import { SITE_URL, DEFAULT_OG_IMAGE } from '../lib/seo'
+import Layout from '../components/Layout'
 
 const consultationTypes = [
   {
@@ -99,7 +100,7 @@ export default function Book() {
   }
 
   return (
-    <div className="bg-[#fdfdfb] min-h-screen">
+    <Layout dark={true}>
       <Head>
         <title>Book a Consultation | Brian Ivie Hair &amp; Extensions — St. Louis</title>
         <meta name="description" content="Book an in-person or virtual consultation with Brian Ivie. Hair loss assessment, treatment planning, and personalized solutions in St. Louis." />
@@ -114,31 +115,6 @@ export default function Book() {
         <meta name="twitter:description" content="Book an in-person or virtual consultation. Hair loss assessment and personalized solutions." />
         <meta name="twitter:image" content={DEFAULT_OG_IMAGE} />
       </Head>
-
-      {/* Top Bar */}
-      <motion.div
-        initial={{ y: -50 }}
-        animate={{ y: 0 }}
-        className="bg-[#0a0a0a] text-[#c5a059] py-3 text-center"
-      >
-        <Link href="/" className="text-lg md:text-2xl font-black tracking-[0.4em] uppercase hover:text-white transition-colors">MYHAIRLOSS.COM</Link>
-      </motion.div>
-
-      {/* Nav */}
-      <header className="glass-nav px-6 py-6 flex justify-between items-center">
-        <Link href="/" className="flex flex-col">
-          <span className="text-sm font-serif italic text-[#c5a059]">Expert Hair Restoration</span>
-          <h1 className="text-xl md:text-2xl font-bold tracking-tight text-[#1a1a1a] leading-none">
-            BRIAN IVIE <span className="font-light">HAIR & EXTENSIONS</span>
-          </h1>
-        </Link>
-        <nav className="hidden lg:flex items-center gap-8">
-          <Link href="/" className="nav-link">Home</Link>
-          <Link href="/services" className="nav-link">Services</Link>
-          <Link href="/shop" className="nav-link">Shop</Link>
-          <Link href="/blog" className="nav-link">Blog</Link>
-        </nav>
-      </header>
 
       <main>
         {/* Hero */}
@@ -361,13 +337,6 @@ export default function Book() {
           </div>
         </section>
       </main>
-
-      {/* Footer */}
-      <footer className="bg-[#0a0a0a] text-white py-16 px-6 text-center">
-        <p className="text-[10px] text-white/20 uppercase tracking-[0.4em] font-bold">
-          © {new Date().getFullYear()} Personal Image Solutions. All rights reserved.
-        </p>
-      </footer>
-    </div>
+    </Layout>
   )
 }

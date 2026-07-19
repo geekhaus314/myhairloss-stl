@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Phone, Mail, MapPin, Send, CheckCircle } from 'lucide-react'
 import { SITE_URL, DEFAULT_OG_IMAGE } from '../lib/seo'
+import Layout from '../components/Layout'
 
 export default function Contact() {
   const [status, setStatus] = useState(null);
@@ -64,7 +65,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="bg-[#fdfdfb] min-h-screen">
+    <Layout dark={true}>
       <Head>
         <title>Contact Brian Ivie Hair &amp; Extensions | St. Louis Hair Restoration</title>
         <meta name="description" content="Schedule a free consultation with Brian Ivie in St. Louis. Hair loss assessment, treatment planning, and personalized solutions." />
@@ -79,29 +80,6 @@ export default function Contact() {
         <meta name="twitter:description" content="Schedule a free consultation. Hair loss assessment and personalized solutions in St. Louis." />
         <meta name="twitter:image" content={DEFAULT_OG_IMAGE} />
       </Head>
-
-      <motion.div 
-        initial={{ y: -50 }}
-        animate={{ y: 0 }}
-        className="bg-[#0a0a0a] text-[#c5a059] py-3 text-center"
-      >
-        <Link href="/" className="text-lg md:text-2xl font-black tracking-[0.4em] uppercase hover:text-white transition-colors">MYHAIRLOSS.COM</Link>
-      </motion.div>
-
-      <header className="glass-nav px-6 py-8 flex justify-between items-center">
-        <Link href="/" className="flex flex-col group">
-          <span className="text-xs font-serif italic text-[#c5a059] tracking-widest uppercase">Executive Hair Restoration</span>
-          <h1 className="text-xl md:text-3xl font-bold tracking-tighter text-[#1a1a1a] leading-none">
-            BRIAN IVIE <span className="font-light text-[#c5a059]">HAIR &amp; EXTENSIONS</span>
-          </h1>
-        </Link>
-        <nav className="hidden lg:flex items-center gap-10">
-          <Link href="/" className="nav-link">Home</Link>
-          <Link href="/services" className="nav-link">Services</Link>
-          <Link href="/laser-therapy" className="nav-link">Laser Therapy</Link>
-          <Link href="/book" className="btn-primary">Book Session</Link>
-        </nav>
-      </header>
 
       <main className="section-padding">
         <div className="container mx-auto max-w-6xl">
@@ -297,10 +275,6 @@ export default function Contact() {
           </div>
         </div>
       </main>
-
-      <footer className="bg-[#0a0a0a] text-white py-20 px-6 text-center">
-        <p className="text-[10px] text-white/20 uppercase tracking-[0.4em] font-bold">© {new Date().getFullYear()} Personal Image Solutions. Confidential Restoration.</p>
-      </footer>
-    </div>
+    </Layout>
   )
 }

@@ -1,11 +1,9 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { useState } from 'react'
 import { SITE_URL, DEFAULT_OG_IMAGE } from '../lib/seo'
+import Layout from '../components/Layout'
 
 export default function Services() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   const detailedServices = [
     {
       id: 'replacement',
@@ -38,7 +36,7 @@ export default function Services() {
   ];
 
   return (
-    <div className="bg-[#fdfdfb]">
+    <Layout dark={false}>
       <Head>
         <title>Hair Restoration Services | Brian Ivie Hair &amp; Extensions — St. Louis</title>
         <meta name="description" content="Custom hair systems, laser therapy, extensions, and transplant consultations. St. Louis's premier hair restoration services by Brian Ivie." />
@@ -53,44 +51,6 @@ export default function Services() {
         <meta name="twitter:description" content="Custom hair systems, laser therapy, extensions, and transplant consultations in St. Louis." />
         <meta name="twitter:image" content={DEFAULT_OG_IMAGE} />
       </Head>
-
-      <div className="bg-[#1a1a1a] text-[#d4af37] py-3 text-center">
-        <Link href="/" className="text-lg md:text-2xl font-black tracking-[0.3em] uppercase text-[#d4af37] hover:text-white transition-colors">MYHAIRLOSS.COM</Link>
-      </div>
-
-      <header className="glass-nav px-6 py-6 flex justify-between items-center">
-        <Link href="/" className="flex flex-col">
-          <span className="text-sm font-serif italic text-[#d4af37]">Executive Hair Restoration</span>
-          <h1 className="text-xl md:text-2xl font-bold tracking-tight text-[#1a1a1a] leading-none">
-            BRIAN IVIE <span className="font-light">HAIR & EXTENSIONS</span>
-          </h1>
-        </Link>
-        
-        <nav className="hidden lg:flex items-center gap-8">
-          <Link href="/" className="nav-link">Home</Link>
-          <Link href="/laser-therapy" className="nav-link">Laser Therapy</Link>
-          <Link href="/shop" className="nav-link">Shop</Link>
-          <Link href="/blog" className="nav-link">Blog</Link>
-          <Link href="/book" className="btn-primary py-3 px-6">Book Now</Link>
-        </nav>
-
-        <button onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden flex flex-col gap-1.5">
-          <div className="h-0.5 w-6 bg-[#1a1a1a]" />
-          <div className="h-0.5 w-6 bg-[#1a1a1a]" />
-          <div className="h-0.5 w-6 bg-[#1a1a1a]" />
-        </button>
-      </header>
-
-      {menuOpen && (
-        <div className="fixed inset-0 z-[100] bg-[#1a1a1a] flex flex-col items-center justify-center p-6">
-          <button onClick={() => setMenuOpen(false)} className="absolute top-8 right-8 text-[#d4af37] text-4xl">&times;</button>
-          <Link href="/" onClick={() => setMenuOpen(false)} className="text-2xl font-serif text-white mb-8">Home</Link>
-          <Link href="/laser-therapy" onClick={() => setMenuOpen(false)} className="text-2xl font-serif text-white mb-8">Laser Therapy</Link>
-          <Link href="/shop" onClick={() => setMenuOpen(false)} className="text-2xl font-serif text-white mb-8">Shop</Link>
-          <Link href="/blog" onClick={() => setMenuOpen(false)} className="text-2xl font-serif text-white mb-8">Blog</Link>
-          <Link href="/book" onClick={() => setMenuOpen(false)} className="btn-primary bg-[#d4af37] text-[#1a1a1a] w-full max-w-xs py-5">Book Now</Link>
-        </div>
-      )}
 
       <main>
         <section className="bg-[#1a1a1a] text-white py-24 px-6 text-center">
@@ -145,13 +105,6 @@ export default function Services() {
           </div>
         </section>
       </main>
-
-      <footer className="bg-[#1a1a1a] text-white py-20 px-6">
-        <div className="container mx-auto text-center">
-          <h2 className="text-2xl font-bold mb-8">BRIAN IVIE <span className="font-light text-[#d4af37]">HAIR & EXTENSIONS</span></h2>
-          <p className="text-[10px] text-white/20 uppercase tracking-widest">© {new Date().getFullYear()} Personal Image Solutions. All rights reserved.</p>
-        </div>
-      </footer>
-    </div>
+    </Layout>
   )
 }
