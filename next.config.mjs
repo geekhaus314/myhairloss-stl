@@ -7,18 +7,7 @@ const nextConfig = {
   reactStrictMode: true,
   async rewrites() {
     return {
-      beforeFiles: [
-        {
-          source: '/api/:path*',
-          has: [{ type: 'host', value: 'admin.myhairloss.com' }],
-          destination: '/api/:path*',
-        },
-        {
-          source: '/:path*',
-          has: [{ type: 'host', value: 'admin.myhairloss.com' }],
-          destination: '/admin/:path*',
-        },
-      ],
+      beforeFiles: [],
       afterFiles: [],
       fallback: [],
     }
