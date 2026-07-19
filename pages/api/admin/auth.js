@@ -1,24 +1,27 @@
-import { getStoredCredential } from '../../../lib/passkey'
+import { isEnabled, generateCode, createSession, sendCode, verifySession } from '../../../lib/email-2fa'
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD
 
-function passkeyEnabled() {
-  return !!getStoredCredential()
-}
-
-export default function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method === 'POST') {
-    const { password, passkeyVerified } = req.body || {}
+    const { password, code, session } = req.body || {}
 
     if (password !== ADMIN_PASSWORD) {
       return res.status(401).json({ error: 'Invalid password' })
     }
 
-    if (passkeyEnabled()) {
-      if (passkeyVerified) {
-        return res.status(200).json({ ok: true })
+    if (isEnabled()) {
+      if (code && session) {
+        if (verifySession(code, session)) {
+          return res.status(200).json({ ok: true })
+        }
+        return res.status(401).json({ error: 'Invalid or expired verification code' })
       }
-      return res.status(200).json({ ok: true, passkeyRequired: true })
+
+      const newCode = generateCode()
+      const { session: newSession } = createSession(newCode)
+      await sendCode(newCode)
+      return res.status(200).json({ ok: true, codeRequired: true, session: newSession })
     }
 
     return res.status(200).json({ ok: true })

@@ -12,7 +12,7 @@ export default function middleware(req) {
   if (!pathname.startsWith('/admin/') && pathname !== '/admin') return
   if (pathname.startsWith('/api/')) return
   if (pathname === '/admin/login') return
-  if (pathname === '/admin/setup-passkey') return
+  if (pathname === '/admin/setup-2fa') return
 
   const clientIp = getClientIp(req)
   if (clientIp && WHITELIST_IPS.includes(clientIp)) return
