@@ -1,24 +1,24 @@
-import { isEnabled, verify } from '../../../lib/totp'
+import { getStoredCredential } from '../../../lib/passkey'
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD
 
+function passkeyEnabled() {
+  return !!getStoredCredential()
+}
+
 export default function handler(req, res) {
   if (req.method === 'POST') {
-    const { password, totp } = req.body || {}
+    const { password, passkeyVerified } = req.body || {}
 
     if (password !== ADMIN_PASSWORD) {
       return res.status(401).json({ error: 'Invalid password' })
     }
 
-    if (totp) {
-      if (!verify(totp)) {
-        return res.status(401).json({ error: 'Invalid 2FA code' })
+    if (passkeyEnabled()) {
+      if (passkeyVerified) {
+        return res.status(200).json({ ok: true })
       }
-      return res.status(200).json({ ok: true })
-    }
-
-    if (isEnabled()) {
-      return res.status(200).json({ ok: true, totpRequired: true })
+      return res.status(200).json({ ok: true, passkeyRequired: true })
     }
 
     return res.status(200).json({ ok: true })
