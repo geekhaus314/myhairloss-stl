@@ -2,19 +2,11 @@ import fs from 'fs'
 import path from 'path'
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD
-const BRIAN_PHONE = '3145834843'
-
-function isValid(credential) {
-  if (credential === ADMIN_PASSWORD) return true
-  const digits = credential.replace(/\D/g, '')
-  if (digits === BRIAN_PHONE) return true
-  return false
-}
 
 export default function handler(req, res) {
   if (req.method === 'POST') {
     const { password } = req.body || {}
-    if (isValid(password)) {
+    if (password === ADMIN_PASSWORD) {
       return res.status(200).json({ ok: true })
     }
     return res.status(401).json({ error: 'Invalid password' })
@@ -26,7 +18,7 @@ export default function handler(req, res) {
       return res.status(401).json({ error: 'No token' })
     }
     const token = auth.replace('Bearer ', '')
-    if (isValid(token)) {
+    if (token === ADMIN_PASSWORD) {
       return res.status(200).json({ ok: true })
     }
     return res.status(401).json({ error: 'Invalid token' })
