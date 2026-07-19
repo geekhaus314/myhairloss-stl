@@ -6,13 +6,17 @@ const nextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],
   reactStrictMode: true,
   async rewrites() {
-    return [
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'admin.myhairloss.com' }],
-        destination: '/admin/:path*',
-      },
-    ]
+    return {
+      beforeFiles: [
+        {
+          source: '/',
+          has: [{ type: 'host', value: 'admin.myhairloss.com' }],
+          destination: '/admin',
+        },
+      ],
+      afterFiles: [],
+      fallback: [],
+    }
   },
   headers: async () => [
     {
