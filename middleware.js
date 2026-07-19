@@ -1,4 +1,4 @@
-const WHITELIST_IPS = ['99.17.39.34']
+const WHITELIST_IPS = ['99.17.39.34', '140.248.30.132']
 const ADMIN_SECRET = process.env.AGENT_API_KEY
 
 function getClientIp(req) {
