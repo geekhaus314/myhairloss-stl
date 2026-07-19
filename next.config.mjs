@@ -37,7 +37,7 @@ const nextConfig = {
             "font-src 'self' https://fonts.gstatic.com",
             "img-src 'self' data: blob: https: http:",
             "connect-src 'self' https://api.stripe.com https://resend.com https://opencode.ai https://www.googleapis.com",
-            "frame-src https://js.stripe.com https://www.youtube.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com",
+            "frame-src https://js.stripe.com https://www.youtube.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://maps.google.com",
             "object-src 'none'",
             "base-uri 'self'",
             "form-action 'self'",
