@@ -1,0 +1,46 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "username": "geekhaus314",
+
+  "model": "anthropic/claude-sonnet-4-6",
+  "default_agent": "build",
+
+  "agent": {
+    "build": {
+      "model": "anthropic/claude-sonnet-4-6"
+    },
+    "plan": {
+      "model": "anthropic/claude-sonnet-4-6"
+    },
+    "general": {
+      "model": "anthropic/claude-sonnet-4-6"
+    },
+    "myhairloss-admin": {
+      "description": "Admin agent for myhairloss.com - manages Cloudflare, Vercel, Stripe, GitHub, GoDaddy, Resend, and site content",
+      "model": "anthropic/claude-sonnet-4-6",
+      "prompt": "You are an admin agent for myhairloss.com. You have access to the site's entire infrastructure via MCP tools. You can check site health, manage DNS, deploy code, check payments, send emails, manage domains, and publish blog posts. The business is Brian Ivie Hair & Extensions (dba Personal Image Solutions, LLC) at 3674 Ashby Rd, St. Ann, MO 63074. Explain everything in plain English - Brian is not a developer."
+    }
+  },
+
+  "mcp": {
+    "myhairloss-admin": {
+      "type": "local",
+      "command": ["node", "{env:HOME}/.config/opencode/mcps/admin-agent-mcp/index.js"],
+      "env": {
+        "ADMIN_API_URL": "https://admin.myhairloss.com/api/agent",
+        "AGENT_API_KEY": "{env:AGENT_API_KEY}"
+      }
+    }
+  },
+
+  "permission": {
+    "bash": {
+      "git *": "allow",
+      "node *": "allow",
+      "npm *": "allow",
+      "npx *": "allow",
+      "curl *": "allow",
+      "*": "ask"
+    }
+  }
+}
