@@ -64,8 +64,19 @@ function MessageBubble({ msg }) {
       </div>
       <div className={`max-w-[80%] rounded-xl px-4 py-3 ${isUser ? 'bg-[#c5a059] text-[#0a0a0a]' : 'bg-[#111] border border-[#222] text-white'}`}>
         <p className="text-sm whitespace-pre-wrap leading-relaxed font-mono">{msg.content}</p>
-        <ValidationBadge validation={msg.validation} />
-        {msg.elapsed && <p className="text-[10px] text-white/20 mt-1">{msg.elapsed}ms</p>}
+        {msg.toolExecutions?.length > 0 && (
+          <div className="mt-2 flex flex-wrap gap-1">
+            {msg.toolExecutions.map((te, i) => (
+              <span key={i} className={`text-[10px] px-2 py-0.5 rounded-full border font-mono ${
+                te.ok ? 'border-green-500/30 text-green-400 bg-green-500/5' : 'border-red-500/30 text-red-400 bg-red-500/5'
+              }`}>
+                {te.ok ? <CheckCircle className="w-2.5 h-2.5 inline mr-0.5" /> : <XCircle className="w-2.5 h-2.5 inline mr-0.5" />}
+                {te.tool} {te.elapsed ? `${te.elapsed}ms` : ''}
+              </span>
+            ))}
+          </div>
+        )}
+        {msg.model && !isUser && <p className="text-[10px] text-white/15 mt-1">via {msg.model}</p>}
         <p className={`text-[10px] mt-1 ${isUser ? 'text-[#0a0a0a]/50' : 'text-white/20'}`}>{msg.timestamp}</p>
       </div>
     </div>
@@ -148,7 +159,7 @@ export default function AdminDashboard() {
     if (authenticated && messages.length === 0) {
       setMessages([{
         role: 'assistant',
-        content: 'Admin Agent ready. I have full access to:\n\n- Cloudflare (DNS, Email, Cache, Settings)\n- Vercel (Deploys, Env Vars, Domains)\n- GitHub (Repo, Files, Issues, Commits)\n- Stripe (Payments, Customers, Products)\n- Resend (Email, Domains, Contacts)\n- GoDaddy (Domains, DNS, Auth Codes)\n- Site (Blog Posts, Health, Content)\n\nEvery action passes through a 7-step validation pipeline. Destructive actions require explicit confirmation.\n\nWhat do you need?',
+        content: 'Admin Agent ready. Powered by Big Pickle via OpenCode Zen.\n\nI have full access to:\n\n- Cloudflare (DNS, Email, Cache, Settings)\n- Vercel (Deploys, Env Vars, Domains)\n- GitHub (Repo, Files, Issues, Commits)\n- Stripe (Payments, Customers, Products)\n- Resend (Email, Domains, Contacts)\n- GoDaddy (Domains, DNS, Auth Codes)\n- Site (Blog Posts, Health, Content)\n\nAsk me anything in natural language. I\'ll figure out which tools to use.\n\nEvery action passes through a 7-step validation pipeline. Destructive actions require explicit confirmation.',
         timestamp: new Date().toLocaleTimeString(),
       }])
     }
@@ -162,7 +173,17 @@ export default function AdminDashboard() {
     if (activeTab === 'audit') fetchAuditLog()
   }, [activeTab, fetchAuditLog])
 
-  const executeTool = async (toolName, params = {}) => {
+  const chatWithAgent = async (message, history) => {
+    const token = getToken()
+    const res = await fetch('/api/agent/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+      body: JSON.stringify({ message, history }),
+    })
+    return res.json()
+  }
+
+  const executeToolDirect = async (toolName, params = {}) => {
     const token = getToken()
     const res = await fetch('/api/agent/execute', {
       method: 'POST',
@@ -172,115 +193,50 @@ export default function AdminDashboard() {
     return res.json()
   }
 
-  const processCommand = async (text) => {
-    const lower = text.toLowerCase().trim()
-    const intentMap = [
-      { patterns: ['status', 'site status', 'how is the site'], tool: 'site_status' },
-      { patterns: ['health', 'health check', 'is everything ok'], tool: 'site_health' },
-      { patterns: ['blog', 'posts', 'articles', 'how many posts'], tool: 'site_list_posts' },
-      { patterns: ['post stats', 'blog stats', 'categories'], tool: 'site_post_stats' },
-      { patterns: ['email', 'resend', 'email domains'], tool: 'resend_domains' },
-      { patterns: ['cloudflare zones', 'cf zones', 'dns zones'], tool: 'cf_list_zones' },
-      { patterns: ['dns records', 'dns', 'mx records', 'txt records'], tool: 'cf_list_dns', params: { zone_name: 'myhairloss.com' } },
-      { patterns: ['email routing', 'routing rules'], tool: 'cf_email_routing_rules', params: { zone_name: 'myhairloss.com' } },
-      { patterns: ['vercel', 'deployments', 'deploy status'], tool: 'vercel_deployments' },
-      { patterns: ['latest deploy', 'last deploy'], tool: 'vercel_latest_deployment' },
-      { patterns: ['env vars', 'environment variables', 'env check'], tool: 'site_env_check' },
-      { patterns: ['github', 'repo', 'repository'], tool: 'gh_repo_info' },
-      { patterns: ['commits', 'recent commits'], tool: 'gh_recent_commits' },
-      { patterns: ['issues', 'github issues'], tool: 'gh_list_issues' },
-      { patterns: ['stripe', 'balance', 'payments', 'revenue'], tool: 'stripe_balance' },
-      { patterns: ['customers', 'stripe customers'], tool: 'stripe_customers' },
-      { patterns: ['products', 'stripe products'], tool: 'stripe_products' },
-      { patterns: ['godaddy', 'domains', 'domain list'], tool: 'gd_list_domains' },
-      { patterns: ['purge cache', 'clear cache', 'cdn'], tool: 'cf_purge_cache', params: { zone_name: 'myhairloss.com' }, destructive: true },
-      { patterns: ['redeploy', 'deploy site', 'rebuild'], tool: 'vercel_trigger_deploy' },
-      { patterns: ['auth code', 'transfer code', 'epp code'], tool: 'gd_auth_code', params: { domain: 'myhairloss.com' } },
-      { patterns: ['env vars on vercel', 'vercel env'], tool: 'vercel_env_vars' },
-      { patterns: ['settings', 'zone settings'], tool: 'cf_zone_settings', params: { zone_name: 'myhairloss.com' } },
-    ]
-
-    for (const intent of intentMap) {
-      if (intent.patterns.some(p => lower.includes(p))) {
-        if (intent.destructive) {
-          setPendingConfirmation({ tool: intent.tool, params: intent.params || {}, reason: text })
-          return { requiresConfirmation: true, message: `This will execute: ${intent.tool}. This is a destructive action. Please confirm.` }
-        }
-        return await executeTool(intent.tool, intent.params || {})
-      }
-    }
-
-    if (lower.startsWith('read ') || lower.startsWith('show ') || lower.startsWith('open ')) {
-      const slug = lower.replace(/^(read|show|open)\s+/, '').replace(/\s+/g, '-').replace(/[?!.]/g, '')
-      return await executeTool('site_read_post', { slug })
-    }
-
-    if (lower.startsWith('issue ') || lower.startsWith('create issue ') || lower.startsWith('new issue ')) {
-      const title = text.replace(/^(create |new )?issue:?\s*/i, '')
-      return await executeTool('gh_create_issue', { title, body: `Created via Admin Agent` })
-    }
-
-    return await executeTool('site_status')
-  }
-
   const handleSend = async (text) => {
     if (!text.trim() || loading) return
     const now = new Date().toLocaleTimeString()
-    setMessages(prev => [...prev, { role: 'user', content: text.trim(), timestamp: now }])
+    const userMsg = { role: 'user', content: text.trim(), timestamp: now }
+    setMessages(prev => [...prev, userMsg])
     setInput('')
     setLoading(true)
 
-    try {
-      const result = await processCommand(text)
+    const history = messages.filter(m => m.role === 'user' || m.role === 'assistant').map(m => ({
+      role: m.role === 'user' ? 'user' : 'assistant',
+      content: m.content,
+    }))
 
-      if (result.requiresConfirmation) {
+    try {
+      const result = await chatWithAgent(text, history)
+
+      if (result.error) {
         setMessages(prev => [...prev, {
-          role: 'system',
-          content: result.message,
+          role: 'assistant',
+          content: `Error: ${result.error}`,
           timestamp: new Date().toLocaleTimeString(),
         }])
         setLoading(false)
         return
       }
 
-      let response = ''
-      const r = result.result
-      const v = result.validation
-
-      if (result.ok === false && result.error) {
-        response = `Error (step ${result.step || '?'}): ${result.error}`
-      } else if (r) {
-        if (typeof r === 'string') {
-          response = r
-        } else if (Array.isArray(r)) {
-          response = `Found ${r.length} items:\n\n${r.slice(0, 30).map(item => {
-            if (item.name) return `- ${item.name || item.title || item.id}`
-            if (item.title) return `- ${item.title} [${item.state || item.status || ''}]`
-            if (item.slug) return `- ${item.title || item.slug} [${item.category || ''}]`
-            if (item.key) return `- ${item.key} (${item.configured ? 'configured' : 'NOT SET'})`
-            if (item.domain) return `- ${item.domain} (${item.status || 'active'})`
-            if (item.id) return `- ${item.id}`
-            return `- ${JSON.stringify(item).slice(0, 80)}`
-          }).join('\n')}${r.length > 30 ? `\n\n...and ${r.length - 30} more` : ''}`
-        } else if (r.overall) {
-          response = `Overall: ${r.overall}\n\n${Object.entries(r).filter(([k]) => k !== 'overall').map(([k, v]) => {
-            if (typeof v === 'object') return `${k}: ${v.ok ? 'OK' : v.error || 'FAILED'}`
-            return `${k}: ${v}`
-          }).join('\n')}`
-        } else if (r.total !== undefined && r.categories) {
-          response = `Total: ${r.total} posts\n\nBy category:\n${Object.entries(r.categories).map(([k, v]) => `- ${k}: ${v}`).join('\n')}`
-        } else {
-          response = JSON.stringify(r, null, 2)
+      let pendingDestructive = null
+      if (result.toolExecutions?.length) {
+        for (const te of result.toolExecutions) {
+          if (te.requiresConfirmation || te.error?.includes?.('DESTRUCTIVE')) {
+            pendingDestructive = te
+          }
         }
-      } else {
-        response = JSON.stringify(result, null, 2)
+      }
+
+      if (pendingDestructive) {
+        setPendingConfirmation({ tool: pendingDestructive.tool, params: pendingDestructive.params || {} })
       }
 
       setMessages(prev => [...prev, {
         role: 'assistant',
-        content: response,
-        validation: v,
-        elapsed: result.elapsed,
+        content: result.message || 'Done.',
+        toolExecutions: result.toolExecutions,
+        model: result.model,
         timestamp: new Date().toLocaleTimeString(),
       }])
     } catch (err) {
@@ -296,21 +252,36 @@ export default function AdminDashboard() {
 
   const handleConfirm = async () => {
     if (!pendingConfirmation) return
+    const conf = pendingConfirmation
     setPendingConfirmation(null)
     setLoading(true)
-    const token = getToken()
-    const result = await executeTool(pendingConfirmation.tool, { ...pendingConfirmation.params, _confirmed: true })
-    let response = ''
-    if (result.ok === false) response = `Error: ${result.error}`
-    else if (result.result) response = typeof result.result === 'string' ? result.result : JSON.stringify(result.result, null, 2)
-    else response = 'Action completed.'
-    setMessages(prev => [...prev, {
-      role: 'assistant',
-      content: response,
-      validation: result.validation,
-      elapsed: result.elapsed,
-      timestamp: new Date().toLocaleTimeString(),
-    }])
+
+    try {
+      const result = await executeToolDirect(conf.tool, { ...(conf.params || {}), _confirmed: true })
+      let response = ''
+      if (result.ok === false) response = `Error: ${result.error}`
+      else if (result.result) response = typeof result.result === 'string' ? result.result : JSON.stringify(result.result, null, 2)
+      else response = 'Action completed.'
+
+      setMessages(prev => [...prev, {
+        role: 'assistant',
+        content: response,
+        validation: result.validation,
+        elapsed: result.elapsed,
+        timestamp: new Date().toLocaleTimeString(),
+      }])
+
+      await chatWithAgent(`The destructive action "${conf.tool}" was confirmed and executed successfully. Summarize the result for the user.`, messages.map(m => ({
+        role: m.role === 'user' ? 'user' : 'assistant',
+        content: m.content,
+      })))
+    } catch (err) {
+      setMessages(prev => [...prev, {
+        role: 'assistant',
+        content: `Error executing ${conf.tool}: ${err.message}`,
+        timestamp: new Date().toLocaleTimeString(),
+      }])
+    }
     setLoading(false)
   }
 
