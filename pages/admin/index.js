@@ -5,7 +5,7 @@ import {
   Shield, Send, Globe, LogOut, RefreshCw, FileText, Wrench,
   Activity, Terminal, Bot, User, Loader2, CheckCircle,
   XCircle, AlertTriangle, Eye, Mail, Zap, Trash2, Lock,
-  ChevronRight, LayoutDashboard, ClipboardList
+  ChevronRight, ChevronDown, LayoutDashboard, ClipboardList, BookOpen, MessageSquare
 } from 'lucide-react'
 
 const QUICK_ACTIONS = [
@@ -124,6 +124,7 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(false)
   const [auditLog, setAuditLog] = useState([])
   const [pendingConfirmation, setPendingConfirmation] = useState(null)
+  const [showDocs, setShowDocs] = useState(false)
   const chatRef = useRef(null)
   const inputRef = useRef(null)
 
@@ -311,8 +312,8 @@ export default function AdminDashboard() {
               <Shield className="w-4 h-4 text-[#0a0a0a]" />
             </div>
             <div>
-              <h1 className="text-sm font-bold">Admin Agent</h1>
-              <p className="text-white/30 text-[10px]">7-step validation pipeline active</p>
+              <h1 className="text-sm font-bold">Hello, Brian!</h1>
+              <p className="text-white/30 text-[10px]">Your admin agent is ready</p>
             </div>
           </div>
           <div className="flex items-center gap-5">
@@ -324,6 +325,49 @@ export default function AdminDashboard() {
             </button>
           </div>
         </header>
+
+        {/* Docs Banner */}
+        <div className="border-b border-[#222] flex-shrink-0">
+          <button
+            onClick={() => setShowDocs(!showDocs)}
+            className="w-full px-6 py-3 flex items-center justify-between text-left hover:bg-[#111] transition-colors"
+          >
+            <div className="flex items-center gap-2">
+              <BookOpen className="w-3.5 h-3.5 text-[#c5a059]" />
+              <span className="text-xs text-white/50">How does this work?</span>
+            </div>
+            {showDocs ? <ChevronDown className="w-3.5 h-3.5 text-white/30" /> : <ChevronRight className="w-3.5 h-3.5 text-white/30" />}
+          </button>
+          {showDocs && (
+            <div className="px-6 pb-4 space-y-4 text-xs text-white/50 leading-relaxed">
+              <div>
+                <h3 className="text-white/70 font-bold mb-1 flex items-center gap-1.5"><MessageSquare className="w-3 h-3" /> Natural Language Chat</h3>
+                <p>Type anything in plain English. The agent understands your intent and picks the right tools automatically. No commands to memorize.</p>
+                <p className="mt-1 text-white/30">Examples: "check Stripe balance", "list all blog posts", "what DNS records do we have?", "is the site healthy?"</p>
+              </div>
+              <div>
+                <h3 className="text-white/70 font-bold mb-1 flex items-center gap-1.5"><Terminal className="w-3 h-3" /> Quick Action Buttons</h3>
+                <p>Click the colored buttons above the input to instantly run common checks — site status, email status, deployments, payments, and more.</p>
+              </div>
+              <div>
+                <h3 className="text-white/70 font-bold mb-1 flex items-center gap-1.5"><Shield className="w-3 h-3" /> Safety Pipeline</h3>
+                <p>Every action goes through 7 validation steps: authentication, rate limiting, input sanitization, parameter validation, destructive action guards, execution, and audit logging. Nothing runs without your credentials.</p>
+              </div>
+              <div>
+                <h3 className="text-white/70 font-bold mb-1 flex items-center gap-1.5"><AlertTriangle className="w-3 h-3" /> Destructive Actions</h3>
+                <p>Actions that delete data, purge caches, or trigger deploys will ask for your explicit confirmation before executing. You'll see a red confirmation bar at the top.</p>
+              </div>
+              <div>
+                <h3 className="text-white/70 font-bold mb-1 flex items-center gap-1.5"><Zap className="w-3 h-3" /> What Can It Do?</h3>
+                <p>Full access to your entire infrastructure — Cloudflare DNS/email/cache, Vercel deployments/env vars, GitHub repo/files/issues, Stripe payments/products/customers, Resend email, GoDaddy domains, and your blog content. 52 tools total.</p>
+              </div>
+              <div>
+                <h3 className="text-white/70 font-bold mb-1 flex items-center gap-1.5"><ClipboardList className="w-3 h-3" /> Audit Log</h3>
+                <p>Switch to the "Audit Log" tab to see every action the agent has taken, including timestamps, success/failure status, and which tools were called.</p>
+              </div>
+            </div>
+          )}
+        </div>
 
         {/* Tabs */}
         <nav className="border-b border-[#222] px-6 flex gap-0 flex-shrink-0">

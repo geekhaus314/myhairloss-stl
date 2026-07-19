@@ -41,8 +41,8 @@ export default function AdminLogin() {
         <div className="w-full max-w-md">
           <div className="text-center mb-12">
             <Lock className="w-10 h-10 text-[#c5a059] mx-auto mb-6" />
-            <h1 className="text-3xl font-serif text-white mb-2">Admin Portal</h1>
-            <p className="text-white/40 text-sm">Brian Ivie Hair &amp; Extensions</p>
+            <h1 className="text-3xl font-serif text-white mb-2">Welcome Back</h1>
+            <p className="text-white/40 text-sm">Brian Ivie Hair &amp; Extensions — Admin Portal</p>
           </div>
           <form onSubmit={handleLogin} className="bg-[#111] border border-[#222] p-10 rounded-lg">
             <label className="block text-white/60 text-xs uppercase tracking-widest mb-3 font-bold">Password</label>
