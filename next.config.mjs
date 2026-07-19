@@ -5,6 +5,15 @@ const nextConfig = {
   },
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],
   reactStrictMode: true,
+  async rewrites() {
+    return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'admin.myhairloss.com' }],
+        destination: '/admin/:path*',
+      },
+    ]
+  },
   headers: async () => [
     {
       source: '/(.*)',
@@ -23,7 +32,7 @@ const nextConfig = {
             "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
             "font-src 'self' https://fonts.gstatic.com",
             "img-src 'self' data: blob: https: http:",
-            "connect-src 'self' https://api.stripe.com https://resend.com",
+            "connect-src 'self' https://api.stripe.com https://resend.com https://opencode.ai https://www.googleapis.com",
             "frame-src https://js.stripe.com https://www.youtube.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com",
             "object-src 'none'",
             "base-uri 'self'",
