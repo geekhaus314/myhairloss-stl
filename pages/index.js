@@ -58,15 +58,21 @@ export default function Home() {
   return (
     <div className="bg-[#fdfdfb]">
       <Head>
-        <title>Brian Ivie Hair &amp; Extensions | St. Louis Hair Restoration Specialist</title>
-        <meta name="description" content="Premier hair restoration in St. Louis. Custom hair systems, laser therapy, extensions, and transplant consultations by Brian Ivie — 15+ years of expertise." />
+        <title>Brian Ivie Hair &amp; Extensions | Hair Restoration in St. Louis, St. Charles &amp; St. Ann MO</title>
+        <meta name="description" content="Premier hair restoration in St. Louis, St. Charles, St. Ann, and surrounding areas. Custom hair systems, laser therapy, extensions, and transplant consultations by Brian Ivie — 15+ years of expertise. Conveniently located in St. Ann, serving the greater St. Louis metro." />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <link rel="canonical" href={SITE_URL} />
 
+        {/* Geo Meta for Local SEO */}
+        <meta name="geo.region" content="US-MO" />
+        <meta name="geo.placename" content="St. Ann" />
+        <meta name="geo.position" content="38.7209;-90.3868" />
+        <meta name="ICBM" content="38.7209, -90.3868" />
+
         {/* Open Graph */}
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Brian Ivie Hair & Extensions | St. Louis Hair Restoration" />
-        <meta property="og:description" content="Premier hair restoration in St. Louis. Custom hair systems, laser therapy, extensions, and transplant consultations." />
+        <meta property="og:title" content="Brian Ivie Hair & Extensions | Hair Restoration St. Louis & St. Charles MO" />
+        <meta property="og:description" content="Premier hair restoration in St. Louis, St. Charles, St. Ann, and surrounding areas. Custom hair systems, laser therapy, extensions, and transplant consultations." />
         <meta property="og:url" content={SITE_URL} />
         <meta property="og:site_name" content="Brian Ivie Hair & Extensions" />
         <meta property="og:image" content={DEFAULT_OG_IMAGE} />
@@ -76,8 +82,8 @@ export default function Home() {
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Brian Ivie Hair & Extensions | St. Louis Hair Restoration" />
-        <meta name="twitter:description" content="Premier hair restoration in St. Louis. Custom hair systems, laser therapy, extensions, and transplant consultations." />
+        <meta name="twitter:title" content="Brian Ivie Hair & Extensions | Hair Restoration St. Louis & St. Charles MO" />
+        <meta name="twitter:description" content="Premier hair restoration in St. Louis, St. Charles, St. Ann, and surrounding areas. Custom hair systems, laser therapy, extensions, and transplant consultations." />
         <meta name="twitter:image" content={DEFAULT_OG_IMAGE} />
 
         {/* Local Business Structured Data */}
@@ -185,7 +191,7 @@ export default function Home() {
                 <h2 className="text-[#c5a059] text-sm uppercase tracking-[0.4em] mb-6 font-bold">Total Discretion</h2>
                 <h2 className="text-5xl md:text-7xl mb-8 leading-[1.1] font-bold tracking-tighter">Private & <br/><span className="italic font-serif font-light text-[#c5a059]">Confidential.</span></h2>
                 <p className="text-xl text-gray-500 mb-10 leading-relaxed font-light">
-                  Brian operates out of his own private salon at **3674 Ashby Rd, St. Ann, MO 63074**. We understand that discretion is paramount—our studio is a sanctuary for those who value privacy while receiving elite-level care.
+                  Brian operates out of his own private salon at <strong className="text-[#1a1a1a] font-medium">3674 Ashby Rd, St. Ann, MO 63074</strong>. We understand that discretion is paramount—our studio is a sanctuary for those who value privacy while receiving elite-level care.
                 </p>
                 <div className="bg-[#fdfdfb] p-10 border border-gray-100 card-shadow">
                   <div className="flex items-start gap-6">
@@ -196,6 +202,29 @@ export default function Home() {
                       <p className="text-xs font-bold text-[#0a0a0a] mb-2 uppercase tracking-widest">St. Ann Studio</p>
                       <p className="text-xl font-serif text-gray-800">3674 Ashby Rd<br/>St. Ann, MO 63074</p>
                     </div>
+                  </div>
+                </div>
+                <div className="mt-8 rounded-lg overflow-hidden border border-gray-100 card-shadow">
+                  <iframe
+                    src="https://maps.google.com/maps?q=3674+Ashby+Rd,+St.+Ann,+MO+63074&t=&z=11&ie=UTF8&iwloc=&output=embed"
+                    width="100%"
+                    height="220"
+                    style={{ border: 0, filter: 'grayscale(0.5) contrast(1.05) brightness(1.02)' }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Studio location — 3674 Ashby Rd, St. Ann, MO"
+                  />
+                  <div className="px-8 py-4 bg-[#fdfdfb] flex items-center justify-between">
+                    <p className="text-[11px] text-gray-400 font-sans">St. Louis &bull; St. Charles &bull; Chesterfield &bull; Florissant</p>
+                    <a
+                      href="https://maps.google.com/maps?q=3674+Ashby+Rd,+St.+Ann,+MO+63074"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#c5a059] hover:text-[#0a0a0a] transition-colors whitespace-nowrap"
+                    >
+                      Get Directions
+                    </a>
                   </div>
                 </div>
               </motion.div>
