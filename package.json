@@ -4,11 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/generate-static-content.js && next build",
+    "build": "npm run static:generate && next build",
     "start": "next start",
-    "pages:build": "node scripts/generate-static-content.js && npx @cloudflare/next-on-pages",
-    "pages:deploy": "npx wrangler pages deploy .vercel/output/static --project-name=myhairloss-site",
-    "pages:publish": "npm run pages:build && npm run pages:deploy"
+    "static:generate": "node scripts/generate-static-content.js"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.3.0",
@@ -25,16 +23,12 @@
     "remark-gfm": "^4.0.0",
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.2",
-    "resend": "^6.14.0",
     "rss": "^1.2.2",
-    "stripe": "^22.3.2",
     "unified": "^11.0.4"
   },
   "devDependencies": {
-    "@cloudflare/next-on-pages": "^1.8.4",
     "autoprefixer": "^10.5.0",
     "postcss": "^8.5.15",
-    "tailwindcss": "^4.3.0",
-    "wrangler": "^4.0.0"
+    "tailwindcss": "^4.3.0"
   }
 }
