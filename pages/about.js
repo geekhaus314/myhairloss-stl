@@ -8,16 +8,16 @@ export default function About() {
     <Layout dark={true}>
       <Head>
         <title>About Brian Ivie | St. Louis Hair Restoration Specialist</title>
-        <meta name="description" content="Meet Brian Ivie — 15+ years of hair restoration expertise in St. Louis. Custom hair systems, laser therapy, extensions, and physician partnerships." />
+        <meta name="description" content="Meet Brian Ivie — a lifetime of hair restoration expertise spanning three generations in St. Louis. Custom hair systems, laser therapy, extensions, and physician partnerships." />
         <link rel="canonical" href={`${SITE_URL}/about`} />
         <meta property="og:type" content="profile" />
         <meta property="og:title" content="About Brian Ivie | Hair Restoration Specialist" />
-        <meta property="og:description" content="15+ years of hair restoration expertise in St. Louis. Custom hair systems, laser therapy, and compassionate care." />
+        <meta property="og:description" content="A lifetime of hair restoration expertise spanning three generations in St. Louis. Custom hair systems, laser therapy, and compassionate care." />
         <meta property="og:url" content={`${SITE_URL}/about`} />
         <meta property="og:image" content={DEFAULT_OG_IMAGE} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="About Brian Ivie | Hair Restoration Specialist" />
-        <meta name="twitter:description" content="15+ years of hair restoration expertise in St. Louis." />
+        <meta name="twitter:description" content="A lifetime of hair restoration expertise spanning three generations in St. Louis." />
         <meta name="twitter:image" content={DEFAULT_OG_IMAGE} />
       </Head>
 
@@ -30,13 +30,13 @@ export default function About() {
         />
         <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a]/70 to-[#0a0a0a]/50 z-1" />
         <div className="relative z-2 text-center max-w-3xl px-8">
-          <p className="text-[#c5a059] text-sm uppercase tracking-[0.5em] mb-6 font-bold">St. Louis Hair Restoration</p>
+          <p className="text-[#c5a059] text-sm uppercase tracking-[0.5em] mb-6 font-bold">Three Generations of St. Louis Hair Care</p>
           <h1 className="text-5xl md:text-7xl font-serif mb-6 leading-tight">
-            Hair Loss Expert<br />
-            <span className="text-[#c5a059]">15+ Years of Restoration Mastery</span>
+            A Lifetime of<br />
+            <span className="text-[#c5a059]">Hair Restoration Expertise</span>
           </h1>
           <p className="text-xl text-gray-300 font-light">
-            One of St. Louis&apos;s most experienced hair restoration specialists.
+            From House of Ivie in 1967 to today — a lifetime of family tradition.
           </p>
         </div>
       </section>
@@ -48,13 +48,13 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <p className="mb-6 text-gray-300 leading-relaxed text-lg">
-                Brian Ivie has spent over 15 years perfecting the art and science of hair restoration. Starting with Ivies Hair Replacement and later House of Ivie, Brian developed a reputation for delivering exceptional, natural-looking results that transform lives.
+                Hair restoration runs in the Ivie family.                 In 1967, Brian&apos;s father Billie J. Ivie opened <strong>House of Ivie</strong> in Hazelwood, MO — a family-owned business with a barber shop on one side and a hair replacement studio on the other. Brian grew up in that shop alongside his older brothers <strong>BJ</strong> (Billie J. Jr.) and <strong>Barry</strong>, learning the craft from the ground up.
               </p>
               <p className="mb-6 text-gray-300 leading-relaxed text-lg">
-                Now operating as Brian Ivie Hair &amp; Extensions, Brian combines his deep expertise with a personalized approach. Every client receives individualized attention, custom solutions, and ongoing support. The philosophy is simple: hair restoration should be seamless, natural, and confidence-restoring.
+                After Ivie&apos;s Hair Replacement, Brian opened his own shop carrying on the same dual-service tradition — barbering and hair replacement under one roof. He later moved the business to its current home on Highway K in O&apos;Fallon, where he continues to build on the family legacy.
               </p>
               <p className="mb-6 text-gray-300 leading-relaxed text-lg">
-                Whether you&apos;re seeking custom hair systems, professional styling, or medical-grade wig fitting, Brian&apos;s commitment to excellence ensures you get results that exceed expectations.
+                Now operating as Brian Ivie Hair &amp; Extensions, every client receives individualized attention, custom solutions, and ongoing support. The philosophy is simple: hair restoration should be seamless, natural, and confidence-restoring — whether you&apos;re seeking custom hair systems, professional styling, or medical-grade wig fitting.
               </p>
             </div>
             <img src="/images/about-brian.jpg" alt="Brian Ivie" className="rounded-lg w-full h-auto" />
