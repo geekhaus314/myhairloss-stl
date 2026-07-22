@@ -1,0 +1,7 @@
+name = "myhairloss-telegram-bot"
+main = "index.js"
+compatibility_date = "2025-04-01"
+
+[vars]
+TELEGRAM_BOT_SECRET = ""
+TELEGRAM_BOT_TOKEN = ""
