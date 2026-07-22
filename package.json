@@ -7,7 +7,7 @@
     "build": "node scripts/generate-static-content.js && next build",
     "start": "next start",
     "pages:build": "node scripts/generate-static-content.js && npx @cloudflare/next-on-pages",
-    "pages:deploy": "npx wrangler pages deploy .vercel/output/static --project-name=myhairloss-stl",
+    "pages:deploy": "npx wrangler pages deploy .vercel/output/static --project-name=myhairloss-site",
     "pages:publish": "npm run pages:build && npm run pages:deploy"
   },
   "dependencies": {
