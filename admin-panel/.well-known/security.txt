@@ -1,0 +1,15 @@
+# Security Policy & Vulnerability Disclosure Program
+# https://admin.myhairloss.com/.well-known/security.txt
+
+Contact: mailto:brian@myhairloss.com
+Expires: 2027-07-23T06:00:00.000Z
+Preferred-Languages: en
+Canonical: https://admin.myhairloss.com/.well-known/security.txt
+Policy: https://admin.myhairloss.com/.well-known/security.txt
+
+# Scope
+# All systems and services under myhairloss.com and admin.myhairloss.com.
+# Out of scope: social engineering, denial of service, physical attacks.
+
+# We appreciate responsible disclosure and will acknowledge valid reports.
+# This is a VDP at this time — no monetary bounties are offered.
