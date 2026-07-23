@@ -35,7 +35,7 @@ export default function About() {
             A Lifetime of<br />
             <span className="text-[#c5a059]">Hair Restoration Expertise</span>
           </h1>
-          <p className="text-xl text-gray-300 font-light">
+          <p className="text-xl text-gray-300 font-normal">
             From House of Ivie in 1967 to today — a lifetime of family tradition.
           </p>
         </div>
@@ -48,10 +48,10 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <p className="mb-6 text-gray-300 leading-relaxed text-lg">
-                Hair restoration runs in the Ivie family.                 In 1967, Brian&apos;s father Billie J. Ivie opened <strong>House of Ivie</strong> in Hazelwood, MO — a family-owned business with a barber shop on one side and a hair replacement studio on the other. Brian grew up in that shop alongside his older brothers <strong>BJ</strong> (Billie J. Jr.) and <strong>Barry</strong>, learning the craft from the ground up.
+                Hair restoration runs in the Ivie family.                 In 1967, Brian&apos;s parents Billie J. and Brenda Ivie opened <strong>House of Ivie</strong> in Hazelwood, MO — a family-owned business with a barber shop on one side and a hair replacement studio on the other. Brian grew up in that shop alongside his older brothers <strong>BJ</strong> (Billie J. Jr.) and <strong>Barry</strong>, learning the craft from the ground up.
               </p>
               <p className="mb-6 text-gray-300 leading-relaxed text-lg">
-                After Ivie&apos;s Hair Replacement, Brian opened his own shop carrying on the same dual-service tradition — barbering and hair replacement under one roof. He later moved the business to its current home on Highway K in O&apos;Fallon, where he continues to build on the family legacy.
+                After Ivie&apos;s Hair Replacement, Brian opened his own shop carrying on the same dual-service tradition — barbering and hair replacement under one roof. He later moved the business to its current studio location, where he continues to build on the family legacy.
               </p>
               <p className="mb-6 text-gray-300 leading-relaxed text-lg">
                 Now operating as Brian Ivie Hair &amp; Extensions, every client receives individualized attention, custom solutions, and ongoing support. The philosophy is simple: hair restoration should be seamless, natural, and confidence-restoring — whether you&apos;re seeking custom hair systems, professional styling, or medical-grade wig fitting.

@@ -121,8 +121,8 @@ export default function Contact() {
                   <div>
                     <p className="text-[10px] uppercase tracking-widest font-bold text-gray-400 mb-2">Private Studio</p>
                     <p className="text-2xl font-serif leading-relaxed">
-                      3674 Ashby Rd<br/>
-                      St. Ann, MO 63074
+                      Greater St. Louis Area<br/>
+                      Private studio — serving the metro area
                     </p>
                   </div>
                 </div>
@@ -145,7 +145,7 @@ export default function Contact() {
                       <CheckCircle className="w-10 h-10" />
                     </div>
                     <h3 className="text-2xl font-serif mb-4">Consultation Request Received</h3>
-                    <p className="text-gray-400 font-light">Brian will review your information and reach out within 24 hours.</p>
+                    <p className="text-gray-400 font-normal">Brian will review your information and reach out within 24 hours.</p>
                     <button onClick={() => setConsultStatus(null)} className="mt-8 text-xs font-bold uppercase tracking-widest text-[#c5a059] hover:text-white transition-colors">Submit Another Request</button>
                   </div>
                 ) : (
@@ -232,7 +232,7 @@ export default function Contact() {
                       <CheckCircle className="w-10 h-10" />
                     </div>
                     <h3 className="text-3xl font-bold mb-4">Inquiry Received</h3>
-                    <p className="text-gray-500 font-light">Brian will reach out to you personally within 24 hours.</p>
+                    <p className="text-gray-500 font-normal">Brian will reach out to you personally within 24 hours.</p>
                     <button onClick={() => setStatus(null)} className="mt-10 text-xs font-bold uppercase tracking-widest text-[#c5a059]">Send Another Message</button>
                   </div>
                 ) : (

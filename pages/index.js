@@ -58,21 +58,21 @@ export default function Home() {
   return (
     <div className="bg-[#fdfdfb]">
       <Head>
-        <title>Brian Ivie Hair &amp; Extensions | Hair Restoration in St. Louis, St. Charles &amp; St. Ann MO</title>
-        <meta name="description" content="Premier hair restoration in St. Louis, St. Charles, St. Ann, and surrounding areas. Custom hair systems, laser therapy, extensions, and transplant consultations by Brian Ivie — 15+ years of expertise. Conveniently located in St. Ann, serving the greater St. Louis metro." />
+        <title>Brian Ivie Hair &amp; Extensions | Hair Restoration in the Greater St. Louis Area</title>
+        <meta name="description" content="Premier hair restoration in the Greater St. Louis Area. Custom hair systems, laser therapy, extensions, and transplant consultations by Brian Ivie — 15+ years of expertise. Private studio serving the St. Louis metro." />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <link rel="canonical" href={SITE_URL} />
 
         {/* Geo Meta for Local SEO */}
         <meta name="geo.region" content="US-MO" />
-        <meta name="geo.placename" content="St. Ann" />
+        <meta name="geo.placename" content="Greater St. Louis Area" />
         <meta name="geo.position" content="38.7209;-90.3868" />
         <meta name="ICBM" content="38.7209, -90.3868" />
 
         {/* Open Graph */}
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Brian Ivie Hair & Extensions | Hair Restoration St. Louis & St. Charles MO" />
-        <meta property="og:description" content="Premier hair restoration in St. Louis, St. Charles, St. Ann, and surrounding areas. Custom hair systems, laser therapy, extensions, and transplant consultations." />
+        <meta property="og:description" content="Premier hair restoration in the Greater St. Louis Area. Custom hair systems, laser therapy, extensions, and transplant consultations." />
         <meta property="og:url" content={SITE_URL} />
         <meta property="og:site_name" content="Brian Ivie Hair & Extensions" />
         <meta property="og:image" content={DEFAULT_OG_IMAGE} />
@@ -83,7 +83,7 @@ export default function Home() {
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Brian Ivie Hair & Extensions | Hair Restoration St. Louis & St. Charles MO" />
-        <meta name="twitter:description" content="Premier hair restoration in St. Louis, St. Charles, St. Ann, and surrounding areas. Custom hair systems, laser therapy, extensions, and transplant consultations." />
+        <meta name="twitter:description" content="Premier hair restoration in the Greater St. Louis Area. Custom hair systems, laser therapy, extensions, and transplant consultations." />
         <meta name="twitter:image" content={DEFAULT_OG_IMAGE} />
 
         {/* Local Business Structured Data */}
@@ -168,7 +168,7 @@ export default function Home() {
                 <h1 className="text-white text-6xl md:text-9xl font-bold mb-10 leading-[0.9] tracking-tighter">
                   Mastery in <br/><span className="italic font-serif font-light text-[#c5a059]">Every Strand.</span>
                 </h1>
-                <p className="text-white/60 text-lg md:text-2xl max-w-2xl mb-12 leading-relaxed font-light">
+                <p className="text-white/60 text-lg md:text-2xl max-w-2xl mb-12 leading-relaxed font-normal">
                   Executive restoration for the modern professional. Custom molded systems, clinical laser therapy, and premium artistry.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-8">
@@ -192,8 +192,8 @@ export default function Home() {
               >
                 <h2 className="text-[#c5a059] text-sm uppercase tracking-[0.4em] mb-6 font-bold">Total Discretion</h2>
                 <h2 className="text-5xl md:text-7xl mb-8 leading-[1.1] font-bold tracking-tighter">Private & <br/><span className="italic font-serif font-light text-[#c5a059]">Confidential.</span></h2>
-                <p className="text-xl text-gray-500 mb-10 leading-relaxed font-light">
-                  Brian operates out of his own private salon at <strong className="text-[#1a1a1a] font-medium">3674 Ashby Rd, St. Ann, MO 63074</strong>. We understand that discretion is paramount—our studio is a sanctuary for those who value privacy while receiving elite-level care.
+                <p className="text-xl text-gray-500 mb-10 leading-relaxed font-normal">
+                  Brian operates out of his own private salon in the Greater St. Louis Area. We understand that discretion is paramount—our studio is a sanctuary for those who value privacy while receiving elite-level care.
                 </p>
                 <div className="bg-[#fdfdfb] p-10 border border-gray-100 card-shadow">
                   <div className="flex items-start gap-6">
@@ -201,33 +201,13 @@ export default function Home() {
                       <ShieldCheck className="w-8 h-8" />
                     </div>
                     <div>
-                      <p className="text-xs font-bold text-[#0a0a0a] mb-2 uppercase tracking-widest">St. Ann Studio</p>
-                      <p className="text-xl font-serif text-gray-800">3674 Ashby Rd<br/>St. Ann, MO 63074</p>
+                      <p className="text-xs font-bold text-[#0a0a0a] mb-2 uppercase tracking-widest">Private Studio</p>
+                      <p className="text-xl font-serif text-gray-800">Private studio in the Greater St. Louis Area<br/>Serving the St. Louis metro</p>
                     </div>
                   </div>
                 </div>
-                <div className="mt-8 rounded-lg overflow-hidden border border-gray-100 card-shadow">
-                  <iframe
-                    src="https://maps.google.com/maps?q=3674+Ashby+Rd,+St.+Ann,+MO+63074&t=&z=11&ie=UTF8&iwloc=&output=embed"
-                    width="100%"
-                    height="220"
-                    style={{ border: 0, filter: 'grayscale(0.5) contrast(1.05) brightness(1.02)' }}
-                    allowFullScreen=""
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="Studio location — 3674 Ashby Rd, St. Ann, MO"
-                  />
-                  <div className="px-8 py-4 bg-[#fdfdfb] flex items-center justify-between">
-                    <p className="text-[11px] text-gray-400 font-sans">St. Louis &bull; St. Charles &bull; Chesterfield &bull; Florissant</p>
-                    <a
-                      href="https://maps.google.com/maps?q=3674+Ashby+Rd,+St.+Ann,+MO+63074"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#c5a059] hover:text-[#0a0a0a] transition-colors whitespace-nowrap"
-                    >
-                      Get Directions
-                    </a>
-                  </div>
+                <div className="mt-8 rounded-lg border border-gray-100 card-shadow bg-[#fdfdfb] px-8 py-6">
+                  <p className="text-[11px] text-gray-400 font-sans">St. Louis &bull; St. Charles &bull; Chesterfield &bull; Florissant</p>
                 </div>
               </motion.div>
               <motion.div 
@@ -265,7 +245,7 @@ export default function Home() {
                     {s.icon}
                   </div>
                   <h3 className="text-3xl mb-6 font-bold tracking-tight">{s.title}</h3>
-                  <p className="text-gray-500 leading-relaxed mb-8 font-light">{s.desc}</p>
+                  <p className="text-gray-500 leading-relaxed mb-8 font-normal">{s.desc}</p>
                   <Link href={s.link} className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.2em] text-[#c5a059] hover:text-[#0a0a0a] transition-colors">
                     Learn More <ArrowRight className="w-4 h-4" />
                   </Link>
@@ -286,7 +266,7 @@ export default function Home() {
             >
               <h2 className="text-[#c5a059] text-sm uppercase tracking-[0.5em] mb-8 font-bold">Clinical Technology</h2>
               <h2 className="text-6xl md:text-8xl mb-10 leading-[0.9] font-bold tracking-tighter">Laser Hair <br/><span className="italic font-serif font-light text-[#c5a059]">Therapy.</span></h2>
-              <p className="text-white/60 text-xl mb-12 leading-relaxed font-light">
+              <p className="text-white/60 text-xl mb-12 leading-relaxed font-normal">
                 The non-invasive gold standard. We utilize clinical-grade LLLT to stimulate follicle revitalization and maximize post-transplant density.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-16">
@@ -321,7 +301,7 @@ export default function Home() {
               <div className="md:w-1/2">
                 <h2 className="text-[#c5a059] text-sm uppercase tracking-[0.4em] mb-6 font-bold">Specialized Artistry</h2>
                 <h2 className="text-5xl md:text-7xl mb-8 leading-[1.1] font-bold tracking-tighter">Hair Ventilation <br/>& Repairs.</h2>
-                <p className="text-xl text-gray-500 mb-10 leading-relaxed font-light">
+                <p className="text-xl text-gray-500 mb-10 leading-relaxed font-normal">
                   A unique, master-level service for system repairs and ventilation. We fill in bald spots and restore your system's original density with surgical precision.
                 </p>
                 <Link href="/book" className="btn-outline">Schedule Repair Session</Link>
@@ -341,7 +321,7 @@ export default function Home() {
               {products.map((p, i) => (
                 <div key={i} className="bg-white p-12 border border-gray-100 hover:border-[#c5a059] transition-all duration-500 group">
                   <h4 className="text-2xl mb-4 font-bold group-hover:text-[#c5a059] transition-colors">{p.name}</h4>
-                  <p className="text-sm text-gray-400 leading-relaxed font-light">{p.desc}</p>
+                  <p className="text-sm text-gray-400 leading-relaxed font-normal">{p.desc}</p>
                 </div>
               ))}
             </div>
@@ -369,7 +349,7 @@ export default function Home() {
         <div className="container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-24">
           <div className="lg:col-span-2">
             <h2 className="text-4xl font-bold mb-10 tracking-tighter uppercase">BRIAN IVIE <span className="font-light text-[#c5a059]">HAIR &amp; EXTENSIONS</span></h2>
-            <p className="text-white/40 max-w-xl text-xl font-light leading-relaxed mb-12">
+            <p className="text-white/40 max-w-xl text-xl font-normal leading-relaxed mb-12">
               Executive hair restoration and extension services in St. Louis. Providing custom solutions and clinical technology for professional results.
             </p>
             <div className="flex gap-10">
@@ -380,16 +360,16 @@ export default function Home() {
             </div>
           </div>
           <div>
-            <h4 className="text-[#c5a059] text-xs uppercase tracking-[0.4em] mb-10 font-bold">St. Ann Studio</h4>
-            <p className="text-white/60 text-xl font-light leading-loose">
-              3674 Ashby Rd<br/>
-              St. Ann, MO 63074<br/>
+            <h4 className="text-[#c5a059] text-xs uppercase tracking-[0.4em] mb-10 font-bold">Contact</h4>
+            <p className="text-white/60 text-xl font-normal leading-loose">
+              Greater St. Louis Area<br/>
+              Private studio — serving the metro area<br/>
               <a href="tel:3145834843" className="text-white mt-10 block font-bold text-3xl hover:text-[#c5a059] transition-colors">(314) 583-IVIE</a>
             </p>
           </div>
         </div>
         <div className="container mx-auto mt-32 pt-12 border-t border-white/5 text-center">
-          <p className="text-[10px] text-white/20 uppercase tracking-[0.4em] font-bold">© {new Date().getFullYear()} Personal Image Solutions. All rights reserved.</p>
+          <p className="text-[10px] text-white/20 uppercase tracking-[0.4em] font-bold">© {new Date().getFullYear()} Personal Image Solution. All rights reserved.</p>
         </div>
       </footer>
     </div>

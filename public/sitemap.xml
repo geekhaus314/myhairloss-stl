@@ -5,54 +5,72 @@
     <loc>https://myhairloss.com</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-07-23</lastmod>
   </url>
   <url>
     <loc>https://myhairloss.com/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-07-23</lastmod>
   </url>
   <url>
     <loc>https://myhairloss.com/services</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-07-23</lastmod>
   </url>
   <url>
     <loc>https://myhairloss.com/laser-therapy</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-07-23</lastmod>
   </url>
   <url>
     <loc>https://myhairloss.com/shop</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-07-23</lastmod>
   </url>
   <url>
     <loc>https://myhairloss.com/book</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-07-23</lastmod>
   </url>
   <url>
     <loc>https://myhairloss.com/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-07-23</lastmod>
   </url>
   <url>
     <loc>https://myhairloss.com/physicians</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-07-23</lastmod>
   </url>
   <url>
     <loc>https://myhairloss.com/blog</loc>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
+    <lastmod>2026-07-23</lastmod>
+  </url>
+  <url>
+    <loc>https://myhairloss.com/blog/hair-breakage-recovery-guide</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-07-22</lastmod>
+  </url>
+  <url>
+    <loc>https://myhairloss.com/blog/protective-styling-wigs-natural-hair</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-07-22</lastmod>
+  </url>
+  <url>
+    <loc>https://myhairloss.com/blog/wig-care-black-women</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <lastmod>2026-07-22</lastmod>
   </url>
   <url>

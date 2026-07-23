@@ -12,7 +12,7 @@ const consultationTypes = [
     title: 'In-Person Consultation',
     icon: <MapPin className="w-6 h-6" />,
     duration: '30-45 Minutes',
-    location: '3674 Ashby Rd, St. Ann, MO 63074',
+    location: 'Greater St. Louis Area (private studio)',
     desc: 'Meet Brian at his private studio for a hands-on assessment. Includes scalp evaluation, color matching, and personalized treatment planning.',
     bestFor: 'New clients, hair system fitting, extensions, laser therapy',
   },
@@ -127,7 +127,7 @@ export default function Book() {
               <h2 className="text-[#c5a059] text-sm uppercase tracking-[0.4em] mb-4 font-bold">Confidential Consultations</h2>
               <h1 className="text-5xl md:text-7xl font-bold mb-8 tracking-tighter">Book Your <br/><span className="italic font-serif font-light text-[#c5a059]">Session.</span></h1>
               <p className="text-white/60 text-lg max-w-2xl mx-auto">
-                Every consultation is private and personalized. Choose in-person at our St. Ann studio or virtual from anywhere.
+                Every consultation is private and personalized. Choose in-person at our private studio or virtual from anywhere.
               </p>
             </motion.div>
           </div>
@@ -322,8 +322,8 @@ export default function Book() {
                 className="mt-16 bg-[#0a0a0a] text-white p-12 text-center"
               >
                 <h3 className="text-[#c5a059] text-sm uppercase tracking-[0.4em] mb-4 font-bold">Studio Location</h3>
-                <p className="text-2xl font-serif mb-2">3674 Ashby Rd</p>
-                <p className="text-xl text-white/60 mb-6">St. Ann, MO 63074</p>
+                <p className="text-2xl font-serif mb-2">Greater St. Louis Area</p>
+                <p className="text-xl text-white/60 mb-6">Private studio — serving the metro area</p>
                 <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                   <a href="tel:3145834843" className="flex items-center gap-2 text-white/80 hover:text-[#c5a059] transition-colors">
                     <Phone className="w-4 h-4" /> (314) 583-4843

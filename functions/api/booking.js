@@ -34,7 +34,7 @@ export async function onRequest(context) {
     return new Response(JSON.stringify({ message: 'Invalid input detected' }), { status: 400, headers })
   }
 
-  const locationLabel = cleanType === 'virtual' ? 'Virtual (Zoom/Phone)' : 'In-Person — 3674 Ashby Rd, St. Ann, MO 63074'
+  const locationLabel = cleanType === 'virtual' ? 'Virtual (Zoom/Phone)' : 'In-Person — Greater St. Louis Area (private studio)'
 
   const adminBody = JSON.stringify({
     from: 'MYHAIRLOSS.COM <noreply@myhairloss.com>',

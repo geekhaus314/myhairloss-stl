@@ -166,6 +166,85 @@ const products = [
   },
 ]
 
+const stockHairSystems = [
+  {
+    id: 'hollywood-lace-front',
+    name: 'Hollywood Lace Front System',
+    subtitle: 'French lace front with thin skin perimeter',
+    price: 329,
+    description: 'Our most popular stock system features a French lace front with bleached knots for an undetectable hairline, reinforced with a durable 0.03mm thin skin perimeter. 100% Indian Remy human hair.',
+    tags: ['lace front', 'thin skin', 'natural hairline'],
+    image: '/images/products/hollywood-lace-front.jpg',
+  },
+  {
+    id: 'swiss-lace-system',
+    name: 'Swiss Lace System',
+    subtitle: 'Full Swiss lace — maximum breathability',
+    price: 349,
+    description: 'Ultra-fine Swiss lace base with hand-tied ventilated hair for the most natural-looking scalp simulation. Lightweight, breathable, and virtually invisible. Ideal for warm climates and active lifestyles.',
+    tags: ['swiss lace', 'breathable', 'premium'],
+    image: '/images/products/swiss-lace-system.jpg',
+  },
+  {
+    id: 'french-lace-hybrid',
+    name: 'French Lace Hybrid System',
+    subtitle: 'Lace front with polyurethane perimeter',
+    price: 299,
+    description: 'French lace front and middle with a polyurethane perimeter for easy attachment and extended durability. A versatile hybrid that combines the natural look of lace with the convenience of skin bases.',
+    tags: ['hybrid', 'french lace', 'durable'],
+    image: '/images/products/french-lace-hybrid.jpg',
+  },
+  {
+    id: 'mono-base-system',
+    name: 'Mono Base System',
+    subtitle: 'Monofilament top with poly perimeter',
+    price: 279,
+    originalPrice: 329,
+    description: 'Durable monofilament base with a polyurethane perimeter. Features a natural parting area and excellent ventilation. A great entry-level stock option with premium quality at an accessible price.',
+    tags: ['mono', 'entry-level', 'value'],
+    image: '/images/products/mono-system.jpg',
+  },
+]
+
+const womenWigs = [
+  {
+    id: 'lace-front-straight',
+    name: 'Straight Lace Front Wig',
+    subtitle: '100% human hair, HD invisible lace',
+    price: 299,
+    description: 'Premium straight lace front wig with pre-plucked hairline and HD transparent lace that melts into any skin tone. Medium density for a natural, undetectable finish. Perfect for everyday wear or special occasions.',
+    tags: ['lace front', 'straight', 'HD lace'],
+    image: '/images/products/lace-front-straight-wig.jpg',
+  },
+  {
+    id: 'lace-front-highlight',
+    name: 'Highlight Body Wave Wig',
+    subtitle: 'Brown-to-blonde ombre, 13x4 HD lace',
+    price: 349,
+    description: 'Stunning honey blonde highlight body wave wig with 13x4 HD transparent lace. Pre-plucked with baby hair for a realistic hairline. Versatile body wave texture that holds curls beautifully.',
+    tags: ['highlight', 'body wave', 'ombre'],
+    image: '/images/products/lace-front-highlight-wig.jpg',
+  },
+  {
+    id: 'lace-front-straight-2',
+    name: 'Silky Straight Frontal Wig',
+    subtitle: '13x6 HD lace, glueless wear option',
+    price: 279,
+    description: 'Sleek silky straight wig with 13x6 HD lace frontal for versatile parting. Lightweight and breathable cap with adjustable straps. Pre-bleached knots and pre-plucked hairline for instant wear.',
+    tags: ['silky straight', '13x6', 'glueless'],
+    image: '/images/products/lace-front-wig-straight-2.jpg',
+  },
+  {
+    id: 'essence-premium-wig',
+    name: 'Premium Lace Front Wig',
+    subtitle: 'Hand-tied, 180% density',
+    price: 399,
+    description: 'Hand-tied premium lace front wig with 180% medium density for a full, natural look. Features Swiss lace front, silk top with natural parting, and 100% Remy human hair. Our most premium stock option.',
+    tags: ['hand-tied', 'premium', 'silk top'],
+    image: '/images/products/essence-lace-front-wig.jpg',
+  },
+]
+
 const container = {
   hidden: { opacity: 0 },
   show: {
@@ -182,6 +261,8 @@ const item = {
 export default function Shop() {
   const [toast, setToast] = useState(null)
   const [loading, setLoading] = useState(null)
+  const [inquiryProduct, setInquiryProduct] = useState(null)
+  const [inquiryForm, setInquiryForm] = useState({ name: '', email: '', phone: '', message: '' })
 
   const showToast = (message, type = 'info') => {
     setToast({ message, type })
@@ -208,6 +289,49 @@ export default function Shop() {
       }
     } catch {
       showToast('Something went wrong. Please call or email to order.', 'error')
+    }
+    setLoading(null)
+  }
+
+  const handleInquiry = (product) => {
+    setInquiryProduct(product)
+    setInquiryForm({
+      name: '',
+      email: '',
+      phone: '',
+      message: `I'm interested in the ${product.name}. Please send me pricing and availability.`,
+    })
+  }
+
+  const submitInquiry = async (e) => {
+    e.preventDefault()
+    if (!inquiryForm.name || !inquiryForm.email) {
+      showToast('Name and email are required.', 'error')
+      return
+    }
+    setLoading(inquiryProduct.id)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: inquiryForm.name,
+          email: inquiryForm.email,
+          phone: inquiryForm.phone,
+          service: inquiryProduct.name,
+          message: inquiryForm.message,
+          type: 'inquiry',
+        }),
+      })
+      const data = await res.json()
+      if (res.ok) {
+        showToast('Inquiry sent! Brian will reach out soon.', 'success')
+        setInquiryProduct(null)
+      } else {
+        showToast('Something went wrong. Please email brian@myhairloss.com directly.', 'error')
+      }
+    } catch {
+      showToast('Something went wrong. Please email brian@myhairloss.com directly.', 'error')
     }
     setLoading(null)
   }
@@ -383,6 +507,258 @@ export default function Shop() {
                       </svg>
                     </a>
                   </Link>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Stock Hair Systems Section */}
+        <section className="section-padding py-20">
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <p
+                className="text-sm uppercase tracking-[0.3em] mb-3 font-sans"
+                style={{ color: '#c5a059' }}
+              >
+                Ready to Wear
+              </p>
+              <h2
+                className="text-3xl md:text-4xl font-serif mb-4"
+                style={{ color: '#fdfdfb' }}
+              >
+                Premade Hair Systems
+              </h2>
+              <p
+                className="max-w-xl mx-auto font-sans"
+                style={{ color: 'rgba(253, 253, 251, 0.5)' }}
+              >
+                Stock hair systems available for immediate order. Premium 100% human hair,
+                pre-sized and ready to be customized to your exact needs.
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={container}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+            >
+              {stockHairSystems.map((system) => (
+                <motion.div
+                  key={system.id}
+                  variants={item}
+                  className="card-shadow rounded-xl overflow-hidden border transition-all duration-300 hover:border-opacity-50 group flex flex-col"
+                  style={{
+                    backgroundColor: 'rgba(253, 253, 251, 0.02)',
+                    borderColor: 'rgba(197, 160, 89, 0.08)',
+                  }}
+                >
+                  {system.image && (
+                    <div className="h-52 bg-[#111] overflow-hidden relative">
+                      <img
+                        src={system.image}
+                        alt={system.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
+                  <div className="p-5 flex flex-col flex-1">
+                    <div className="mb-2">
+                      <h3
+                        className="text-lg font-serif leading-tight"
+                        style={{ color: '#fdfdfb' }}
+                      >
+                        {system.name}
+                      </h3>
+                      {system.subtitle && (
+                        <p
+                          className="text-xs font-sans mt-0.5 italic"
+                          style={{ color: 'rgba(197, 160, 89, 0.7)' }}
+                        >
+                          {system.subtitle}
+                        </p>
+                      )}
+                    </div>
+                    <p
+                      className="text-sm font-sans leading-relaxed mb-4 flex-1"
+                      style={{ color: 'rgba(253, 253, 251, 0.45)' }}
+                    >
+                      {system.description}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {system.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-[10px] uppercase tracking-wider font-sans px-2 py-0.5 rounded"
+                          style={{
+                            color: 'rgba(197, 160, 89, 0.7)',
+                            backgroundColor: 'rgba(197, 160, 89, 0.08)',
+                          }}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex items-center justify-between mt-auto pt-3 border-t" style={{ borderColor: 'rgba(253, 253, 251, 0.06)' }}>
+                      <div>
+                        <span
+                          className="text-xl font-serif block"
+                          style={{ color: '#c5a059' }}
+                        >
+                          ${system.price}
+                        </span>
+                        {system.originalPrice && (
+                          <span
+                            className="text-xs font-sans line-through"
+                            style={{ color: 'rgba(253, 253, 251, 0.25)' }}
+                          >
+                            ${system.originalPrice}
+                          </span>
+                        )}
+                      </div>
+                      <button
+                        onClick={() => handleInquiry(system)}
+                        disabled={loading === system.id}
+                        className="btn-primary text-sm font-sans px-4 py-2 rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                        style={{
+                          backgroundColor: '#c5a059',
+                          color: '#0a0a0a',
+                        }}
+                      >
+                        {loading === system.id ? 'Loading...' : 'Inquire'}
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Women's Wigs Section */}
+        <section className="section-padding py-20" style={{ backgroundColor: 'rgba(197, 160, 89, 0.02)' }}>
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <p
+                className="text-sm uppercase tracking-[0.3em] mb-3 font-sans"
+                style={{ color: '#c5a059' }}
+              >
+                For Her
+              </p>
+              <h2
+                className="text-3xl md:text-4xl font-serif mb-4"
+                style={{ color: '#fdfdfb' }}
+              >
+                Women&apos;s Premium Wigs
+              </h2>
+              <p
+                className="max-w-xl mx-auto font-sans"
+                style={{ color: 'rgba(253, 253, 251, 0.5)' }}
+              >
+                Premium human hair wigs for women experiencing thinning, traction alopecia, breakage, 
+                or simply wanting a versatile new look. Expertly sourced and ready to wear.
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={container}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+            >
+              {womenWigs.map((wig) => (
+                <motion.div
+                  key={wig.id}
+                  variants={item}
+                  className="card-shadow rounded-xl overflow-hidden border transition-all duration-300 hover:border-opacity-50 group flex flex-col"
+                  style={{
+                    backgroundColor: 'rgba(253, 253, 251, 0.02)',
+                    borderColor: 'rgba(197, 160, 89, 0.08)',
+                  }}
+                >
+                  {wig.image && (
+                    <div className="h-52 bg-[#111] overflow-hidden relative">
+                      <img
+                        src={wig.image}
+                        alt={wig.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
+                  <div className="p-5 flex flex-col flex-1">
+                    <div className="mb-2">
+                      <h3
+                        className="text-lg font-serif leading-tight"
+                        style={{ color: '#fdfdfb' }}
+                      >
+                        {wig.name}
+                      </h3>
+                      {wig.subtitle && (
+                        <p
+                          className="text-xs font-sans mt-0.5 italic"
+                          style={{ color: 'rgba(197, 160, 89, 0.7)' }}
+                        >
+                          {wig.subtitle}
+                        </p>
+                      )}
+                    </div>
+                    <p
+                      className="text-sm font-sans leading-relaxed mb-4 flex-1"
+                      style={{ color: 'rgba(253, 253, 251, 0.45)' }}
+                    >
+                      {wig.description}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {wig.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-[10px] uppercase tracking-wider font-sans px-2 py-0.5 rounded"
+                          style={{
+                            color: 'rgba(197, 160, 89, 0.7)',
+                            backgroundColor: 'rgba(197, 160, 89, 0.08)',
+                          }}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex items-center justify-between mt-auto pt-3 border-t" style={{ borderColor: 'rgba(253, 253, 251, 0.06)' }}>
+                      <span
+                        className="text-xl font-serif"
+                        style={{ color: '#c5a059' }}
+                      >
+                        ${wig.price}
+                      </span>
+                      <button
+                        onClick={() => handleInquiry(wig)}
+                        disabled={loading === wig.id}
+                        className="btn-primary text-sm font-sans px-4 py-2 rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                        style={{
+                          backgroundColor: '#c5a059',
+                          color: '#0a0a0a',
+                        }}
+                      >
+                        {loading === wig.id ? 'Loading...' : 'Inquire'}
+                      </button>
+                    </div>
+                  </div>
                 </motion.div>
               ))}
             </motion.div>
@@ -575,6 +951,109 @@ export default function Shop() {
           </div>
         </section>
       </main>
+
+      {/* Inquiry Modal */}
+      <AnimatePresence>
+        {inquiryProduct && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}
+            onClick={() => setInquiryProduct(null)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 10 }}
+              transition={{ duration: 0.2 }}
+              className="w-full max-w-lg rounded-xl p-6 border overflow-hidden"
+              style={{
+                backgroundColor: '#0f0f0f',
+                borderColor: 'rgba(197, 160, 89, 0.2)',
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-xl font-serif" style={{ color: '#fdfdfb' }}>
+                  Inquire About
+                </h3>
+                <button onClick={() => setInquiryProduct(null)} className="p-1 rounded hover:bg-white/5 transition-colors">
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} style={{ color: 'rgba(253,253,251,0.5)' }}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              <p className="text-sm font-sans mb-5" style={{ color: '#c5a059' }}>
+                {inquiryProduct.name}
+              </p>
+              <form onSubmit={submitInquiry}>
+                <div className="space-y-3 mb-5">
+                  <input
+                    type="text"
+                    placeholder="Your Name *"
+                    value={inquiryForm.name}
+                    onChange={(e) => setInquiryForm({ ...inquiryForm, name: e.target.value })}
+                    className="w-full px-4 py-2.5 rounded-lg text-sm font-sans border transition-colors focus:outline-none"
+                    style={{
+                      backgroundColor: 'rgba(253,253,251,0.04)',
+                      borderColor: 'rgba(197,160,89,0.15)',
+                      color: '#fdfdfb',
+                    }}
+                    required
+                  />
+                  <input
+                    type="email"
+                    placeholder="Your Email *"
+                    value={inquiryForm.email}
+                    onChange={(e) => setInquiryForm({ ...inquiryForm, email: e.target.value })}
+                    className="w-full px-4 py-2.5 rounded-lg text-sm font-sans border transition-colors focus:outline-none"
+                    style={{
+                      backgroundColor: 'rgba(253,253,251,0.04)',
+                      borderColor: 'rgba(197,160,89,0.15)',
+                      color: '#fdfdfb',
+                    }}
+                    required
+                  />
+                  <input
+                    type="tel"
+                    placeholder="Phone (optional)"
+                    value={inquiryForm.phone}
+                    onChange={(e) => setInquiryForm({ ...inquiryForm, phone: e.target.value })}
+                    className="w-full px-4 py-2.5 rounded-lg text-sm font-sans border transition-colors focus:outline-none"
+                    style={{
+                      backgroundColor: 'rgba(253,253,251,0.04)',
+                      borderColor: 'rgba(197,160,89,0.15)',
+                      color: '#fdfdfb',
+                    }}
+                  />
+                  <textarea
+                    placeholder="Message"
+                    rows={3}
+                    value={inquiryForm.message}
+                    onChange={(e) => setInquiryForm({ ...inquiryForm, message: e.target.value })}
+                    className="w-full px-4 py-2.5 rounded-lg text-sm font-sans border transition-colors focus:outline-none resize-none"
+                    style={{
+                      backgroundColor: 'rgba(253,253,251,0.04)',
+                      borderColor: 'rgba(197,160,89,0.15)',
+                      color: '#fdfdfb',
+                    }}
+                  />
+                </div>
+                <button
+                  type="submit"
+                  disabled={loading === inquiryProduct.id}
+                  className="w-full btn-primary text-sm font-sans px-5 py-2.5 rounded-lg transition-all duration-300 disabled:opacity-50"
+                  style={{ backgroundColor: '#c5a059', color: '#0a0a0a' }}
+                >
+                  {loading === inquiryProduct.id ? 'Sending...' : 'Send Inquiry'}
+                </button>
+              </form>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </Layout>
   )
 }

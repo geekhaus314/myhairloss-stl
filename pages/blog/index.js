@@ -141,7 +141,7 @@ export default function BlogIndex({ posts, categories, tags }) {
       {/* Footer */}
       <footer className="bg-[#0a0a0a] text-center py-8 px-6">
         <p className="text-[11px] uppercase tracking-[0.2em] text-white/30">
-          &copy; {new Date().getFullYear()} Personal Image Solutions &mdash; MYHAIRLOSS.COM
+          &copy; {new Date().getFullYear()} Personal Image Solution &mdash; MYHAIRLOSS.COM
         </p>
       </footer>
     </div>

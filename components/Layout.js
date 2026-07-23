@@ -99,17 +99,16 @@ export default function Layout({ children, dark = false }) {
             </div>
           </div>
           <div>
-            <h4 className="text-[#c5a059] text-xs uppercase tracking-[0.4em] mb-10 font-bold">St. Ann Studio</h4>
-            <p className="text-white/60 text-xl font-light leading-loose">
-              3674 Ashby Rd<br />
-              St. Ann, MO 63074<br />
+            <h4 className="text-[#c5a059] text-xs uppercase tracking-[0.4em] mb-10 font-bold">Private Studio</h4>
+             <p className="text-white/60 text-xl font-light leading-loose">
+               Greater St. Louis Area (private studio)<br />
               <a href="mailto:info@myhairloss.com" className="text-[#c5a059] hover:text-white transition-colors">info@myhairloss.com</a><br />
               <a href="tel:3145834843" className="text-white mt-6 block font-bold text-3xl hover:text-[#c5a059] transition-colors">(314) 583-IVIE</a>
             </p>
           </div>
         </div>
         <div className="container mx-auto mt-32 pt-12 border-t border-white/5 text-center">
-          <p className="text-[10px] text-white/20 uppercase tracking-[0.4em] font-bold">&copy; {new Date().getFullYear()} Personal Image Solutions. All rights reserved.</p>
+          <p className="text-[10px] text-white/20 uppercase tracking-[0.4em] font-bold">&copy; {new Date().getFullYear()} Personal Image Solution. All rights reserved.</p>
         </div>
       </footer>
     </>

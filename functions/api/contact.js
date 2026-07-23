@@ -33,16 +33,20 @@ export async function onRequest(context) {
 
   const subject = type === 'booking'
     ? `Booking Request: ${cleanService || 'General'} from ${cleanName}`
+    : type === 'inquiry'
+    ? `Product Inquiry: ${cleanService} from ${cleanName}`
     : type === 'feedback'
     ? `Feedback from ${cleanName}`
     : `New Inquiry from ${cleanName}`
 
+  const adminEmail = env.ADMIN_EMAIL || 'contact@myhairloss.com'
+
   const emailBody = JSON.stringify({
     from: 'myhairloss.com <noreply@myhairloss.com>',
-    to: ['contact@myhairloss.com'],
+    to: [adminEmail],
     replyTo: email,
     subject,
-    text: `New Inquiry — Brian Ivie Hair & Extensions\n\nName: ${cleanName}\nEmail: ${email}\nPhone: ${cleanPhone || 'N/A'}\nService: ${cleanService || 'N/A'}\nType: ${type || 'contact'}\n\nMessage:\n${cleanMessage}`,
+    text: `New ${type === 'inquiry' ? 'Product Inquiry' : 'Contact'} — Brian Ivie Hair & Extensions\n\nName: ${cleanName}\nEmail: ${email}\nPhone: ${cleanPhone || 'N/A'}\nProduct/Service: ${cleanService || 'N/A'}\nType: ${type || 'contact'}\n\nMessage:\n${cleanMessage}`,
   })
 
   try {
