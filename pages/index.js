@@ -2,11 +2,28 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ShieldCheck, Zap, Scissors, Users, ArrowRight, Menu, X, CreditCard } from 'lucide-react'
-import { generateLocalBusinessSchema, SITE_URL, DEFAULT_OG_IMAGE } from '../lib/seo'
+import { ShieldCheck, Zap, Scissors, Users, ArrowRight, Menu, X, CreditCard, Star, Phone } from 'lucide-react'
+import { generateLocalBusinessSchema, generateFAQSchema, SITE_URL, DEFAULT_OG_IMAGE } from '../lib/seo'
+import { getAllPosts } from '../lib/posts'
+import PostCard from '../components/blog/PostCard'
 
-export default function Home() {
+export async function getStaticProps() {
+  const featuredPosts = getAllPosts().slice(0, 3)
+  return { props: { featuredPosts } }
+}
+
+export default function Home({ featuredPosts }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [faqOpen, setFaqOpen] = useState(0);
+
+  const faqs = [
+    { question: 'How discreet is the consultation process?', answer: 'Completely. Brian operates from a private studio in the Greater St. Louis Area. Your information and visit remain strictly confidential — no walk-in traffic, no shared waiting rooms, and never any unsolicited contact.' },
+    { question: 'How much does a custom hair system cost?', answer: 'Custom systems range from $1,500 to $3,500 depending on hair quality, base construction, and density. Stock systems start at $279. Every client receives a detailed quote before any work begins — no surprises, ever.' },
+    { question: 'Can you cut and style a system I already own?', answer: 'Yes. We cut and style ANY hair system, regardless of where it was purchased. Ventilation repairs, color blending, and density restoration start at $50/hour.' },
+    { question: 'Is laser therapy covered by insurance?', answer: 'LLLT is not typically covered by insurance, but it is a one-time, non-invasive investment with no ongoing subscription. Most clients see measurable improvement within 4–6 months of protocol sessions.' },
+    { question: 'Do you work with transplant patients?', answer: 'Extensively. We coordinate with top St. Louis surgeons and provide essential pre- and post-transplant care — including laser therapy, system fitting for the donor recovery period, and styling.' },
+    { question: 'How do I get started?', answer: 'Book a private consultation online or call (314) 583-IVIE. We will assess your goals, walk you through every option, and build a plan tailored to you.' },
+  ]
 
   const services = [
     { 
@@ -90,6 +107,12 @@ export default function Home() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(generateLocalBusinessSchema()) }}
+        />
+
+        {/* FAQ Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFAQSchema(faqs)) }}
         />
       </Head>
 
@@ -279,7 +302,7 @@ export default function Home() {
               </div>
               <Link href="/laser-therapy" className="btn-primary bg-[#c5a059] text-[#0a0a0a] self-start border-none">View Clinical Protocol</Link>
             </motion.div>
-            <div className="lg:w-1/2 bg-[url('https://images.unsplash.com/photo-1519415510236-855906a1b828?auto=format&fit=crop&q=80')] bg-cover bg-center min-h-[600px] grayscale opacity-50"></div>
+            <div className="lg:w-1/2 bg-[url('/images/laser-therapy.jpg')] bg-cover bg-center min-h-[600px] grayscale opacity-50"></div>
           </div>
         </section>
 
@@ -334,6 +357,104 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Testimonials */}
+        <section className="section-padding bg-[#0a0a0a] text-white">
+          <div className="container mx-auto max-w-6xl">
+            <div className="text-center mb-20">
+              <h2 className="text-sm uppercase tracking-[0.5em] text-[#c5a059] mb-6 font-bold">Client Stories</h2>
+              <h2 className="text-6xl md:text-8xl font-bold tracking-tighter leading-none">Trusted in <span className="italic font-serif font-light text-[#c5a059]">St. Louis.</span></h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+              {[
+                { quote: 'After my transplant, Brian rebuilt my hairline to the point where no one believes I had surgery. The laser protocol accelerated everything.', name: 'J.M.', detail: 'Transplant client — Clayton, MO' },
+                { quote: 'I was skeptical for 10 years. One session with a custom system and I walked out looking like myself at 25. Life-changing discretion.', name: 'R.T.', detail: 'Hair system client — St. Charles, MO' },
+                { quote: 'Brian cuts and styles my unit from another vendor better than anyone. The repairs have saved me thousands in replacements.', name: 'D.W.', detail: 'System repair client — Chesterfield, MO' },
+              ].map((t, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.15 }}
+                  className="border border-white/10 p-10 flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex gap-1 mb-8 text-[#c5a059]">
+                      {[...Array(5)].map((_, s) => <Star key={s} className="w-4 h-4 fill-current" />)}
+                    </div>
+                    <p className="font-serif text-xl leading-relaxed text-white/80">"{t.quote}"</p>
+                  </div>
+                  <div className="mt-10">
+                    <p className="text-[#c5a059] text-sm font-bold tracking-widest uppercase">{t.name}</p>
+                    <p className="text-white/40 text-[11px] uppercase tracking-widest mt-2">{t.detail}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Featured Blog Posts */}
+        <section className="section-padding bg-white">
+          <div className="container mx-auto max-w-6xl">
+            <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
+              <div>
+                <h2 className="text-sm uppercase tracking-[0.5em] text-[#c5a059] mb-6 font-bold">Latest Research</h2>
+                <h2 className="text-5xl md:text-7xl font-bold tracking-tighter leading-none">From the <span className="italic font-serif font-light text-[#c5a059]">Blog.</span></h2>
+              </div>
+              <Link href="/blog" className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.2em] text-[#c5a059] hover:text-[#0a0a0a] transition-colors pb-2">
+                View All Articles <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6">
+              {featuredPosts.map((post, i) => (
+                <PostCard key={post.slug} post={post} index={i} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="section-padding bg-[#fdfdfb]">
+          <div className="container mx-auto max-w-4xl">
+            <div className="text-center mb-20">
+              <h2 className="text-sm uppercase tracking-[0.5em] text-[#c5a059] mb-6 font-bold">Answers</h2>
+              <h2 className="text-5xl md:text-7xl font-bold tracking-tighter leading-none">Common <span className="italic font-serif font-light text-[#c5a059]">Questions.</span></h2>
+            </div>
+            <div className="border border-gray-100 bg-white card-shadow divide-y divide-gray-50">
+              {faqs.map((f, i) => (
+                <div key={i}>
+                  <button
+                    onClick={() => setFaqOpen(faqOpen === i ? -1 : i)}
+                    className="w-full flex items-center justify-between gap-6 px-8 md:px-12 py-6 text-left hover:bg-[#fdfdfb] transition-colors"
+                  >
+                    <span className="font-serif text-xl md:text-2xl text-[#1a1a1a]">{f.question}</span>
+                    <span className={`text-[#c5a059] text-2xl font-light transition-transform duration-300 ${faqOpen === i ? 'rotate-45' : ''}`}>+</span>
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {faqOpen === i && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                      >
+                        <p className="px-8 md:px-12 pb-8 text-gray-500 leading-relaxed font-normal">{f.answer}</p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ))}
+            </div>
+            <div className="text-center mt-12">
+              <Link href="/contact" className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#c5a059] hover:text-[#0a0a0a] transition-colors">
+                Still have questions? Contact us
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* Payment Methods */}
         <section className="py-16 bg-white border-y border-gray-100">
           <div className="container mx-auto flex flex-wrap justify-center items-center gap-16 opacity-30 grayscale">
@@ -372,6 +493,19 @@ export default function Home() {
           <p className="text-[10px] text-white/20 uppercase tracking-[0.4em] font-bold">© {new Date().getFullYear()} Personal Image Solution. All rights reserved.</p>
         </div>
       </footer>
+
+      {/* Sticky mobile CTA */}
+      <div className="fixed bottom-0 inset-x-0 z-50 lg:hidden bg-[#0a0a0a]/95 backdrop-blur border-t border-white/10">
+        <div className="flex items-stretch">
+          <a href="tel:3145834843" className="flex items-center justify-center gap-2 flex-1 py-4 text-[#c5a059] text-[11px] font-bold uppercase tracking-[0.2em]">
+            <Phone className="w-4 h-4" /> Call
+          </a>
+          <div className="w-px bg-white/10"></div>
+          <Link href="/book" className="flex items-center justify-center flex-1 py-4 bg-[#c5a059] text-[#0a0a0a] text-[11px] font-bold uppercase tracking-[0.2em]">
+            Book Session
+          </Link>
+        </div>
+      </div>
     </div>
   )
 }

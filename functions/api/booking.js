@@ -10,7 +10,8 @@ export async function onRequest(context) {
     return new Response(JSON.stringify({ message: 'Email service not configured.' }), { status: 500, headers })
   }
 
-  const body = await request.json()
+  let body
+  try { body = await request.json() } catch (e) { return new Response(JSON.stringify({ message: 'Invalid JSON' }), { status: 400, headers }) }
   const { name, email, phone, service, preferred_date, preferred_time, message, consultationType } = body
 
   if (!name || !email || !service || !preferred_date || !preferred_time) {

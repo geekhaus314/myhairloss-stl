@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run static:generate && next build",
+    "build": "npm run static:generate && next build && node -e \"require('fs').cpSync('_headers','out/_headers')\"",
     "start": "next start",
-    "static:generate": "node scripts/generate-static-content.js"
+    "static:generate": "node scripts/generate-static-content.js",
+    "deploy": "npm run build && npx wrangler pages deploy out --project-name=myhairloss-site --branch=main"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.3.0",

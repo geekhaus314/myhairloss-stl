@@ -10,8 +10,9 @@ export async function onRequest(context) {
     return new Response(JSON.stringify({ message: 'Payment service not configured.' }), { status: 500, headers })
   }
 
-  const body = await request.json()
-  const { productName, price } = body
+  let body
+  try { body = await request.json() } catch (e) { return new Response(JSON.stringify({ message: 'Invalid JSON' }), { status: 400, headers }) }
+  const { productName, price, brand, sku, productId } = body
 
   if (!productName || !price) {
     return new Response(JSON.stringify({ message: 'Missing required fields' }), { status: 400, headers })
@@ -19,12 +20,16 @@ export async function onRequest(context) {
 
   const cleanName = productName.replace(/[<>]/g, '').trim().slice(0, 200)
   const numPrice = parseFloat(price)
+  const cleanBrand = typeof brand === 'string' ? brand.replace(/[<>]/g, '').trim().slice(0, 80) : ''
+  const cleanSku = typeof sku === 'string' ? sku.replace(/[<>]/g, '').trim().slice(0, 80) : ''
+  const cleanId = typeof productId === 'string' ? productId.replace(/[<>]/g, '').trim().slice(0, 80) : ''
 
   if (!cleanName || isNaN(numPrice) || numPrice <= 0 || numPrice > 10000) {
     return new Response(JSON.stringify({ message: 'Invalid product data' }), { status: 400, headers })
   }
 
   const siteUrl = env.NEXT_PUBLIC_SITE_URL || 'https://myhairloss.com'
+  const description = [cleanBrand, cleanSku].filter(Boolean).join(' · ') || 'Order from MYHAIRLOSS.COM'
 
   try {
     const stripeRes = await fetch('https://api.stripe.com/v1/checkout/sessions', {
@@ -39,7 +44,10 @@ export async function onRequest(context) {
         'cancel_url': `${siteUrl}/shop?canceled=true`,
         'line_items[0][price_data][currency]': 'usd',
         'line_items[0][price_data][product_data][name]': cleanName,
-        'line_items[0][price_data][product_data][description]': 'Order from MYHAIRLOSS.COM',
+        'line_items[0][price_data][product_data][description]': description,
+        'line_items[0][price_data][product_data][metadata][brand]': cleanBrand,
+        'line_items[0][price_data][product_data][metadata][sku]': cleanSku,
+        'line_items[0][price_data][product_data][metadata][productId]': cleanId,
         'line_items[0][price_data][unit_amount]': String(Math.round(numPrice * 100)),
         'line_items[0][quantity]': '1',
       }),

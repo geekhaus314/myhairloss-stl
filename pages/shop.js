@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
-import { SITE_URL, DEFAULT_OG_IMAGE } from '../lib/seo'
+import { SITE_URL, DEFAULT_OG_IMAGE, generateShopSchema } from '../lib/seo'
 import Layout from '../components/Layout'
 
 const services = [
@@ -71,177 +71,186 @@ const services = [
 const products = [
   {
     id: 'ketoconazole-shampoo',
-    name: 'Ketoconazole 2% Shampoo',
-    price: 28,
-    description: 'Prescription-strength DHT suppression at the scalp level. Clinically proven to support hair retention. Use 2-3x weekly.',
-    tags: ['DHT blocker', 'anti-dandruff', 'scalp health'],
-    color: 'from-amber-900/40 to-amber-800/20',
-    icon: (
-      <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
-      </svg>
-    ),
+    name: 'Nizoral A-D Anti-Dandruff Shampoo',
+    subtitle: 'Ketoconazole 1% · 7 fl oz',
+    brand: 'Nizoral',
+    sku: 'Nizoral A-D 7 fl oz',
+    price: 16,
+    description: 'The strongest over-the-counter ketoconazole shampoo (1%) — the formula hair loss specialists trust most. Clinically proven to fight dandruff and support scalp health for hair retention. Use 2-3x weekly.',
+    tags: ['ketoconazole', 'anti-dandruff', 'scalp health'],
+    image: '/images/products/nizoral-ad.png',
   },
   {
     id: 'adhesive-tape',
-    name: 'Professional Adhesive Tape',
-    subtitle: 'Walker Tape Ultra Hold',
-    price: 24,
-    description: 'Medical-grade tape for secure hair system bonding. Holds 3-4 weeks. Professional application recommended for best results.',
+    name: 'Walker Tape Ultra Hold Tape',
+    subtitle: '1" × 12 yd roll',
+    brand: 'Walker Tape',
+    sku: 'WK-ULHT-RL-0112',
+    price: 19,
+    description: 'The industry-standard 1-inch tape for hair system bonding. Holds 3-4 weeks, sweat-resistant, and gentle enough for daily-wear clients. Professional application recommended for best results.',
     tags: ['hair system tape', 'adhesive'],
-    color: 'from-yellow-900/40 to-yellow-800/20',
-    icon: (
-      <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    ),
+    image: '/images/products/walker-ultra-hold.jpg',
   },
   {
     id: 'liquid-adhesive',
-    name: 'Liquid Adhesive',
-    subtitle: 'Ghost Bond XL',
-    price: 32,
-    description: 'Medical-grade bonding for active lifestyles. Water-resistant, hypoallergenic. Brian recommends professional application.',
+    name: 'Ghost Bond XL Adhesive',
+    subtitle: '1.3 oz · clear, water-resistant',
+    brand: 'Ghost Bond',
+    sku: 'PHL202GBXLNTLNTOz1.3PB',
+    price: 17,
+    description: 'The #1 liquid adhesive in the hair system industry. Clear, hypoallergenic, and water-resistant bonding that holds through workouts and swims. Dries fast and removes clean.',
     tags: ['hair system glue', 'adhesive'],
-    color: 'from-stone-800/40 to-stone-700/20',
-    icon: (
-      <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z" />
-      </svg>
-    ),
+    image: '/images/products/ghost-bond-xl.png',
   },
   {
     id: 'adhesive-remover',
-    name: 'Adhesive Remover',
-    subtitle: 'C-22 Solvent',
-    price: 18,
-    description: 'Safely dissolve adhesive bonds without damaging your system or irritating your scalp.',
+    name: 'Walker Tape C-22 Solvent Spray',
+    subtitle: '4 fl oz spray',
+    brand: 'Walker Tape',
+    sku: 'WK-C022-SY-04OZ',
+    price: 15,
+    description: 'Safely dissolves adhesive bonds without damaging your system or irritating your scalp. The standard remover used in professional studios.',
     tags: ['adhesive remover', 'cleanup'],
-    color: 'from-emerald-900/40 to-emerald-800/20',
-    icon: (
-      <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    ),
+    image: '/images/products/walker-c22.jpg',
+  },
+  {
+    id: 'scalp-protector-spray',
+    name: 'Walker Tape Scalp Protector Spray',
+    subtitle: '2 fl oz spray',
+    brand: 'Walker Tape',
+    sku: 'WK-SCPR-SY-02OZ',
+    price: 13,
+    description: 'Protects your scalp before every re-bond. Dries to a protective film that shields skin from adhesive irritation while helping bonds hold longer. Essential for sensitive scalps.',
+    tags: ['scalp protection', 'prep'],
+    image: '/images/products/walker-scalp-protector.png',
   },
   {
     id: 'boar-bristle-brush',
-    name: 'Soft Round Boar Bristle Brush',
-    price: 22,
-    description: 'Minimizes hair shedding and breakage while distributing natural oils. Essential for daily maintenance of natural hair and systems.',
+    name: 'Spornette Italian Rounder Brush',
+    subtitle: 'Extra boar bristle · #854',
+    brand: 'Spornette',
+    sku: '854',
+    price: 34,
+    description: 'Professional-grade round boar bristle brush that minimizes hair shedding and breakage while distributing natural oils. Essential for daily maintenance of natural hair and systems.',
     tags: ['hair brush', 'daily care'],
-    color: 'from-orange-900/40 to-orange-800/20',
-    icon: (
-      <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
-      </svg>
-    ),
+    image: '/images/products/spornette-854.jpg',
   },
   {
     id: 'leave-in-conditioner',
-    name: 'Leave-In Conditioner Serum',
-    price: 26,
-    description: 'Lightweight formula that detangles, protects, and extends the life of your hair system or natural hair.',
-    tags: ['conditioner', 'hair care'],
-    color: 'from-rose-900/40 to-rose-800/20',
-    icon: (
-      <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-      </svg>
-    ),
+    name: 'Olaplex No. 6 Bond Smoother',
+    subtitle: '100 ml · leave-in styling treatment',
+    brand: 'Olaplex',
+    sku: '20142954',
+    price: 28,
+    description: 'The bond-repairing leave-in styler that protects hair systems and natural hair from damage and frizz. Repairs broken bonds for smoother, shinier, healthier-looking results.',
+    tags: ['bond repair', 'hair care'],
+    image: '/images/products/olaplex-no6.png',
   },
   {
-    id: 'uv-protection-spray',
-    name: 'UV Protection Spray',
-    price: 20,
-    description: 'Shields hair from sun damage and color fading. Essential for active clients.',
-    tags: ['UV protection', 'hair care'],
-    color: 'from-sky-900/40 to-sky-800/20',
-    icon: (
-      <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
-      </svg>
-    ),
+    id: 'nioxin-system-2',
+    name: 'Nioxin System 2 Cleanser Shampoo',
+    subtitle: '33.8 fl oz · salon size',
+    brand: 'Nioxin',
+    sku: '81629284',
+    price: 26,
+    description: 'The salon-standard derma-purifying cleanser for noticeably thinning natural hair. Removes sebum, DHT, and environmental residue for a healthier scalp. Use with professional guidance.',
+    tags: ['thinning hair', 'scalp health'],
+    image: '/images/products/nioxin-system2.jpg',
   },
 ]
 
 const stockHairSystems = [
   {
     id: 'hollywood-lace-front',
-    name: 'Hollywood Lace Front System',
-    subtitle: 'French lace front with thin skin perimeter',
+    name: 'Champion Full French Lace System',
+    subtitle: 'Lordhair · full French lace base',
+    brand: 'Lordhair',
+    sku: 'Champion',
     price: 329,
-    description: 'Our most popular stock system features a French lace front with bleached knots for an undetectable hairline, reinforced with a durable 0.03mm thin skin perimeter. 100% Indian Remy human hair.',
-    tags: ['lace front', 'thin skin', 'natural hairline'],
-    image: '/images/products/hollywood-lace-front.jpg',
+    description: 'Lordhair\'s #1 stock system: full French lace with pre-bleached knots for an undetectable hairline. The athletes\' choice — breathable, durable, and hand-tied 100% human hair.',
+    tags: ['french lace', 'natural hairline'],
+    image: '/images/products/lordhair-champion.jpg',
   },
   {
     id: 'swiss-lace-system',
-    name: 'Swiss Lace System',
-    subtitle: 'Full Swiss lace — maximum breathability',
+    name: 'Air Swiss Lace System',
+    subtitle: 'Lordhair · ultra-fine Swiss lace',
+    brand: 'Lordhair',
+    sku: 'Air',
     price: 349,
     description: 'Ultra-fine Swiss lace base with hand-tied ventilated hair for the most natural-looking scalp simulation. Lightweight, breathable, and virtually invisible. Ideal for warm climates and active lifestyles.',
     tags: ['swiss lace', 'breathable', 'premium'],
-    image: '/images/products/swiss-lace-system.jpg',
+    image: '/images/products/lordhair-air.jpg',
   },
   {
     id: 'french-lace-hybrid',
-    name: 'French Lace Hybrid System',
-    subtitle: 'Lace front with polyurethane perimeter',
-    price: 299,
-    description: 'French lace front and middle with a polyurethane perimeter for easy attachment and extended durability. A versatile hybrid that combines the natural look of lace with the convenience of skin bases.',
+    name: 'Neo Hybrid System',
+    subtitle: 'Lordhair · lace front, skin perimeter',
+    brand: 'Lordhair',
+    sku: 'Neo',
+    price: 339,
+    description: 'Lordhair\'s most versatile stock system: a natural French lace front with a durable skin perimeter. Balances the breathability of lace with the security of skin — the best of both worlds.',
     tags: ['hybrid', 'french lace', 'durable'],
-    image: '/images/products/french-lace-hybrid.jpg',
+    image: '/images/products/lordhair-neo.jpg',
   },
   {
     id: 'mono-base-system',
-    name: 'Mono Base System',
-    subtitle: 'Monofilament top with poly perimeter',
-    price: 279,
+    name: 'Champion-M Medium Density System',
+    subtitle: 'Lordhair · full French lace, medium density',
+    brand: 'Lordhair',
+    sku: 'Champion-M',
+    price: 284,
     originalPrice: 329,
-    description: 'Durable monofilament base with a polyurethane perimeter. Features a natural parting area and excellent ventilation. A great entry-level stock option with premium quality at an accessible price.',
-    tags: ['mono', 'entry-level', 'value'],
-    image: '/images/products/mono-system.jpg',
+    description: 'The medium-density version of the Champion — a full French lace base at a lighter, more natural density. Great entry-level stock option with premium quality at an accessible price.',
+    tags: ['french lace', 'medium density', 'value'],
+    image: '/images/products/lordhair-champion-m.jpg',
   },
 ]
 
 const womenWigs = [
   {
     id: 'lace-front-straight',
-    name: 'Straight Lace Front Wig',
-    subtitle: '100% human hair, HD invisible lace',
-    price: 299,
-    description: 'Premium straight lace front wig with pre-plucked hairline and HD transparent lace that melts into any skin tone. Medium density for a natural, undetectable finish. Perfect for everyday wear or special occasions.',
+    name: 'Undetectable HD Lace Straight Wig',
+    subtitle: 'Chinalacewig CF247 · 13x4 HD lace',
+    brand: 'Chinalacewig',
+    sku: 'CF247',
+    price: 269,
+    description: '100% virgin human hair, one donor. Pre-plucked and pre-bleached hairline with 180% density for a natural, undetectable finish. Perfect for everyday wear or special occasions.',
     tags: ['lace front', 'straight', 'HD lace'],
-    image: '/images/products/lace-front-straight-wig.jpg',
+    image: '/images/products/clw-cf247.jpg',
   },
   {
     id: 'lace-front-highlight',
     name: 'Highlight Body Wave Wig',
-    subtitle: 'Brown-to-blonde ombre, 13x4 HD lace',
-    price: 349,
-    description: 'Stunning honey blonde highlight body wave wig with 13x4 HD transparent lace. Pre-plucked with baby hair for a realistic hairline. Versatile body wave texture that holds curls beautifully.',
-    tags: ['highlight', 'body wave', 'ombre'],
-    image: '/images/products/lace-front-highlight-wig.jpg',
+    subtitle: 'Chinalacewig NCF71 · HD lace highlight',
+    brand: 'Chinalacewig',
+    sku: 'NCF71',
+    price: 285,
+    description: 'Show-stopping highlight color body wave with undetectable real HD lace. Pre-plucked with baby hair for a realistic hairline, and a body wave texture that holds curls beautifully.',
+    tags: ['highlight', 'body wave', 'HD lace'],
+    image: '/images/products/clw-ncf71.png',
   },
   {
     id: 'lace-front-straight-2',
-    name: 'Silky Straight Frontal Wig',
-    subtitle: '13x6 HD lace, glueless wear option',
-    price: 279,
-    description: 'Sleek silky straight wig with 13x6 HD lace frontal for versatile parting. Lightweight and breathable cap with adjustable straps. Pre-bleached knots and pre-plucked hairline for instant wear.',
-    tags: ['silky straight', '13x6', 'glueless'],
-    image: '/images/products/lace-front-wig-straight-2.jpg',
+    name: 'Silky Straight Blonde Wig',
+    subtitle: 'Chinalacewig NCF76 · 13x4 transparent lace',
+    brand: 'Chinalacewig',
+    sku: 'NCF76',
+    price: 239,
+    description: 'Sleek blonde silky straight wig with transparent 13x4 lace that melts into any skin tone. Pre-bleached knots, adjustable band, and 150% density for instant, comfortable wear.',
+    tags: ['silky straight', 'blonde', 'transparent lace'],
+    image: '/images/products/clw-ncf76.jpg',
   },
   {
     id: 'essence-premium-wig',
-    name: 'Premium Lace Front Wig',
-    subtitle: 'Hand-tied, 180% density',
-    price: 399,
-    description: 'Hand-tied premium lace front wig with 180% medium density for a full, natural look. Features Swiss lace front, silk top with natural parting, and 100% Remy human hair. Our most premium stock option.',
-    tags: ['hand-tied', 'premium', 'silk top'],
-    image: '/images/products/essence-lace-front-wig.jpg',
+    name: 'Ombre HD Film Lace Wig',
+    subtitle: 'Chinalacewig NCF70 · 13x4/13x6 HD film lace',
+    brand: 'Chinalacewig',
+    sku: 'NCF70',
+    price: 299,
+    description: 'Ombre color body wave on ultra-thin HD film lace — 180% density, 22" length, 100% virgin hair from one donor. Our most premium stock wig for a flawless, natural finish.',
+    tags: ['ombre', 'body wave', 'premium'],
+    image: '/images/products/clw-ncf70.jpg',
   },
 ]
 
@@ -278,6 +287,8 @@ export default function Shop() {
         body: JSON.stringify({
           productId: product.id,
           productName: product.name,
+          brand: product.brand,
+          sku: product.sku,
           price: product.price,
         }),
       })
@@ -351,6 +362,12 @@ export default function Shop() {
         <meta name="twitter:title" content="Shop | Brian Ivie Hair & Extensions" />
         <meta name="twitter:description" content="Professional hair care products, custom systems, and services." />
         <meta name="twitter:image" content={DEFAULT_OG_IMAGE} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateShopSchema([...stockHairSystems, ...womenWigs, ...products])),
+          }}
+        />
       </Head>
 
       <AnimatePresence>
@@ -587,6 +604,14 @@ export default function Shop() {
                           {system.subtitle}
                         </p>
                       )}
+                      {(system.brand || system.sku) && (
+                        <p
+                          className="text-[10px] uppercase tracking-wider font-sans mt-1"
+                          style={{ color: 'rgba(253, 253, 251, 0.3)' }}
+                        >
+                          {[system.brand, system.sku].filter(Boolean).join(' · ')}
+                        </p>
+                      )}
                     </div>
                     <p
                       className="text-sm font-sans leading-relaxed mb-4 flex-1"
@@ -718,6 +743,14 @@ export default function Shop() {
                           {wig.subtitle}
                         </p>
                       )}
+                      {(wig.brand || wig.sku) && (
+                        <p
+                          className="text-[10px] uppercase tracking-wider font-sans mt-1"
+                          style={{ color: 'rgba(253, 253, 251, 0.3)' }}
+                        >
+                          {[wig.brand, wig.sku].filter(Boolean).join(' · ')}
+                        </p>
+                      )}
                     </div>
                     <p
                       className="text-sm font-sans leading-relaxed mb-4 flex-1"
@@ -818,23 +851,17 @@ export default function Shop() {
                     borderColor: 'rgba(197, 160, 89, 0.08)',
                   }}
                 >
-                  {/* Image Placeholder */}
-                  <div
-                    className={`h-48 bg-gradient-to-br ${product.color} flex items-center justify-center relative overflow-hidden`}
-                  >
-                    <div
-                      className="absolute inset-0 opacity-20"
-                      style={{
-                        backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(197, 160, 89, 0.3) 0%, transparent 70%)',
-                      }}
-                    />
-                    <div
-                      className="relative z-10 opacity-40 group-hover:opacity-60 transition-opacity duration-300"
-                      style={{ color: '#fdfdfb' }}
-                    >
-                      {product.icon}
+                  {/* Product Image */}
+                  {product.image && (
+                    <div className="h-48 bg-[#111] overflow-hidden relative">
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
                     </div>
-                  </div>
+                  )}
 
                   <div className="p-5 flex flex-col flex-1">
                     <div className="mb-2">
@@ -850,6 +877,14 @@ export default function Shop() {
                           style={{ color: 'rgba(197, 160, 89, 0.7)' }}
                         >
                           {product.subtitle}
+                        </p>
+                      )}
+                      {(product.brand || product.sku) && (
+                        <p
+                          className="text-[10px] uppercase tracking-wider font-sans mt-1"
+                          style={{ color: 'rgba(253, 253, 251, 0.3)' }}
+                        >
+                          {[product.brand, product.sku].filter(Boolean).join(' · ')}
                         </p>
                       )}
                     </div>
@@ -937,7 +972,7 @@ export default function Shop() {
                   </a>
                 </Link>
                 <a
-                  href="tel:+13145551234"
+                  href="tel:3145834843"
                   className="btn-outline inline-flex items-center justify-center gap-2 font-sans px-8 py-3 rounded-lg transition-all duration-300 hover:bg-[#c5a059] hover:text-[#0a0a0a] hover:border-[#c5a059]"
                   style={{ borderColor: 'rgba(197, 160, 89, 0.4)', color: '#c5a059' }}
                 >
